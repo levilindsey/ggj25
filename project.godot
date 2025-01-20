@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="GGJ25"
-run/main_scene="res://ui/screens/main_menu.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+run/main_scene="res://src/core/shell.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+G="*res://src/core/globals.gd"
+ScreenHandler="*res://src/core/screen_handler.gd"
+Sfx="*res://src/core/sfx.gd"
 
 [rendering]
 

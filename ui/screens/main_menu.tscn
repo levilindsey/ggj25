@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://bxmph3ye6mk0i"]
-
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 0
