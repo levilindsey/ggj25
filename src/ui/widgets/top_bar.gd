@@ -1,4 +1,5 @@
 @tool
+@icon("res://assets/editor_icons/Node.svg")
 class_name TopBar
 extends MarginContainer
 

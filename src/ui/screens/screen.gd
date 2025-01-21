@@ -1,3 +1,4 @@
+@icon("res://assets/editor_icons/Screen.svg")
 class_name Screen
 extends PanelContainer
 

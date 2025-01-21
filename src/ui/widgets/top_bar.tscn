@@ -30,7 +30,7 @@ mouse_filter = 2
 
 [node name="Credits" parent="HBoxContainer" instance=ExtResource("2_k8w21")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("3_2dvok")
 texture_pressed = ExtResource("3_2dvok")
@@ -43,7 +43,7 @@ master_texture = ExtResource("3_2dvok")
 
 [node name="Settings" parent="HBoxContainer" instance=ExtResource("2_k8w21")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture_normal = ExtResource("4_tq0yo")
 texture_pressed = ExtResource("4_tq0yo")

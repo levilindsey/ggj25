@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://1t038urjp73n"]
 
-[ext_resource type="Script" uid="uid://cm68p8ixbp1t8" path="res://src/ui/screens/game_over/game_over_screen.gd" id="1_4yvap"]
+[ext_resource type="Script" uid="uid://cm68p8ixbp1t8" path="res://src/ui/screens/pause/pause_screen.gd" id="1_4yvap"]
 [ext_resource type="Script" uid="uid://bpc7dvcqlnfon" path="res://src/ui/screens/screen.gd" id="2_klv2i"]
 [ext_resource type="PackedScene" uid="uid://cncbapiuueajh" path="res://src/ui/widgets/header.tscn" id="3_u2unf"]
 [ext_resource type="PackedScene" uid="uid://dcisa6xson4x6" path="res://src/ui/widgets/click_button.tscn" id="4_mnaib"]
@@ -35,6 +35,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PlayButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("4_mnaib")]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Play Again"
 

@@ -1,3 +1,4 @@
+@icon("res://assets/editor_icons/ClickCheckBox.svg")
 class_name ClickCheckBox
 extends CheckBox
 

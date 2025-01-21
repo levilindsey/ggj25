@@ -1,3 +1,4 @@
+@icon("res://assets/editor_icons/Node.svg")
 class_name Shell
 extends Container
 

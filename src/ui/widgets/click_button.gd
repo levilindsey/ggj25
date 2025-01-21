@@ -1,3 +1,4 @@
+@icon("res://assets/editor_icons/ClickButton.svg")
 class_name ClickButton
 extends Button
 

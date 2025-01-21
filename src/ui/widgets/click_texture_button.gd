@@ -1,4 +1,5 @@
 @tool
+@icon("res://assets/editor_icons/ClickTextureButton.svg")
 class_name ClickTextureButton
 extends TextureButton
 

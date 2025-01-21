@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cm68p8ixbp1t8" path="res://src/ui/screens/pause/pause_screen.gd" id="1_m2bf8"]
 [ext_resource type="Script" uid="uid://bpc7dvcqlnfon" path="res://src/ui/screens/screen.gd" id="2_qaqnv"]
 [ext_resource type="PackedScene" uid="uid://cncbapiuueajh" path="res://src/ui/widgets/header.tscn" id="3_83sfv"]
-[ext_resource type="PackedScene" uid="uid://dcisa6xson4x6" path="res://src/ui/widgets/click_button.tscn" id="4_83sfv"]
+[ext_resource type="PackedScene" uid="uid://cxufkavj6vxo3" path="res://src/ui/widgets/close_button.tscn" id="4_gfqfo"]
 [ext_resource type="PackedScene" uid="uid://bt0tqy0i2sf0j" path="res://src/ui/widgets/top_bar.tscn" id="5_gfqfo"]
 
 [node name="PauseScreen" type="PanelContainer"]
@@ -34,9 +34,8 @@ layout_mode = 2
 [node name="Spacer2" type="Control" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CloseButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("4_83sfv")]
+[node name="CloseButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("4_gfqfo")]
 layout_mode = 2
-text = "Close"
 
 [node name="TopBar" parent="." instance=ExtResource("5_gfqfo")]
 layout_mode = 2
