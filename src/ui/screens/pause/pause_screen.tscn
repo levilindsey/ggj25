@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bc5n0nmh6rv0c"]
 
-[ext_resource type="Script" uid="uid://cm68p8ixbp1t8" path="res://src/ui/screens/pause/pause_screen.gd" id="1_m2bf8"]
+[ext_resource type="Script" uid="uid://btf5lqwnsyudc" path="res://src/ui/screens/pause/pause_screen.gd" id="1_gfqfo"]
 [ext_resource type="Script" uid="uid://bpc7dvcqlnfon" path="res://src/ui/screens/screen.gd" id="2_qaqnv"]
 [ext_resource type="PackedScene" uid="uid://cncbapiuueajh" path="res://src/ui/widgets/header.tscn" id="3_83sfv"]
 [ext_resource type="PackedScene" uid="uid://cxufkavj6vxo3" path="res://src/ui/widgets/close_button.tscn" id="4_gfqfo"]
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_m2bf8")
+script = ExtResource("1_gfqfo")
 metadata/_custom_type_script = ExtResource("2_qaqnv")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

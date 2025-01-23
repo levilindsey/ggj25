@@ -50,7 +50,7 @@ func _on_pressed() -> void:
         if is_instance_valid(master_texture)
         else "_"
     )
-    print("ClickTextureButton pressed: %" % button_name)
+    G.log.print("ClickTextureButton pressed: %s" % button_name)
 
 
 func _on_button_down() -> void:

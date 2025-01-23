@@ -5,4 +5,4 @@ extends HSlider
 
 func _on_drag_ended(value_changed: bool) -> void:
     %AudioStreamPlayer.play()
-    print("ClickHSlider value changed: %s" % value)
+    G.log.print("ClickHSlider value changed: %s" % value)

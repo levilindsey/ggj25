@@ -21,5 +21,6 @@ metadata/_custom_type_script = ExtResource("2_1bd7q")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_jnqby")
+bus = &"SFX"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

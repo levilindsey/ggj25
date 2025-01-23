@@ -23,10 +23,10 @@ func set_up(property: Dictionary, value_width: float) -> void:
 
     var value: float = G.settings.get(property.name)
 
-    %ClickHSlider.value = value
     %ClickHSlider.min_value = min
     %ClickHSlider.max_value = max
     %ClickHSlider.step = step
+    %ClickHSlider.value = value
 
     %ClickHSlider.custom_minimum_size.x = value_width
 

@@ -15,3 +15,4 @@ script = ExtResource("1_3x502")
 [node name="GameLoadSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_60jxb")
+bus = &"SFX"

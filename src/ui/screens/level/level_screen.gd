@@ -20,9 +20,9 @@ func start(level_scene: PackedScene) -> void:
 
     %LevelStartSound.play()
 
-    print("Level started: %s" % level_scene.resource_name)
+    G.log.print("Level started: %s" % level_scene.resource_name)
 
 
 func on_level_ended() -> void:
-    ScreenHandler.open("game_over_screen")
-    ScreenHandler.close(self)
+    G.screens.open("game_over_screen")
+    G.screens.close(self)

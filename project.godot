@@ -15,11 +15,13 @@ run/main_scene="res://src/core/shell.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://src/config/default_bus_layout.tres"
+
 [autoload]
 
 G="*res://src/core/globals.gd"
-ScreenHandler="*res://src/core/screen_handler.gd"
-Sfx="*res://src/core/sfx.gd"
 
 [rendering]
 

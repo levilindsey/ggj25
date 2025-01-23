@@ -3,5 +3,5 @@ extends Screen
 
 
 func _on_play_button_pressed() -> void:
-    ScreenHandler.open("level_screen")
-    ScreenHandler.close(self)
+    G.screens.open("level_screen")
+    G.screens.close(self)

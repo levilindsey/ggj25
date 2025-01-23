@@ -5,4 +5,4 @@ extends Button
 
 func _on_pressed() -> void:
     %AudioStreamPlayer.play()
-    print("ClickButton pressed: %" % text)
+    G.log.print("ClickButton pressed: %s" % text)

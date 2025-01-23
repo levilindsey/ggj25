@@ -33,3 +33,4 @@ render_target_update_mode = 4
 [node name="LevelStartSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_jh56d")
+bus = &"SFX"

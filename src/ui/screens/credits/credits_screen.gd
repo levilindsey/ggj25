@@ -3,4 +3,4 @@ extends Screen
 
 
 func _on_close_button_pressed() -> void:
-    ScreenHandler.close(self)
+    G.screens.close(self)

@@ -12,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hrw35")
-pauses_game_when_open = null
 metadata/_custom_type_script = ExtResource("2_hbrsy")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

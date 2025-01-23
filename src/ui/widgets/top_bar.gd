@@ -14,8 +14,8 @@ func _ready() -> void:
 
 
 func _on_credits_pressed() -> void:
-    ScreenHandler.open("credits_screen")
+    G.screens.open("credits_screen")
 
 
 func _on_settings_pressed() -> void:
-    ScreenHandler.open("settings_screen")
+    G.screens.open("settings_screen")
