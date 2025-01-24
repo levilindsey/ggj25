@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="Manifest" load_steps=22 format=3 uid="uid://n2klwldxjt7u"]
+
+[ext_resource type="PackedScene" uid="uid://bxmph3ye6mk0i" path="res://scaffolder/src/ui/screens/main_menu/main_menu_screen.tscn" id="1_5jq67"]
+[ext_resource type="Script" uid="uid://i4q7p22q60vs" path="res://scaffolder/src/config/canvas_layer_config.gd" id="1_6tcv6"]
+[ext_resource type="Script" uid="uid://ctpkusaxuuelx" path="res://scaffolder/src/config/manifest.gd" id="1_kjae0"]
+[ext_resource type="PackedScene" uid="uid://dw40igtylnu30" path="res://src/levels/main_level.tscn" id="1_pnmh0"]
+[ext_resource type="PackedScene" uid="uid://blwby8enw3e2c" path="res://scaffolder/src/ui/screens/game/game_screen.tscn" id="2_a0tpd"]
+[ext_resource type="PackedScene" uid="uid://cn5n2vl7vmqeg" path="res://scaffolder/src/ui/screens/settings/settings_screen.tscn" id="3_glh7n"]
+[ext_resource type="AudioStream" uid="uid://bu201qxw2pgtb" path="res://scaffolder/assets/sfx/game_load.tres" id="3_hx065"]
+[ext_resource type="PackedScene" uid="uid://bc5n0nmh6rv0c" path="res://scaffolder/src/ui/screens/pause/pause_screen.tscn" id="4_lcxym"]
+[ext_resource type="PackedScene" uid="uid://cfb2gmm7xhvgn" path="res://scaffolder/src/ui/screens/credits/credits_screen.tscn" id="5_6c2oo"]
+[ext_resource type="AudioStream" uid="uid://ccywymppbqvq2" path="res://scaffolder/assets/sfx/level_start.tres" id="10_2dxr2"]
+[ext_resource type="AudioStream" uid="uid://bdcxfq7hd0iak" path="res://scaffolder/assets/sfx/pause.tres" id="11_h735y"]
+[ext_resource type="AudioStream" uid="uid://ix3if7cq1a8q" path="res://scaffolder/assets/sfx/level_success.tres" id="11_nkjtd"]
+[ext_resource type="AudioStream" uid="uid://dre3xa4dff13l" path="res://scaffolder/assets/sfx/level_failure.tres" id="12_h8uih"]
+[ext_resource type="AudioStream" uid="uid://coe3qd5rsfkhp" path="res://scaffolder/assets/sfx/unpause.tres" id="12_nkjtd"]
+[ext_resource type="AudioStream" uid="uid://d4buaef6wotn2" path="res://scaffolder/assets/sfx/menu_click.tres" id="13_h8uih"]
+
+[sub_resource type="Resource" id="Resource_nkort"]
+script = ExtResource("1_6tcv6")
+name = "top"
+process_mode = 3
+metadata/_custom_type_script = ExtResource("1_6tcv6")
+
+[sub_resource type="Resource" id="Resource_wdbps"]
+script = ExtResource("1_6tcv6")
+name = "notifications"
+process_mode = 3
+metadata/_custom_type_script = ExtResource("1_6tcv6")
+
+[sub_resource type="Resource" id="Resource_ruurx"]
+script = ExtResource("1_6tcv6")
+name = "screens"
+process_mode = 3
+metadata/_custom_type_script = ExtResource("1_6tcv6")
+
+[sub_resource type="Resource" id="Resource_jbb2s"]
+script = ExtResource("1_6tcv6")
+name = "hud"
+process_mode = 1
+metadata/_custom_type_script = ExtResource("1_6tcv6")
+
+[sub_resource type="Resource" id="Resource_nu5ig"]
+script = ExtResource("1_6tcv6")
+name = "annotations"
+process_mode = 1
+metadata/_custom_type_script = ExtResource("1_6tcv6")
+
+[sub_resource type="Resource" id="Resource_3eij7"]
+script = ExtResource("1_6tcv6")
+name = "game"
+process_mode = 1
+metadata/_custom_type_script = ExtResource("1_6tcv6")
+
+[resource]
+script = ExtResource("1_kjae0")
+dev_mode = true
+skip_main_menu_in_dev_mode = false
+pauses_on_focus_out = true
+dev_mode_level = ExtResource("1_pnmh0")
+main_level = ExtResource("1_pnmh0")
+screens = Dictionary[String, PackedScene]({
+"credits_screen": ExtResource("5_6c2oo"),
+"game_screen": ExtResource("2_a0tpd"),
+"main_menu_screen": ExtResource("1_5jq67"),
+"pause_screen": ExtResource("4_lcxym"),
+"settings_screen": ExtResource("3_glh7n")
+})
+canvas_layers = Array[ExtResource("1_6tcv6")]([SubResource("Resource_nkort"), SubResource("Resource_wdbps"), SubResource("Resource_ruurx"), SubResource("Resource_jbb2s"), SubResource("Resource_nu5ig"), SubResource("Resource_3eij7")])
+sfxs = Dictionary[String, AudioStream]({
+"game_load": ExtResource("3_hx065"),
+"level_failure": ExtResource("12_h8uih"),
+"level_start": ExtResource("10_2dxr2"),
+"level_success": ExtResource("11_nkjtd"),
+"pause": ExtResource("11_h735y"),
+"unpause": ExtResource("12_nkjtd"),
+"widget_click": ExtResource("13_h8uih")
+})
