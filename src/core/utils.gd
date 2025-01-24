@@ -6,6 +6,8 @@ const MAX_INT := 9223372036854775807
 
 var _focus_releaser: Control
 
+var were_screenshots_taken := false
+
 
 func _init() -> void:
     G.log.on_global_init(self, "Utils")
@@ -16,16 +18,9 @@ func _init() -> void:
     add_child(_focus_releaser)
 
 
-func get_is_paused() -> bool:
-    return get_tree().paused
-
-
-func pause() -> void:
-    get_tree().paused = true
-
-
-func unpause() -> void:
-    get_tree().paused = false
+func ensure(condition: bool, message := "") -> bool:
+    assert(condition, message)
+    return condition
 
 
 static func splice(
@@ -482,6 +477,9 @@ func take_screenshot() -> void:
     var status := image.save_png(path)
     if status != OK:
         G.log.error("Utils.take_screenshot")
+    else:
+        G.log.print("Took a screenshot: %s" % path)
+        were_screenshots_taken = true
 
 
 func open_screenshot_folder() -> void:

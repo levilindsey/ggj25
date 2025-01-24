@@ -9,3 +9,15 @@ func _init() -> void:
 func start() -> void:
     # TODO: Play a silly level-start sound.
     pass
+
+
+func pause() -> void:
+    if G.screens.is_top_screen("level_screen"):
+        G.screens.open("pause_screen")
+    get_tree().paused = true
+
+
+func unpause() -> void:
+    if not G.screens.is_top_screen("level_screen"):
+        G.screens.close_screens_above("level_screen")
+    get_tree().paused = false

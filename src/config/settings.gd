@@ -6,7 +6,6 @@ signal property_changed(name: String, new_value: Variant, old_value: Variant)
 
 @export_range(0.0, 1.0, 0.05) var music_volume := 0.5
 @export_range(0.0, 1.0, 0.05) var sfx_volume := 0.5
-@export var dev_mode := true
 
 const USER_SETTINGS_PATH := "user://user_settings.tres"
 const DEFAULT_SETTINGS_PATH := "res://src/config/default_settings.tres"

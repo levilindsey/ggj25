@@ -12,6 +12,7 @@ var screens: ScreenHandler
 var shell: Shell
 
 var level: Level
+var hud: Hud
 var player: Player
 
 
@@ -57,8 +58,3 @@ func _set_up_module(property_name: String) -> void:
     var instance: Object = get(property_name)
     if instance.has_method("set_up"):
         instance.set_up()
-
-
-func ensure(condition: bool, message := "") -> bool:
-    assert(condition, message)
-    return condition

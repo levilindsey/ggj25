@@ -7,7 +7,7 @@ func _ready() -> void:
     # TODO: Configure different levels?
     var level_scene = (
         G.manifest.dev_mode_level
-        if G.settings.dev_mode
+        if G.manifest.dev_mode
         else G.manifest.main_level
     )
     start(level_scene)
@@ -20,7 +20,7 @@ func start(level_scene: PackedScene) -> void:
 
     %LevelStartSound.play()
 
-    G.log.print("Level started: %s" % level_scene.resource_name)
+    G.log.print("Level started: %s" % level_scene)
 
 
 func on_level_ended() -> void:

@@ -5,15 +5,15 @@ extends SettingsRow
 func set_up(property: Dictionary, value_width: float) -> void:
     super(property, value_width)
 
-    if !G.ensure(property.type == TYPE_BOOL or property.type == TYPE_FLOAT):
+    if !G.utils.ensure(property.type == TYPE_BOOL or property.type == TYPE_FLOAT):
         return
-    if !G.ensure(property.hint == PropertyHint.PROPERTY_HINT_RANGE,
+    if !G.utils.ensure(property.hint == PropertyHint.PROPERTY_HINT_RANGE,
             "Numeric settings properties must be annotated with ranges."):
         return
 
     var hint_string: String = property.hint_string
     var hint_tokens := hint_string.split_floats(",")
-    if !G.ensure(hint_tokens.size() == 2 or hint_tokens.size() == 3,
+    if !G.utils.ensure(hint_tokens.size() == 2 or hint_tokens.size() == 3,
             "Invalid range hint format for settings property."):
         return
 

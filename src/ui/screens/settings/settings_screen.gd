@@ -21,12 +21,12 @@ func _create_row(property: Dictionary) -> SettingsRow:
     var is_range: bool = is_numeric and property.hint == PropertyHint.PROPERTY_HINT_RANGE
 
     # Validate the property hint.
-    if !G.ensure(property.hint == PROPERTY_HINT_NONE or is_range,
+    if !G.utils.ensure(property.hint == PROPERTY_HINT_NONE or is_range,
             "Unsupported settings property hint: name: %s, type: %s, hint: %s" % [
                 property.name, property.type, property.hint
             ]):
         return
-    if !G.ensure(!is_numeric or is_range,
+    if !G.utils.ensure(!is_numeric or is_range,
             "Numeric settings properties must be defined with range hints: name: %s, type: %s, hint: %s" % [
                 property.name, property.type, property.hint
             ]):
@@ -40,7 +40,7 @@ func _create_row(property: Dictionary) -> SettingsRow:
         TYPE_FLOAT:
             row = SliderRowScene.instantiate()
         _:
-            G.ensure(false,
+            G.utils.ensure(false,
                 "Unsupported settings property type: name: %s, type: %s, hint: %s" % [
                     property.name, property.type, property.hint
                 ])

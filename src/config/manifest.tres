@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Manifest" load_steps=8 format=3 uid="uid://n2klwldxjt7u"]
 
-[ext_resource type="PackedScene" uid="uid://bxmph3ye6mk0i" path="res://src/ui/screens/main_menu/main_menu.tscn" id="1_5jq67"]
+[ext_resource type="PackedScene" uid="uid://bxmph3ye6mk0i" path="res://src/ui/screens/main_menu/main_menu_screen.tscn" id="1_5jq67"]
 [ext_resource type="Script" uid="uid://ctpkusaxuuelx" path="res://src/config/manifest.gd" id="1_kjae0"]
 [ext_resource type="PackedScene" uid="uid://dw40igtylnu30" path="res://src/levels/main_level.tscn" id="1_pnmh0"]
 [ext_resource type="PackedScene" uid="uid://blwby8enw3e2c" path="res://src/ui/screens/level/level_screen.tscn" id="2_a0tpd"]
@@ -15,7 +15,7 @@ main_level = ExtResource("1_pnmh0")
 screens = Dictionary[String, PackedScene]({
 "credits_screen": ExtResource("5_6c2oo"),
 "level_screen": ExtResource("2_a0tpd"),
-"main_menu": ExtResource("1_5jq67"),
+"main_menu_screen": ExtResource("1_5jq67"),
 "pause_screen": ExtResource("4_lcxym"),
 "settings_screen": ExtResource("3_glh7n")
 })

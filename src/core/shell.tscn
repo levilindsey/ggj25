@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://45srgybaewd0"]
+[gd_scene load_steps=4 format=3 uid="uid://45srgybaewd0"]
 
 [ext_resource type="Script" uid="uid://bqmdy4jbksxo0" path="res://src/core/shell.gd" id="1_3x502"]
 [ext_resource type="AudioStream" uid="uid://bu201qxw2pgtb" path="res://assets/sfx/game_load.tres" id="2_60jxb"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_60jxb"]
 
 [node name="Shell" type="Container"]
 anchors_preset = 15
@@ -16,3 +18,8 @@ script = ExtResource("1_3x502")
 unique_name_in_owner = true
 stream = ExtResource("2_60jxb")
 bus = &"SFX"
+
+[node name="AudioStreamRecord" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_60jxb")
+autoplay = true
+bus = &"Record"
