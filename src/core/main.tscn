@@ -16,4 +16,4 @@ script = ExtResource("1_ukt3u")
 [node name="AudioStreamRecord" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_60jxb")
 autoplay = true
-bus = &"Record"
+bus = &"Capture"

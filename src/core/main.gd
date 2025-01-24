@@ -3,5 +3,5 @@ class_name Main
 extends Container
 
 
-# FIXME: Implement microphone listening.
-# - DON'T record, just listen.
+func _ready() -> void:
+    G.main = self

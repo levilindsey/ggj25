@@ -1,7 +1,10 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://dng7ws4n7etxb"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://dng7ws4n7etxb"]
 
-[sub_resource type="AudioEffectRecord" id="AudioEffectRecord_fpp1h"]
-resource_name = "Record"
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_j3pel"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectCapture" id="AudioEffectCapture_j3pel"]
+resource_name = "Capture"
 
 [resource]
 bus/1/name = &"Music"
@@ -16,11 +19,19 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
-bus/3/name = &"Record"
+bus/3/name = &"Process"
 bus/3/solo = false
-bus/3/mute = false
+bus/3/mute = true
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"Master"
-bus/3/effect/0/effect = SubResource("AudioEffectRecord_fpp1h")
+bus/3/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_j3pel")
 bus/3/effect/0/enabled = true
+bus/4/name = &"Capture"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Process"
+bus/4/effect/0/effect = SubResource("AudioEffectCapture_j3pel")
+bus/4/effect/0/enabled = true

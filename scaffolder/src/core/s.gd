@@ -1,8 +1,8 @@
-#class_name S
+# class_name S
 extends Node
 ## Scaffolder
 ##
-## -   This is a global singleton that holds a bunch of modules for the Scaffolder
+## -   This is an autoload that holds a bunch of modules for the Scaffolder
 ##     framework.
 ## -   These modules provide lots of common functionality that is reusable across
 ##     many different kinds of games.
