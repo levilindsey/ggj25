@@ -36,13 +36,13 @@ func _process(_delta: float) -> void:
         AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.MAGNITUDE_MAX)
     var magnitude: float = lerp(stereo_magnitude.x, stereo_magnitude.y, 0.5)
 
-    # FIXME: Smooth the signal a bit.
-    # FIXME: Will we need to do something to dynamically tune the min and max
-    #        amplitude thresholds based on the player's particular input
-    #        (hardware, gain, environment, and voice can probably all differ
-    #        wildly in terms of overall amplitude)?
-    # FIXME: Show some sort of amplitude indicator in the hud (show the smoothed signal).
-    # FIXME: Do something with this signal.
+    # TODO: Smooth the signal a bit.
+    # TODO: Will we need to do something to dynamically tune the min and max
+    #       amplitude thresholds based on the player's particular input
+    #       (hardware, gain, environment, and voice can probably all differ
+    #       wildly in terms of overall amplitude)?
+    # TODO: Show some sort of amplitude indicator in the hud (show the smoothed signal).
+    # TODO: Do something with this signal.
 
     _latest_max_magnitude = max(_latest_max_magnitude, magnitude)
     _throttled_process.call()
