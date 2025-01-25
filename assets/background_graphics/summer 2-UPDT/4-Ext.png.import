@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tvk3xbmxeqhr"
-path="res://.godot/imported/4.png-d992674867436d98687a7788333c4d13.ctex"
+uid="uid://dur0t1rjdjdjy"
+path="res://.godot/imported/4-Ext.png-05fea71876ef9b01b62795362fcb1b5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background_graphics/Free-Summer-Pixel-Art-Backgrounds/PNG/summer 3/4.png"
-dest_files=["res://.godot/imported/4.png-d992674867436d98687a7788333c4d13.ctex"]
+source_file="res://assets/background_graphics/summer 2-UPDT/4-Ext.png"
+dest_files=["res://.godot/imported/4-Ext.png-05fea71876ef9b01b62795362fcb1b5e.ctex"]
 
 [params]
 
