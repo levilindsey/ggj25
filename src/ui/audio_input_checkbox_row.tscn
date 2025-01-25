@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://chfi1dp1i7gvl"]
+
+[ext_resource type="Script" uid="uid://bxh0u1qcnbst5" path="res://src/ui/audio_input_checkbox_row.gd" id="1_cx165"]
+[ext_resource type="PackedScene" uid="uid://bu3fd6mxubjj3" path="res://scaffolder/src/ui/widgets/click_check_box.tscn" id="2_ekwba"]
+
+[node name="AudioInputCheckboxRow" type="HBoxContainer"]
+script = ExtResource("1_cx165")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClickCheckBox" parent="." instance=ExtResource("2_ekwba")]
+unique_name_in_owner = true
+layout_mode = 2

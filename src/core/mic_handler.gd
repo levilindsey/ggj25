@@ -51,6 +51,16 @@ func _ready() -> void:
     _throttled_sample = S.time.throttle(_sample_throttled, MIC_SAMPLE_PERIOD, false)
     _throttled_print = S.time.throttle(_print_throttled, MIC_PRINT_PERIOD, false)
 
+    # FIXME:
+    # - Show a calibrate blow strength option in the pause and settings menu.
+    #   - Create a screet for this.
+    #   - Record in player settings.
+    # - Show a select input device option in the pause menu and settings menu.
+    #   - Create a screet for this.
+    #   - Record in player settings.
+    # - Add a magnitude indicator in the HUD.
+
+
 
 func _process(_delta: float) -> void:
     var stereo_magnitude := spectrum.get_magnitude_for_frequency_range(

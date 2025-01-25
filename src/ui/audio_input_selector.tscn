@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl70xglu0nxu"]
+
+[ext_resource type="Script" uid="uid://bnx777of81wbi" path="res://src/ui/audio_input_selector.gd" id="1_kmgpe"]
+
+[node name="AudioInputSelector" type="VBoxContainer"]
+script = ExtResource("1_kmgpe")

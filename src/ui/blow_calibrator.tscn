@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oinbvqlarnjp"]
+
+[ext_resource type="Script" uid="uid://bl3mn8w6fnub0" path="res://src/ui/blow_calibrator.gd" id="1_drbp4"]
+
+[node name="BlowCalibrator" type="PanelContainer"]
+script = ExtResource("1_drbp4")

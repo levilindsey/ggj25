@@ -2,10 +2,10 @@ class_name SettingsScreen
 extends Screen
 
 
-const CheckboxRowScene := preload("res://scaffolder/src/ui/widgets/settings_row/checkbox_settings_row.tscn")
-const SliderRowScene := preload("res://scaffolder/src/ui/widgets/settings_row/slider_settings_row.tscn")
+const CHECKBOX_ROW_SCENE := preload("res://scaffolder/src/ui/widgets/settings_row/checkbox_settings_row.tscn")
+const SLIDER_ROW_SCENE := preload("res://scaffolder/src/ui/widgets/settings_row/slider_settings_row.tscn")
 
-const SliderWidth := 200
+const SLIDER_WIDTH := 200
 
 
 func _ready() -> void:
@@ -35,10 +35,10 @@ func _create_row(property: Dictionary) -> SettingsRow:
     var row: SettingsRow
     match property.type:
         TYPE_BOOL:
-            row = CheckboxRowScene.instantiate()
+            row = CHECKBOX_ROW_SCENE.instantiate()
         TYPE_INT, \
         TYPE_FLOAT:
-            row = SliderRowScene.instantiate()
+            row = SLIDER_ROW_SCENE.instantiate()
         _:
             S.utils.ensure(false,
                 "Unsupported settings property type: name: %s, type: %s, hint: %s" % [
@@ -46,7 +46,7 @@ func _create_row(property: Dictionary) -> SettingsRow:
                 ])
             return null
 
-    row.set_up(property, SliderWidth)
+    row.set_up(property, SLIDER_WIDTH)
     return row
 
 

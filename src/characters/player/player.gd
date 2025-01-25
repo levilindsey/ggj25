@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var initial_vertical_velocity := -75.0
 
 # Pixels per second per second.
-@export var max_blow_vertical_acceleration := -400.0
+@export var max_blow_vertical_acceleration := -2000.0
 
 # Pixels per second per second.
 @export var gravity_acceleration := 400.0
