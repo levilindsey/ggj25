@@ -4,6 +4,27 @@ extends Container
 
 
 # TODO: LEVI'S MASTER LIST:
+# - Level, obstacle, and enemy generation / spawning.
+#   - For random level spawning, to guarantee survivability:
+#     - Hand create a bunch of level fragments.
+#     - Annotate each fragment with a type for its start and end seam.
+#     - Only spawn adjacent fragments whose seam types match.
+#     - Some seam types:
+#     - Open
+#     - Level along top
+#     - Level along bottom
+#     - Level in center
+#     - And combinations of the last three, with bit flags
+#     -
+#     - ALSO, annotate each fragment with something about its difficulty and content.
+#     - Then, the spawner can think about the piece of difficult fragments.
+#     - And the spawner can think about what content for the current phase of the run.
+#     - Make some bits of content seriously to support re using fragments across phases?
+#   - Moving enemies:
+#       - Have then also be hand encoded within fragments.
+#       - Have one move straight forward slightly faster than the surrounding blocks.
+#       - Have one oscillate up and down at a constant x coordinate.
+#       - Is that it?
 # - Add a UI widget for clicking a button when they pop the bubble by blowing.
 #   - Use this to start a new run from the game-over screen.
 #   - Use a shared utility for tracking ballon inflation for the initial
