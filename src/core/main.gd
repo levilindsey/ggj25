@@ -4,17 +4,35 @@ extends Container
 
 
 # TODO: LEVI'S MASTER LIST:
+# - Four types of obstacles:
+#   - A: Static, rising from the ground.
+#   - B: Static, floating.
+#     - With sub types for varying heights.
+#   - C: Moves leftward.
+#   - D: Moves up and down.
+# - Make placeholder art:
+#   - Nature:
+#     - A: Tree
+#     - B: Cloud
+#     - C: Dragonfly?
+#     - D: Bird
+#   - City:
+#     - A: House/building
+#     - B: Cloud
+#     - C: Paper airplane
+#     - D: Drone
+#   - ...
 # - Level, obstacle, and enemy generation / spawning.
 #   - For random level spawning, to guarantee survivability:
 #     - Hand create a bunch of level fragments.
 #     - Annotate each fragment with a type for its start and end seam.
 #     - Only spawn adjacent fragments whose seam types match.
 #     - Some seam types:
-#     - Open
-#     - Level along top
-#     - Level along bottom
-#     - Level in center
-#     - And combinations of the last three, with bit flags
+#       - Open
+#       - Level along top
+#       - Level along bottom
+#       - Level in center
+#       - And combinations of the last three, with bit flags
 #     -
 #     - ALSO, annotate each fragment with something about its difficulty and content.
 #     - Then, the spawner can think about the piece of difficult fragments.
