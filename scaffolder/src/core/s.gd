@@ -14,7 +14,7 @@ extends Node
 
 signal loaded
 
-const MANIFEST_PATH := "res://scaffolder/src/config/manifest.tres"
+const MANIFEST_PATH := "res://manifest.tres"
 
 const SCAFFOLDER_SHELL_SCENE := preload("res://scaffolder/src/core/scaffolder_shell.tscn")
 
