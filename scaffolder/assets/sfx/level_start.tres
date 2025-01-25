@@ -1,7 +1,7 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://ccywymppbqvq2"]
 
-[ext_resource type="AudioStream" uid="uid://cvvxohb34nbsq" path="res://scaffolder/assets/sfx/raw/menu_select.wav" id="1_mmspw"]
+[ext_resource type="AudioStream" uid="uid://cfpn00464orsa" path="res://scaffolder/assets/sfx/raw/Bubblegum.mp3" id="1_b3xc2"]
 
 [resource]
 streams_count = 1
-stream_0/stream = ExtResource("1_mmspw")
+stream_0/stream = ExtResource("1_b3xc2")

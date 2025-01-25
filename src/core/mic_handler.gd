@@ -12,7 +12,7 @@ const FREQUENCY_MAX := 100.0
 const FREQUENCY_MIN := 00.0
 
 # Levi's mic:
-const LOW_MAGNITUDE := 0.001
+const LOW_MAGNITUDE := 0.0001
 const HIGH_MAGNITUDE := 0.03
 
 # Alden's mic:

@@ -24,6 +24,10 @@ driver/enable_input=true
 S="*res://scaffolder/src/core/s.gd"
 G="*res://src/core/g.gd"
 
+[display]
+
+window/size/mode=2
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
