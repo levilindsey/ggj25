@@ -1,25 +1,31 @@
 @icon("res://assets/editor_icons/Node.svg")
 class_name AudioInputSelector
-extends VBoxContainer
+extends HBoxContainer
 
 
-const AUDIO_INPUT_CHECKBOX_ROW_SCENE := preload("res://src/ui/audio_input_checkbox_row.tscn")
-
-var button_group: ButtonGroup
+var _text_to_index: Dictionary[String, int]
 
 
 func _ready() -> void:
-    button_group = ButtonGroup.new()
-
-    var mic: AudioStreamMicrophone
+    # Populate the device options.
+    #_add_item("Default")
     var input_devices := AudioServer.get_input_device_list()
-    for device in input_devices:
-        var row := AUDIO_INPUT_CHECKBOX_ROW_SCENE.instantiate()
-        row.toggled.connect(_input_selected.bind(device))
-        row.button_group = button_group
-        #S.settings.update_property(property_name, toggled_on)
-    AudioServer.input_device
+    for device_name in input_devices:
+        _add_item(device_name)
+
+    # Select the current device.
+    var label := (
+        S.settings.audio_input
+        if _text_to_index.has(S.settings.audio_input)
+        else "Default"
+    )
+    %ClickOptionButton.select(_text_to_index[label])
+
+
+func _add_item(label: String) -> void:
+    _text_to_index[label] = _text_to_index.size()
+    %ClickOptionButton.add_item(label)
 
 
 func _input_selected(device_name: String, toggled_on: bool) -> void:
-    pass
+    S.settings.update_property("audio_input", device_name)

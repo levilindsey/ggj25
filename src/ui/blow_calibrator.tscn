@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://oinbvqlarnjp"]
+[gd_scene load_steps=3 format=3 uid="uid://oinbvqlarnjp"]
 
 [ext_resource type="Script" uid="uid://bl3mn8w6fnub0" path="res://src/ui/blow_calibrator.gd" id="1_drbp4"]
+[ext_resource type="PackedScene" uid="uid://dcisa6xson4x6" path="res://scaffolder/src/ui/widgets/click_button.tscn" id="2_tudng"]
 
-[node name="BlowCalibrator" type="PanelContainer"]
+[node name="BlowCalibrator" type="HBoxContainer"]
 script = ExtResource("1_drbp4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Calibrate blow"
+
+[node name="Spacer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StartButton" parent="." instance=ExtResource("2_tudng")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Calibrate"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

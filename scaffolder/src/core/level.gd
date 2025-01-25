@@ -7,7 +7,6 @@ func _init() -> void:
 
 
 func start() -> void:
-    # TODO: Play a silly level-start sound.
     pass
 
 

@@ -6,18 +6,11 @@ const CAPTURE_BUS_NAME := "Capture"
 const PROCESS_BUS_NAME := "Process"
 const PROCESS_EFFECT_INDEX := 0
 
-# Magic value copied from the Godot Audio Spectrum Demo.
-# Probably something relating to Fourier something something...
 const FREQUENCY_MAX := 100.0
-const FREQUENCY_MIN := 00.0
+const FREQUENCY_MIN := 0.0
 
-# Levi's mic:
-const LOW_MAGNITUDE := 0.0001
-const HIGH_MAGNITUDE := 0.03
-
-# Alden's mic:
-#const LOW_MAGNITUDE := 0.0002
-#const HIGH_MAGNITUDE := 0.0
+const DEFAULT_LOW_MAGNITUDE := 0.0001
+const DEFAULT_HIGH_MAGNITUDE := 0.03
 
 const MIC_SAMPLE_PERIOD := 0.05
 const MIC_PRINT_PERIOD := 0.3
@@ -38,10 +31,6 @@ var _in_progress_max_magnitude := 0.0
 var latest_magnitude := 0.0
 
 
-# TODO: Consider adding a screen at the start for calibrating the light blow and
-#       the hard blow levels (or from Settings).
-
-
 func _ready() -> void:
     G.mic = self
 
@@ -51,16 +40,6 @@ func _ready() -> void:
     _throttled_sample = S.time.throttle(_sample_throttled, MIC_SAMPLE_PERIOD, false)
     _throttled_print = S.time.throttle(_print_throttled, MIC_PRINT_PERIOD, false)
 
-    # FIXME:
-    # - Show a calibrate blow strength option in the pause and settings menu.
-    #   - Create a screet for this.
-    #   - Record in player settings.
-    # - Show a select input device option in the pause menu and settings menu.
-    #   - Create a screet for this.
-    #   - Record in player settings.
-    # - Add a magnitude indicator in the HUD.
-
-
 
 func _process(_delta: float) -> void:
     var stereo_magnitude := spectrum.get_magnitude_for_frequency_range(
@@ -68,17 +47,6 @@ func _process(_delta: float) -> void:
         FREQUENCY_MAX,
         AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.MAGNITUDE_MAX)
     var magnitude: float = lerp(stereo_magnitude.x, stereo_magnitude.y, 0.5)
-
-    # TODO: Smooth the signal a bit.
-    # TODO: Will we need to do something to dynamically tune the min and max
-    #       amplitude thresholds based on the player's particular input
-    #       (hardware, gain, environment, and voice can probably all differ
-    #       wildly in terms of overall amplitude)?
-    # TODO: Detect if amplitude is exactly 0.0, and show a mic-must-be-hooked-up-and-allowed screen.
-    #       -   Auto-close screen when amplitude becomes >0.
-    #       -   Disallow closing the screen otherwise.
-    # TODO: Show some sort of amplitude indicator in the hud (show the smoothed signal).
-    # TODO: Do something with this signal.
 
     _in_progress_max_magnitude = max(_in_progress_max_magnitude, magnitude)
     _throttled_sample.call()
@@ -97,5 +65,7 @@ func _print_throttled() -> void:
 
 # [0,1]
 func get_blow_weight() -> float:
-    var magnitude: float = clamp(latest_magnitude, LOW_MAGNITUDE, HIGH_MAGNITUDE)
-    return (magnitude - LOW_MAGNITUDE) / (HIGH_MAGNITUDE - LOW_MAGNITUDE)
+    var lower_threshold := S.settings.mic_magnitude_lower_threshold
+    var upper_threshold := S.settings.mic_magnitude_upper_threshold
+    var magnitude: float = clamp(latest_magnitude, lower_threshold, upper_threshold)
+    return (magnitude - lower_threshold) / (upper_threshold - lower_threshold)

@@ -20,6 +20,16 @@ func _create_row(property: Dictionary) -> SettingsRow:
     var is_numeric: bool = property.type == TYPE_INT or property.type == TYPE_FLOAT
     var is_range: bool = is_numeric and property.hint == PropertyHint.PROPERTY_HINT_RANGE
 
+    # TODO: Remove this.
+    # TODO: Add a better way to specify custom settings.
+    var exclusion_list := [
+        "audio_input",
+        "mic_magnitude_lower_threshold",
+        "mic_magnitude_upper_threshold",
+    ]
+    if exclusion_list.has(property.name):
+        return
+
     # Validate the property hint.
     if not S.utils.ensure(property.hint == PROPERTY_HINT_NONE or is_range,
             "Unsupported settings property hint: name: %s, type: %s, hint: %s" % [

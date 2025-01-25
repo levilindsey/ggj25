@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn5n2vl7vmqeg"]
+[gd_scene load_steps=7 format=3 uid="uid://cn5n2vl7vmqeg"]
 
 [ext_resource type="Script" uid="uid://c6d0ukylg7pwq" path="res://scaffolder/src/ui/screens/settings/settings_screen.gd" id="1_hrw35"]
 [ext_resource type="PackedScene" uid="uid://cncbapiuueajh" path="res://scaffolder/src/ui/widgets/header.tscn" id="2_fawyf"]
 [ext_resource type="Script" uid="uid://bpc7dvcqlnfon" path="res://scaffolder/src/ui/screens/screen.gd" id="2_hbrsy"]
+[ext_resource type="PackedScene" uid="uid://bl70xglu0nxu" path="res://src/ui/audio_input_selector.tscn" id="4_a23cp"]
 [ext_resource type="PackedScene" uid="uid://cxufkavj6vxo3" path="res://scaffolder/src/ui/widgets/close_button.tscn" id="4_hbrsy"]
+[ext_resource type="PackedScene" uid="uid://oinbvqlarnjp" path="res://src/ui/blow_calibrator.tscn" id="5_5v06f"]
 
 [node name="SettingsScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -31,6 +33,12 @@ layout_mode = 2
 [node name="SettingsRows" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="AudioInputSelector" parent="CenterContainer/VBoxContainer" instance=ExtResource("4_a23cp")]
+layout_mode = 2
+
+[node name="BlowCalibrator" parent="CenterContainer/VBoxContainer" instance=ExtResource("5_5v06f")]
 layout_mode = 2
 
 [node name="Spacer2" type="Control" parent="CenterContainer/VBoxContainer"]

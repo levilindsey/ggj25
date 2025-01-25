@@ -10,8 +10,6 @@ enum ScreenState {
 }
 
 
-var main_theme := preload("res://src/ui/main_theme.tres")
-
 @export var canvas_layer := "screens"
 @export var pauses_game_when_open := true
 
@@ -21,7 +19,7 @@ var screen_state := ScreenState.CLOSED:
 
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
-    theme = main_theme
+    theme = S.manifest.main_theme
 
 
 func _set_screen_state(state: ScreenState) -> void:

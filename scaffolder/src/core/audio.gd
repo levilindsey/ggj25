@@ -30,8 +30,8 @@ func _ready() -> void:
 
 func set_up() -> void:
     S.settings.property_changed.connect(_on_property_changed)
-    for property_name in ["music_volume", "sfx_volume"]:
-        var value: float = S.settings.get(property_name)
+    for property_name in ["music_volume", "sfx_volume", "audio_input"]:
+        var value: Variant = S.settings.get(property_name)
         _on_property_changed(property_name, value, value)
 
 
@@ -43,6 +43,8 @@ func _on_property_changed(name: String, new_value: Variant, old_value: Variant) 
         "sfx_volume":
             # new_value is [0,1].
             set_sfx_volume(linear_to_db(new_value))
+        "audio_input":
+            AudioServer.input_device = new_value
         _:
             # Do nothing.
             return
