@@ -19,7 +19,7 @@ const HIGH_MAGNITUDE := 0.08
 #const LOW_MAGNITUDE := 0.0002
 #const HIGH_MAGNITUDE := 0.0
 
-const MIC_SAMPLE_PERIOD := 0.05
+const MIC_SAMPLE_PERIOD := 0.3
 const MIC_PRINT_PERIOD := 0.3
 
 var log_mic_debugging := true
@@ -71,8 +71,8 @@ func _process(_delta: float) -> void:
     # TODO: Do something with this signal.
 
     _in_progress_max_magnitude = max(_in_progress_max_magnitude, magnitude)
-    _sample_throttled()
-    _print_throttled()
+    _throttled_sample.call()
+    _throttled_print.call()
 
 
 func _sample_throttled() -> void:
@@ -82,7 +82,7 @@ func _sample_throttled() -> void:
 
 func _print_throttled() -> void:
     if log_mic_debugging:
-        S.log.print("Current mic magnitude (throttled): %s" % _in_progress_max_magnitude)
+        S.log.print("Current mic magnitude (throttled): %s (%s)" % [latest_magnitude, get_blow_weight()])
 
 
 # [0,1]
