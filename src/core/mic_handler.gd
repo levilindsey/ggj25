@@ -6,7 +6,7 @@ const CAPTURE_BUS_NAME := "Capture"
 const PROCESS_BUS_NAME := "Process"
 const PROCESS_EFFECT_INDEX := 0
 
-const FREQUENCY_MAX := 100.0
+const FREQUENCY_MAX := 40.0
 const FREQUENCY_MIN := 0.0
 
 const DEFAULT_LOW_MAGNITUDE := 0.0001
