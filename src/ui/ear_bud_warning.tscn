@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://yxqui85oc6ps"]
+
+[ext_resource type="Script" uid="uid://b6ny0pj36emn6" path="res://src/ui/ear_bud_warning.gd" id="1_w5j67"]
+[ext_resource type="FontFile" uid="uid://qobp0bxlnr3y" path="res://assets/fonts/Roboto/Roboto-BoldItalic.ttf" id="2_1r4gp"]
+[ext_resource type="PackedScene" uid="uid://bl70xglu0nxu" path="res://src/ui/audio_input_selector.tscn" id="2_57n2k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1r4gp"]
+bg_color = Color(0, 0, 0, 0.494118)
+
+[node name="EarBudWarning" type="MarginContainer"]
+offset_right = 355.0
+offset_bottom = 80.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_w5j67")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1r4gp")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.2156, 0.2156, 1)
+theme_override_fonts/font = ExtResource("2_1r4gp")
+text = "⚠ Ear bud mics might not detect blow sounds!"
+
+[node name="AudioInputSelectorContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/AudioInputSelectorContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="AudioInputSelector" parent="PanelContainer/MarginContainer/VBoxContainer/AudioInputSelectorContainer" instance=ExtResource("2_57n2k")]
+unique_name_in_owner = true
+layout_mode = 2

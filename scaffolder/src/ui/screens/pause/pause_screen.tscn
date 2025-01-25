@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc5n0nmh6rv0c"]
+[gd_scene load_steps=9 format=3 uid="uid://bc5n0nmh6rv0c"]
 
 [ext_resource type="Script" uid="uid://btf5lqwnsyudc" path="res://scaffolder/src/ui/screens/pause/pause_screen.gd" id="1_gfqfo"]
 [ext_resource type="Script" uid="uid://bpc7dvcqlnfon" path="res://scaffolder/src/ui/screens/screen.gd" id="2_qaqnv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxufkavj6vxo3" path="res://scaffolder/src/ui/widgets/close_button.tscn" id="4_gfqfo"]
 [ext_resource type="PackedScene" uid="uid://oinbvqlarnjp" path="res://src/ui/blow_calibrator.tscn" id="5_eoxaj"]
 [ext_resource type="PackedScene" uid="uid://bt0tqy0i2sf0j" path="res://scaffolder/src/ui/widgets/top_bar.tscn" id="5_gfqfo"]
+[ext_resource type="PackedScene" uid="uid://yxqui85oc6ps" path="res://src/ui/ear_bud_warning.tscn" id="6_v00hp"]
 
 [node name="PauseScreen" type="PanelContainer"]
 anchors_preset = 15
@@ -40,6 +41,9 @@ theme_override_constants/separation = 20
 layout_mode = 2
 
 [node name="BlowCalibrator" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("5_eoxaj")]
+layout_mode = 2
+
+[node name="EarBudWarning" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("6_v00hp")]
 layout_mode = 2
 
 [node name="Spacer2" type="Control" parent="CenterContainer/VBoxContainer"]

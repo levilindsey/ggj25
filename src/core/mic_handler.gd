@@ -15,6 +15,8 @@ const DEFAULT_HIGH_MAGNITUDE := 0.03
 const MIC_SAMPLE_PERIOD := 0.05
 const MIC_PRINT_PERIOD := 0.3
 
+const NO_DEVICE_DETECTED_CONSECUTIVE_ZERO_MAGNITUDE_FRAME_COUNT_THRESHOLD := 8
+
 var log_mic_debugging := true
 
 var spectrum: AudioEffectSpectrumAnalyzerInstance
@@ -29,6 +31,8 @@ var _in_progress_max_magnitude := 0.0
 # -   This value is updated every MIC_SAMPLE_PERIOD seconds.
 # -   It represents the max magnitude of the _previous_ time window.
 var latest_magnitude := 0.0
+
+var _consecutive_zero_magnitude_frame_count := 0
 
 
 func _ready() -> void:
@@ -48,9 +52,18 @@ func _process(_delta: float) -> void:
         AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.MAGNITUDE_MAX)
     var magnitude: float = lerp(stereo_magnitude.x, stereo_magnitude.y, 0.5)
 
+    # Count consecutive zero-magnitude frames.
+    if magnitude == 0.0:
+        _consecutive_zero_magnitude_frame_count += 1
+    else:
+        _consecutive_zero_magnitude_frame_count = 0
+
     _in_progress_max_magnitude = max(_in_progress_max_magnitude, magnitude)
     _throttled_sample.call()
     _throttled_print.call()
+
+    if _consecutive_zero_magnitude_frame_count >= NO_DEVICE_DETECTED_CONSECUTIVE_ZERO_MAGNITUDE_FRAME_COUNT_THRESHOLD:
+        S.screens.show("mic_error_screen")
 
 
 func _sample_throttled() -> void:
