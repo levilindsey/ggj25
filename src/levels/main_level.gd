@@ -8,6 +8,7 @@ var horizontal_speed := 200
 
 
 func _ready() -> void:
+    G.level = self
     _update_zoom()
     get_tree().get_root().size_changed.connect(_update_zoom)
 
@@ -21,3 +22,11 @@ func _update_zoom() -> void:
     var viewport_basis_ratio := viewport_size / VIEWPORT_SIZE_BASIS
     var zoom: float = max(viewport_basis_ratio.x, viewport_basis_ratio.y)
     %Camera2D.zoom = Vector2.ONE * zoom
+
+
+func get_player_lower_bound() -> float:
+    return %PlayerLowerBound.position.y
+
+
+func get_player_upper_bound() -> float:
+    return %PlayerUpperBound.position.y

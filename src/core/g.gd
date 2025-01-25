@@ -10,6 +10,8 @@ extends Node
 var main: Main
 var super_hud: SuperHud
 var mic: MicHandler
+var level: MainLevel
+var player: Player
 
 
 func _ready() -> void:

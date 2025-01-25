@@ -28,6 +28,7 @@ var _velocity := Vector2.ZERO
 
 func _init() -> void:
     S.player = self
+    G.player = self
     _bubble_inflation = initial_bubble_inflation
     _velocity.y = initial_vertical_velocity
 
@@ -53,3 +54,18 @@ func _physics_process(delta: float) -> void:
 
     # Update position.
     position.y += _velocity.y * delta
+
+    var bounds := get_bounds()
+    var extents := bounds.size / 2.0
+    var min_y := G.level.get_player_upper_bound() + extents.y
+    var max_y := G.level.get_player_lower_bound() - extents.y
+    if position.y < min_y:
+        position.y = min_y
+        _velocity.y = 0.0
+    if position.y > max_y:
+        position.y = max_y
+        _velocity.y = 0.0
+
+
+func get_bounds() -> Rect2:
+    return %CollisionShape2D.shape.get_rect()

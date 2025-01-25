@@ -4,11 +4,6 @@ extends Container
 
 
 # TODO: LEVI'S MASTER LIST:
-# - Add a magnitude indicator in the HUD.
-# - Detect if amplitude is exactly 0.0, and show a
-#   mic-must-be-hooked-up-and-allowed screen.
-#   - Auto-close screen when amplitude becomes >0.
-#   - Disallow closing the screen otherwise.
 # - Add a UI widget for clicking a button when they pop the bubble by blowing.
 #   - Use this to start a new run from the game-over screen.
 #   - Use a shared utility for tracking ballon inflation for the initial
