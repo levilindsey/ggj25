@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqpibbful85nn"]
+
+[ext_resource type="Script" uid="uid://ddv5qj0vby3jg" path="res://src/ui/blow_indicator.gd" id="1_8g8uk"]
+
+[node name="BlowIndicator" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8g8uk")

@@ -79,6 +79,7 @@ func _instantiate_attach_and_record_module(property_name: String, script: Script
     var instance: Node = script.new()
     set(property_name, instance)
     add_child(instance)
+    instance.process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 func _set_up_module(property_name: String) -> void:

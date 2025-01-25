@@ -8,9 +8,11 @@ extends Node
 
 
 var main: Main
+var super_hud: SuperHud
 var mic: MicHandler
 
 
 func _ready() -> void:
     var mic_handler := MicHandler.new()
     add_child(mic_handler)
+    mic_handler.process_mode = Node.PROCESS_MODE_ALWAYS
