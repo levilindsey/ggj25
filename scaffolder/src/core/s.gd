@@ -1,6 +1,6 @@
-# class_name S
+class_name Scaffolder
 extends Node
-## Scaffolder
+## S (Scaffolder)
 ##
 ## -   This is an autoload that holds a bunch of modules for the Scaffolder
 ##     framework.

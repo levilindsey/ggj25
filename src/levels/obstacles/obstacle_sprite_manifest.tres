@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObstacleSpriteManifest" load_steps=7 format=3 uid="uid://joqtnm5br051"]
+
+[ext_resource type="PackedScene" uid="uid://cudofpxodt0ee" path="res://src/levels/obstacles/sprites/nature/bird.tscn" id="1_ge63k"]
+[ext_resource type="Script" uid="uid://cxvfqofceayo8" path="res://src/levels/obstacles/obstacle_sprite_manifest.gd" id="1_wen7n"]
+[ext_resource type="PackedScene" uid="uid://dragdniiylt8x" path="res://src/levels/obstacles/sprites/nature/cloud.tscn" id="2_11oa3"]
+[ext_resource type="PackedScene" uid="uid://b2curdq2tupf8" path="res://src/levels/obstacles/sprites/nature/tree_short.tscn" id="2_uooy1"]
+[ext_resource type="PackedScene" uid="uid://nfw1y0whsmpu" path="res://src/levels/obstacles/sprites/nature/dragonfly.tscn" id="3_fy032"]
+[ext_resource type="PackedScene" uid="uid://cycavwkuaypb5" path="res://src/levels/obstacles/sprites/nature/tree_tall.tscn" id="6_m7bo7"]
+
+[resource]
+script = ExtResource("1_wen7n")
+tree_short = ExtResource("2_uooy1")
+tree_tall = ExtResource("6_m7bo7")
+bird = ExtResource("1_ge63k")
+cloud = ExtResource("2_11oa3")
+dragonfly = ExtResource("3_fy032")

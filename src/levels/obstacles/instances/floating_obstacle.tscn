@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbghnqpxvf7iy"]
 
-[ext_resource type="Script" uid="uid://c6fu528sr0com" path="res://src/levels/obstacles/obstacle.gd" id="1_fn00u"]
+[ext_resource type="Script" uid="uid://c5copw7wooqxq" path="res://src/levels/obstacles/instances/floating_obstacle.gd" id="1_tpojk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fn00u"]
+radius = 13.0
+height = 44.0
 
-[node name="Floater" type="Area2D"]
-script = ExtResource("1_fn00u")
+[node name="FloatingObstacle" type="Area2D"]
+script = ExtResource("1_tpojk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fn00u")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

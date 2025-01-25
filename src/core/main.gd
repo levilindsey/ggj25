@@ -49,6 +49,20 @@ extends Container
 #     take-off when starting a level.
 
 
+enum ObstacleType {
+    FLOATING,
+    SIDEWAYS,
+    UP_AND_DOWN,
+    STANDING_SHORT,
+    STANDING_TALL,
+}
+
+enum EnvironmentType {
+    NATURE,
+    URBAN,
+}
+
+
 const SUPER_HUD_SCENE := preload("res://src/ui/super_hud.tscn")
 
 

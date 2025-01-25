@@ -1,13 +1,49 @@
+@tool
 @icon("res://assets/editor_icons/Node.svg")
 class_name Obstacle
 extends Node2D
 
 
-enum ObstacleType {
-    FLOATER,
-    SLIDE_SIDEWAYS,
-    UP_AND_DOWN,
-    RISE_FROM_GROUND,
-}
+@export var type := Main.ObstacleType.FLOATING:
+    set(value):
+        type = value
+        update_content()
 
-@export var type := ObstacleType.FLOATER
+@export var environment_type := Main.EnvironmentType.NATURE:
+    set(value):
+        environment_type = value
+        update_content()
+
+var _sprite: AnimatedSprite2D
+
+
+func _ready() -> void:
+    update_content()
+
+
+func update_content() -> void:
+    if is_instance_valid(_sprite):
+        _sprite.queue_free()
+
+    match [type, environment_type]:
+        [Main.ObstacleType.FLOATING, Main.EnvironmentType.NATURE]:
+            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.cloud)
+        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.NATURE]:
+            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.dragonfly)
+        [Main.ObstacleType.UP_AND_DOWN, Main.EnvironmentType.NATURE]:
+            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.bird)
+        [Main.ObstacleType.STANDING_SHORT, Main.EnvironmentType.NATURE]:
+            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.tree_short)
+        [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.NATURE]:
+            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.tree_tall)
+        _:
+            S.utils.ensure(
+                false,
+                "Obstacle or environment type not recognized: %s, %s" %
+                    [type, environment_type])
+
+
+func _update_content_helper(sprite_scene: PackedScene) -> void:
+    _sprite = sprite_scene.instantiate()
+    add_child(_sprite)
+    move_child(_sprite, 0)
