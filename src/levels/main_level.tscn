@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw40igtylnu30"]
+[gd_scene load_steps=10 format=3 uid="uid://dw40igtylnu30"]
 
 [ext_resource type="Script" uid="uid://dcnxrly2dpfxt" path="res://src/levels/main_level.gd" id="1_rafda"]
 [ext_resource type="Script" uid="uid://b1r7p1qf46bwn" path="res://src/levels/parallax_layer_sky.gd" id="2_k0jp4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://be2nxc6t7gkdw" path="res://src/player/player.tscn" id="6_11df1"]
 [ext_resource type="Texture2D" uid="uid://dur0t1rjdjdjy" path="res://assets/background_graphics/summer 2-UPDT/4-Ext.png" id="6_twkqo"]
 [ext_resource type="AudioStream" uid="uid://c3rw538ealwdq" path="res://scaffolder/assets/sfx/raw/beautiful_music.mp3" id="8_1du40"]
+[ext_resource type="AudioStream" uid="uid://bm5jh0ctpso4f" path="res://scaffolder/assets/blowing_random.tres" id="8_tygi3"]
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource("1_rafda")
@@ -63,6 +64,10 @@ max_blow_vertical_acceleration = -600.0
 gravity_acceleration = 600.0
 max_vertical_speed = 170.0
 
+[node name="blowing" type="AudioStreamPlayer" parent="Anchor/Player"]
+stream = ExtResource("8_tygi3")
+bus = &"SFX"
+
 [node name="Camera2D" type="Camera2D" parent="Anchor"]
 unique_name_in_owner = true
 zoom = Vector2(4, 4)
@@ -77,5 +82,6 @@ position = Vector2(0, -162)
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_1du40")
-volume_db = -14.038
 autoplay = true
+bus = &"Music"
+parameters/looping = true

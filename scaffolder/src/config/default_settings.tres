@@ -6,4 +6,6 @@
 script = ExtResource("1_wjfq4")
 music_volume = 0.5
 sfx_volume = 0.5
-dev_mode = false
+audio_input = "Default"
+mic_magnitude_lower_threshold = 0.0001
+mic_magnitude_upper_threshold = 0.03

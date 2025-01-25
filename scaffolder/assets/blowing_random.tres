@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://bm5jh0ctpso4f"]
+
+[ext_resource type="AudioStream" uid="uid://c8xalvjwxyw4p" path="res://scaffolder/assets/Blowing/Blowing-01.mp3" id="1_tlff6"]
+[ext_resource type="AudioStream" uid="uid://dnmoos411llvj" path="res://scaffolder/assets/Blowing/Blowing-05.mp3" id="2_q4mp8"]
+[ext_resource type="AudioStream" uid="uid://bdn8emn12hsml" path="res://scaffolder/assets/Blowing/Blowing-07.mp3" id="3_a5pey"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_tlff6")
+stream_1/stream = ExtResource("2_q4mp8")
+stream_2/stream = ExtResource("3_a5pey")

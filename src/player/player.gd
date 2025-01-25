@@ -32,6 +32,14 @@ func _init() -> void:
     _bubble_inflation = initial_bubble_inflation
     _velocity.y = initial_vertical_velocity
 
+func _process(delta: float) -> void:
+    # [0,1]
+    var weight := G.mic.get_blow_weight()
+    $blowing.volume_linear = weight
+    if weight > 0.25 and !$blowing.is_playing():
+        $blowing.play()
+
+    
 
 func _physics_process(delta: float) -> void:
     var blow_weight := G.mic.get_blow_weight()
