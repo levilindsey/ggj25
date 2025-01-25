@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-    %Player.position.x += horizontal_speed * delta
+    %Anchor.position.x += horizontal_speed * delta
 
 
 func _update_zoom() -> void:

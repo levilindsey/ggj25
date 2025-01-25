@@ -13,13 +13,13 @@ const FREQUENCY_MIN := 00.0
 
 # Levi's mic:
 const LOW_MAGNITUDE := 0.001
-const HIGH_MAGNITUDE := 0.08
+const HIGH_MAGNITUDE := 0.03
 
 # Alden's mic:
 #const LOW_MAGNITUDE := 0.0002
 #const HIGH_MAGNITUDE := 0.0
 
-const MIC_SAMPLE_PERIOD := 0.3
+const MIC_SAMPLE_PERIOD := 0.05
 const MIC_PRINT_PERIOD := 0.3
 
 var log_mic_debugging := true
@@ -81,7 +81,7 @@ func _sample_throttled() -> void:
 
 
 func _print_throttled() -> void:
-        S.log.print("Current mic magnitude (throttled): %s (%s)" %
+        S.log.print("Current mic magnitude (throttled): %.5f (%.2f)" %
             [latest_magnitude, get_blow_weight()])
 
 

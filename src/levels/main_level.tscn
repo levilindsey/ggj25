@@ -53,9 +53,12 @@ texture_repeat = 2
 texture = ExtResource("6_twkqo")
 offset = Vector2(576, 0)
 
-[node name="Player" parent="." instance=ExtResource("6_11df1")]
+[node name="Anchor" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Player" parent="Anchor" instance=ExtResource("6_11df1")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="Anchor"]
 unique_name_in_owner = true
 zoom = Vector2(4, 4)
