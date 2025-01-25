@@ -12,5 +12,5 @@ var mic: MicHandler
 
 
 func _ready() -> void:
-	var mic_handler := MicHandler.new()
-	add_child(mic_handler)
+    var mic_handler := MicHandler.new()
+    add_child(mic_handler)

@@ -43,41 +43,41 @@ var latest_magnitude := 0.0
 
 
 func _ready() -> void:
-	G.mic = self
+    G.mic = self
 
-	var process_bus_index := AudioServer.get_bus_index(PROCESS_BUS_NAME)
-	spectrum = AudioServer.get_bus_effect_instance(process_bus_index, PROCESS_EFFECT_INDEX)
+    var process_bus_index := AudioServer.get_bus_index(PROCESS_BUS_NAME)
+    spectrum = AudioServer.get_bus_effect_instance(process_bus_index, PROCESS_EFFECT_INDEX)
 
-	_throttled_sample = S.time.throttle(_sample_throttled, MIC_SAMPLE_PERIOD, false)
-	_throttled_print = S.time.throttle(_print_throttled, MIC_PRINT_PERIOD, false)
+    _throttled_sample = S.time.throttle(_sample_throttled, MIC_SAMPLE_PERIOD, false)
+    _throttled_print = S.time.throttle(_print_throttled, MIC_PRINT_PERIOD, false)
 
 
 func _process(_delta: float) -> void:
-	var stereo_magnitude := spectrum.get_magnitude_for_frequency_range(
-		FREQUENCY_MIN,
-		FREQUENCY_MAX,
-		AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.MAGNITUDE_MAX)
-	var magnitude: float = lerp(stereo_magnitude.x, stereo_magnitude.y, 0.5)
+    var stereo_magnitude := spectrum.get_magnitude_for_frequency_range(
+        FREQUENCY_MIN,
+        FREQUENCY_MAX,
+        AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.MAGNITUDE_MAX)
+    var magnitude: float = lerp(stereo_magnitude.x, stereo_magnitude.y, 0.5)
 
-	# TODO: Smooth the signal a bit.
-	# TODO: Will we need to do something to dynamically tune the min and max
-	#       amplitude thresholds based on the player's particular input
-	#       (hardware, gain, environment, and voice can probably all differ
-	#       wildly in terms of overall amplitude)?
-	# TODO: Detect if amplitude is exactly 0.0, and show a mic-must-be-hooked-up-and-allowed screen.
-	#       -   Auto-close screen when amplitude becomes >0.
-	#       -   Disallow closing the screen otherwise.
-	# TODO: Show some sort of amplitude indicator in the hud (show the smoothed signal).
-	# TODO: Do something with this signal.
+    # TODO: Smooth the signal a bit.
+    # TODO: Will we need to do something to dynamically tune the min and max
+    #       amplitude thresholds based on the player's particular input
+    #       (hardware, gain, environment, and voice can probably all differ
+    #       wildly in terms of overall amplitude)?
+    # TODO: Detect if amplitude is exactly 0.0, and show a mic-must-be-hooked-up-and-allowed screen.
+    #       -   Auto-close screen when amplitude becomes >0.
+    #       -   Disallow closing the screen otherwise.
+    # TODO: Show some sort of amplitude indicator in the hud (show the smoothed signal).
+    # TODO: Do something with this signal.
 
-	_in_progress_max_magnitude = max(_in_progress_max_magnitude, magnitude)
-	_throttled_sample.call()
-	_throttled_print.call()
+    _in_progress_max_magnitude = max(_in_progress_max_magnitude, magnitude)
+    _throttled_sample.call()
+    _throttled_print.call()
 
 
 func _sample_throttled() -> void:
-	latest_magnitude = _in_progress_max_magnitude
-	_in_progress_max_magnitude = 0
+    latest_magnitude = _in_progress_max_magnitude
+    _in_progress_max_magnitude = 0
 
 
 func _print_throttled() -> void:
@@ -87,5 +87,5 @@ func _print_throttled() -> void:
 
 # [0,1]
 func get_blow_weight() -> float:
-	var magnitude: float = clamp(latest_magnitude, LOW_MAGNITUDE, HIGH_MAGNITUDE)
-	return (magnitude - LOW_MAGNITUDE) / (HIGH_MAGNITUDE - LOW_MAGNITUDE)
+    var magnitude: float = clamp(latest_magnitude, LOW_MAGNITUDE, HIGH_MAGNITUDE)
+    return (magnitude - LOW_MAGNITUDE) / (HIGH_MAGNITUDE - LOW_MAGNITUDE)
