@@ -81,8 +81,8 @@ func _sample_throttled() -> void:
 
 
 func _print_throttled() -> void:
-	if log_mic_debugging:
-		S.log.print("Current mic magnitude (throttled): %s (%s)" % [latest_magnitude, get_blow_weight()])
+        S.log.print("Current mic magnitude (throttled): %s (%s)" %
+            [latest_magnitude, get_blow_weight()])
 
 
 # [0,1]
