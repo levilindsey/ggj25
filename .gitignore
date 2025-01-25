@@ -3,3 +3,4 @@
 /android/
 
 build/windows/*
+build/android/*
