@@ -35,9 +35,13 @@ func _init() -> void:
 func _process(delta: float) -> void:
     # [0,1]
     var weight := G.mic.get_blow_weight()
-    $blowing.volume_linear = weight
     if weight > 0.25 and !$blowing.is_playing():
         $blowing.play()
+        $blowing.volume_linear = weight
+    elif weight < 0.15 and !$deflate.is_playing():
+        $deflate.play()
+    elif weight > 0.2 and $deflate.is_playing():
+        $deflate.stop() 
 
     
 
