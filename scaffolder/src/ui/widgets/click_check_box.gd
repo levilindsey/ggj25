@@ -4,5 +4,5 @@ extends CheckBox
 
 
 func _on_toggled(toggled_on: bool) -> void:
-    S.audio.play_sfx("widget_click")
-    S.log.print("ClickCheckBox pressed")
+	S.audio.play_sfx("widget_click")
+	S.log.print("ClickCheckBox pressed")

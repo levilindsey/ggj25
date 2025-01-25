@@ -3,4 +3,6 @@ extends CharacterBody2D
 
 
 func _init() -> void:
-    S.player = self
+	S.player = self
+	
+	

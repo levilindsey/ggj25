@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw40igtylnu30"]
+[gd_scene load_steps=8 format=3 uid="uid://dw40igtylnu30"]
 
 [ext_resource type="Script" uid="uid://dcnxrly2dpfxt" path="res://src/levels/main_level.gd" id="1_rafda"]
+[ext_resource type="Script" uid="uid://b1r7p1qf46bwn" path="res://src/levels/parallax_layer_sky.gd" id="2_k0jp4"]
+[ext_resource type="Texture2D" uid="uid://c0wr2a2bihfkf" path="res://assets/background_graphics/summer 2-UPDT/1.png" id="3_k0jp4"]
+[ext_resource type="Texture2D" uid="uid://drxxlp5x6gj5v" path="res://assets/background_graphics/summer 2-UPDT/2.png" id="4_k0jp4"]
+[ext_resource type="Texture2D" uid="uid://d3ck3ya5qhfre" path="res://assets/background_graphics/summer 2-UPDT/3.png" id="5_1du40"]
+[ext_resource type="PackedScene" uid="uid://be2nxc6t7gkdw" path="res://src/characters/player/player.tscn" id="6_11df1"]
+[ext_resource type="Texture2D" uid="uid://dmuqcsogbx60x" path="res://assets/background_graphics/summer 2-UPDT/4.png" id="6_tygi3"]
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource("1_rafda")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer_Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1440, 0)
+script = ExtResource("2_k0jp4")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_Sky"]
+texture = ExtResource("3_k0jp4")
+
+[node name="ParallaxLayer2_Ground" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2_Ground"]
+texture = ExtResource("4_k0jp4")
+
+[node name="ParallaxLayer3_Flowers" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3_Flowers"]
+texture = ExtResource("5_1du40")
+
+[node name="ParallaxLayer4_NearClouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4_NearClouds"]
+texture = ExtResource("6_tygi3")
+
+[node name="Player" parent="." instance=ExtResource("6_11df1")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]

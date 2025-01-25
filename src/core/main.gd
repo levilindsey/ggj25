@@ -4,4 +4,4 @@ extends Container
 
 
 func _ready() -> void:
-    G.main = self
+	G.main = self
