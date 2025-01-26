@@ -360,7 +360,7 @@ func _stop_super_blink() -> void:
 func _toggle_super_blink() -> void:
     if modulate == Color.WHITE:
         # FIXME: Swap-out for a white+gray version of the player textures.
-        modulate = Color.from_hsv(randf(), 1.0, 0.5, 1.0)
+        modulate = Color.from_hsv(randf(), 1.0, 1.0, 1.0)
     else:
         modulate = Color.WHITE
 
