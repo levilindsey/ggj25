@@ -2,6 +2,10 @@ class_name Manifest
 extends Resource
 
 
+@export var time_to_max_difficulty: float = 5 * 60
+
+@export var environment_change_interval: float = 5
+
 @export var dev_mode := true
 @export var skip_main_menu_in_dev_mode := false
 
@@ -38,6 +42,8 @@ extends Resource
 @export var obstacle_cloud: PackedScene
 @export var obstacle_dragonfly: PackedScene
 @export_group("")
+
+@export var environment_sequence: Array[Main.EnvironmentType]
 
 var initial_screen: String:
     get:

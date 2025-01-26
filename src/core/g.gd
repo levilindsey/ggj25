@@ -13,6 +13,7 @@ var mic: MicHandler
 var session: GameSession
 var level: MainLevel
 var fragment_spawner: FragmentSpawner
+var environment_scheduler: EnvironmentScheduler
 var player: Player
 
 

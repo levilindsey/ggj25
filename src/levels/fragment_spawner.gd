@@ -2,6 +2,8 @@ class_name FragmentSpawner
 extends Node2D
 
 
+signal entered_fragment
+
 const FRAGMENT_COUNT_TO_MAX_DIFFICULTY := 10
 
 const NEW_FRAGMENT_DISTANCE_FROM_PLAYER_SPAWN_THRESHELD := 500.0
@@ -15,6 +17,10 @@ var _fragment_count := 0
 var _previous_fragment: Fragment
 var _current_fragment: Fragment
 var _next_fragment: Fragment
+
+var previous_fragment_environment: Main.EnvironmentType
+var current_fragment_environment: Main.EnvironmentType
+var next_fragment_environment: Main.EnvironmentType
 
 
 func _ready() -> void:
@@ -98,6 +104,7 @@ func _spawn_start_fragment() -> void:
     _current_fragment.position.x = _current_fragment.width / 2.0
     add_child(_current_fragment)
     _fragment_count += 1
+    current_fragment_environment = S.manifest.environment_sequence[0]
 
 
 func _spawn_next_fragment() -> void:
@@ -114,6 +121,7 @@ func _spawn_next_fragment() -> void:
         _current_fragment.bounds.end.x + _next_fragment.width / 2.0)
     add_child(_next_fragment)
     _fragment_count += 1
+    next_fragment_environment = G.environment_scheduler.current_environment
 
 
 func _transition_to_next_fragment() -> void:
@@ -124,6 +132,11 @@ func _transition_to_next_fragment() -> void:
     _previous_fragment = _current_fragment
     _current_fragment = _next_fragment
     _next_fragment = null
+    previous_fragment_environment = current_fragment_environment
+    current_fragment_environment = next_fragment_environment
+    next_fragment_environment = G.environment_scheduler.current_environment
+
+    entered_fragment.emit()
 
 
 func _despawn_previous_fragment() -> void:

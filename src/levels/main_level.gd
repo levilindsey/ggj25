@@ -2,6 +2,10 @@ class_name MainLevel
 extends Level
 
 
+signal entered_new_environment(
+    new: Main.EnvironmentType,
+    old: Main.EnvironmentType)
+
 const GAME_OVER_SCREEN_DELAY := 2.0
 
 const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
@@ -17,6 +21,21 @@ func _ready() -> void:
 
     var fragment_spawner := FragmentSpawner.new()
     add_child(fragment_spawner)
+
+    var environment_scheduler := EnvironmentScheduler.new()
+    add_child(environment_scheduler)
+
+    fragment_spawner.entered_fragment.connect(_on_entered_fragment)
+
+
+func _on_entered_fragment() -> void:
+    if (G.fragment_spawner.current_fragment_environment !=
+            G.fragment_spawner.previous_fragment_environment):
+        S.log.print("Entered new environment: %s" %
+            G.fragment_spawner.current_fragment_environment)
+        entered_new_environment.emit(
+            G.fragment_spawner.current_fragment_environment,
+            G.fragment_spawner.previous_fragment_environment)
 
 
 func start() -> void:
