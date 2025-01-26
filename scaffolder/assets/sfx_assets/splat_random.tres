@@ -1,0 +1,7 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://dxnif3h0gkj2e"]
+
+[ext_resource type="AudioStream" uid="uid://jvs3dof5kqe2" path="res://scaffolder/assets/splat1.wav" id="1_3yen6"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_3yen6")

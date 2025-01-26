@@ -13,12 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://s3rgyaalkhj7" path="res://assets/background_graphics/summer 7-UPDT/1_Ext.png" id="9_gcuqk"]
 [ext_resource type="Script" uid="uid://bry1g56gn7tfy" path="res://src/levels/parallax_layer_a.gd" id="9_lcu7o"]
 [ext_resource type="Texture2D" uid="uid://drbca2nwpbkht" path="res://assets/background_graphics/summer 7-UPDT/3_Ext.png" id="10_fds8a"]
-[ext_resource type="AudioStream" uid="uid://bp6kttbc8qcio" path="res://scaffolder/assets/BubbleTheme.wav" id="10_twkqo"]
+[ext_resource type="AudioStream" uid="uid://bp6kttbc8qcio" path="res://scaffolder/assets/sfx_assets/BubbleTheme.wav" id="10_twkqo"]
 [ext_resource type="Script" uid="uid://cal58bqor48n0" path="res://src/levels/parallax_layer_2_a.gd" id="11_5xsos"]
 [ext_resource type="Texture2D" uid="uid://bvmwu4bevnkri" path="res://assets/background_graphics/summer 7-UPDT/4_Ext.png" id="11_lcu7o"]
 [ext_resource type="Texture2D" uid="uid://cvdn6e23arr6r" path="res://assets/background_graphics/summer 7-UPDT/2_Ext.png" id="12_5xsos"]
-[ext_resource type="AudioStream" uid="uid://c53p24u5ggog8" path="res://scaffolder/assets/260633__lwdickens__outdoor-winter-ambience-birds-light-wind.cm.wav" id="12_fvmyw"]
-[ext_resource type="AudioStream" uid="uid://cmt6xmrjy3i7u" path="res://scaffolder/assets/invincibubble_01.wav" id="19_gcuqk"]
+[ext_resource type="AudioStream" uid="uid://c53p24u5ggog8" path="res://scaffolder/assets/sfx_assets/260633__lwdickens__outdoor-winter-ambience-birds-light-wind.cm.wav" id="12_fvmyw"]
+[ext_resource type="AudioStream" uid="uid://blbolycngefxx" path="res://scaffolder/assets/sfx_assets/invincibubble.02.wav" id="19_gcuqk"]
 
 [node name="MainLevel" type="Node2D"]
 process_mode = 1
@@ -154,4 +154,5 @@ bus = &"SFX"
 [node name="SuperBubbleMusicPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("19_gcuqk")
+volume_db = -8.0
 bus = &"Music"

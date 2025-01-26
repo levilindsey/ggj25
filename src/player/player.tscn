@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://be2nxc6t7gkdw"]
+[gd_scene load_steps=14 format=3 uid="uid://be2nxc6t7gkdw"]
 
 [ext_resource type="Script" uid="uid://cfnhr536a4p4k" path="res://src/player/player.gd" id="1_5c1al"]
 [ext_resource type="Texture2D" uid="uid://djp3481tbtgvb" path="res://assets/sprites/kid.png" id="1_bxhu7"]
 [ext_resource type="Texture2D" uid="uid://du6rj0ohdjcp4" path="res://assets/sprites/bubble.png" id="2_7nd6e"]
 [ext_resource type="AudioStream" uid="uid://dv5gjawwa3tto" path="res://scaffolder/assets/sfx/pop.tres" id="4_jiejy"]
-[ext_resource type="AudioStream" uid="uid://bm5jh0ctpso4f" path="res://scaffolder/assets/blowing_random.tres" id="5_o822w"]
-[ext_resource type="AudioStream" uid="uid://c5d38b0qxtmei" path="res://scaffolder/assets/deflate.wav" id="6_x42xx"]
+[ext_resource type="AudioStream" uid="uid://bm5jh0ctpso4f" path="res://scaffolder/assets/sfx_assets/blowing_random.tres" id="5_o822w"]
+[ext_resource type="AudioStream" uid="uid://c5d38b0qxtmei" path="res://scaffolder/assets/sfx_assets/deflate.wav" id="6_x42xx"]
+[ext_resource type="AudioStream" uid="uid://bl2w4pf084rmf" path="res://scaffolder/assets/sfx_assets/CHEW_01.wav" id="7_o822w"]
+[ext_resource type="AudioStream" uid="uid://dxnif3h0gkj2e" path="res://scaffolder/assets/sfx_assets/splat_random.tres" id="8_x42xx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b886q"]
 
@@ -72,3 +74,10 @@ unique_name_in_owner = true
 
 [node name="SuperBlinkWorkaroundTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="ChewRandom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_o822w")
+bus = &"SFX"
+
+[node name="SplatRandom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_x42xx")

@@ -1,0 +1,10 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://tv2soy52p4ie"]
+
+[ext_resource type="AudioStream" uid="uid://bl2w4pf084rmf" path="res://scaffolder/assets/sfx_assets/CHEW_01.wav" id="1_2c7r0"]
+[ext_resource type="AudioStream" uid="uid://d2sxdr57crv5u" path="res://scaffolder/assets/sfx_assets/CHEW_2.wav" id="2_cr84y"]
+
+[resource]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("1_2c7r0")
+stream_1/stream = ExtResource("2_cr84y")

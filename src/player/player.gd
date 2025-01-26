@@ -192,6 +192,7 @@ func on_pickup_collided(pickup: Pickup) -> void:
 
 
 func pick_up_bubble_gum(bubble_gum: BubbleGumPickup) -> void:
+    $ChewRandom.play()
     S.log.print("Picked up bubble gum: %s" %
         BubbleGumPickup.Type.keys()[bubble_gum.type])
     _pick_up_bubble_gum_helper(bubble_gum, bubble_gum.type)
@@ -263,6 +264,7 @@ func on_obstacle_collided(obstacle: Obstacle) -> void:
 
 func _destroy_obstacle(obstacle: Obstacle) -> void:
     S.log.print("Obstacle destroyed: %s" % S.utils.get_display_text(obstacle))
+    $SplatRandom.play()
     obstacle.queue_free()
     G.session.obstacles_destroyed += 1
     # TODO: Sfx!
