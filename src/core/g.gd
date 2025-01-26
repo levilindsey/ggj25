@@ -16,6 +16,7 @@ var fragment_spawner: FragmentSpawner
 var environment_scheduler: EnvironmentScheduler
 var player: Player
 
+signal level_loaded
 
 func _ready() -> void:
     var mic_handler := MicHandler.new()

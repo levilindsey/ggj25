@@ -64,6 +64,7 @@ enum ObstacleType {
 
 enum EnvironmentType {
     NATURE,
+    FOREST,
     URBAN,
 }
 

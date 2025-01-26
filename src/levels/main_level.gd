@@ -39,6 +39,7 @@ func _ready() -> void:
 
     S.time.set_interval(_update_time_scale, TIME_SCALE_UPDATE_INTERVAL)
 
+    G.level_loaded.emit()
 
 func _update_time_scale() -> void:
     var weight := G.session.play_time / S.manifest.time_to_max_time_scale
