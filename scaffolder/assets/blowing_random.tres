@@ -1,11 +1,17 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://bm5jh0ctpso4f"]
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://bm5jh0ctpso4f"]
 
-[ext_resource type="AudioStream" uid="uid://c8xalvjwxyw4p" path="res://scaffolder/assets/Blowing/Blowing-01.mp3" id="1_tlff6"]
-[ext_resource type="AudioStream" uid="uid://dnmoos411llvj" path="res://scaffolder/assets/Blowing/Blowing-05.mp3" id="2_q4mp8"]
-[ext_resource type="AudioStream" uid="uid://bdn8emn12hsml" path="res://scaffolder/assets/Blowing/Blowing-07.mp3" id="3_a5pey"]
+[ext_resource type="AudioStream" uid="uid://bomatjv14ihmk" path="res://scaffolder/assets/balloon/balloon.wav" id="1_62wmv"]
+[ext_resource type="AudioStream" uid="uid://dgik76l4a3da3" path="res://scaffolder/assets/balloon/balloon_01.wav" id="2_7a8ia"]
+[ext_resource type="AudioStream" uid="uid://7opoer7ubbom" path="res://scaffolder/assets/balloon/balloon_02.wav" id="3_kjq8l"]
+[ext_resource type="AudioStream" uid="uid://b2eyictn8mfdh" path="res://scaffolder/assets/balloon/balloon_03.wav" id="4_vvs8k"]
+[ext_resource type="AudioStream" uid="uid://ccs6lembpy8ov" path="res://scaffolder/assets/balloon/balloon_04.wav" id="5_77yp3"]
+[ext_resource type="AudioStream" uid="uid://boq78mcj1bas1" path="res://scaffolder/assets/balloon/balloon_05.wav" id="6_ni1tq"]
 
 [resource]
-streams_count = 3
-stream_0/stream = ExtResource("1_tlff6")
-stream_1/stream = ExtResource("2_q4mp8")
-stream_2/stream = ExtResource("3_a5pey")
+streams_count = 6
+stream_0/stream = ExtResource("1_62wmv")
+stream_1/stream = ExtResource("2_7a8ia")
+stream_2/stream = ExtResource("3_kjq8l")
+stream_3/stream = ExtResource("4_vvs8k")
+stream_4/stream = ExtResource("5_77yp3")
+stream_5/stream = ExtResource("6_ni1tq")

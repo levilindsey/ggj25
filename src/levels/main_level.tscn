@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dvqq6o0gg5ein" path="res://assets/background_graphics/summer 2-UPDT/3-Ext.png" id="5_tygi3"]
 [ext_resource type="PackedScene" uid="uid://be2nxc6t7gkdw" path="res://src/player/player.tscn" id="6_11df1"]
 [ext_resource type="Texture2D" uid="uid://dur0t1rjdjdjy" path="res://assets/background_graphics/summer 2-UPDT/4-Ext.png" id="6_twkqo"]
-[ext_resource type="AudioStream" uid="uid://c3rw538ealwdq" path="res://scaffolder/assets/sfx/raw/beautiful_music.mp3" id="8_1du40"]
 [ext_resource type="AudioStream" uid="uid://bm5jh0ctpso4f" path="res://scaffolder/assets/blowing_random.tres" id="8_tygi3"]
 [ext_resource type="AudioStream" uid="uid://c5d38b0qxtmei" path="res://scaffolder/assets/deflate.wav" id="9_twkqo"]
 [ext_resource type="PackedScene" uid="uid://dog73p1pln4cl" path="res://src/levels/fragments/fragment_test.tscn" id="11_ywe2d"]
+[ext_resource type="AudioStream" uid="uid://bp6kttbc8qcio" path="res://scaffolder/assets/BubbleTheme.wav" id="10_twkqo"]
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource("1_rafda")
@@ -72,7 +72,7 @@ bus = &"SFX"
 
 [node name="deflate" type="AudioStreamPlayer" parent="Anchor/Player"]
 stream = ExtResource("9_twkqo")
-volume_db = -20.942
+volume_db = -31.066
 
 [node name="Camera2D" type="Camera2D" parent="Anchor"]
 unique_name_in_owner = true
@@ -87,7 +87,7 @@ unique_name_in_owner = true
 position = Vector2(0, -162)
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_1du40")
+stream = ExtResource("10_twkqo")
 autoplay = true
 bus = &"Music"
 parameters/looping = true

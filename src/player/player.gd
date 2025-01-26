@@ -66,6 +66,29 @@ func _process(delta: float) -> void:
         $deflate.play()
     elif weight > 0.2 and $deflate.is_playing():
         $deflate.stop()
+        
+
+func _process(delta: float) -> void:
+    var weight := G.mic.get_blow_weight()
+    $blowing.volume_linear = lerp($blowing.volume_linear, weight, 5 * delta)
+    print($blowing.volume_linear)
+    if weight > 0.25 and not $blowing.is_playing():
+        $blowing.play()
+    elif weight < 0.1 and $blowing.is_playing():
+        fade_out_and_stop($blowing)
+
+func fade_out_and_stop(player: AudioStreamPlayer) -> void:
+    var fade_duration = .15
+    var initial_volume = player.volume_linear
+    var timer = 0.0
+
+    while timer < fade_duration:
+        timer += get_process_delta_time()
+        player.volume_linear = lerp(initial_volume, 0.0, timer / fade_duration)
+        await get_tree().process_frame
+    
+    player.stop()
+    player.volume_linear = 0
 
 
 func _physics_process(delta: float) -> void:
