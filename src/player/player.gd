@@ -22,29 +22,40 @@ extends CharacterBody2D
 
 @export var ground_bounce_min_speed := 150.0
 
-@export var initial_health := 3
+@export var initial_health: Array[BubbleGumPickup.Type] = [
+    BubbleGumPickup.Type.FLOATY,
+    BubbleGumPickup.Type.FLOATY,
+    BubbleGumPickup.Type.FLOATY,
+]
 
 @export var post_damage_invincibility_duration := 1.0
-
 @export var level_start_invincibility_duration := 3.0
 
-@export var invincibility_blink_duration := 0.07
+@export var super_duration := 7.0
 
-@export var invincibility_blink_modulation := Color.TRANSPARENT
+@export var recovery_blink_duration := 0.07
+@export var super_blink_duration := 0.07
 
-@export var use_invincibility_blink_workaround_timer := true
+@export var recovery_blink_modulation := Color.TRANSPARENT
+
+@export var use_blink_workaround_timer := true
 
 # [0,1]
 var _bubble_inflation := 0.0
 
 var _velocity := Vector2.ZERO
 
-var _health: int
+var health: Array[BubbleGumPickup.Type]
 
-var _is_invincible := false
+var is_invincible := false
+var is_recovering := false
+var is_super := false
 
-var _invincibility_blink_interval_id: int
-var _end_invincibility_timeout_id: int
+var _recovering_blink_interval_id: int
+var _end_recovering_timeout_id: int
+
+var _super_blink_interval_id: int
+var _end_super_timeout_id: int
 
 
 func _init() -> void:
@@ -55,19 +66,27 @@ func _init() -> void:
 func _ready() -> void:
     _bubble_inflation = initial_bubble_inflation
     _velocity.y = initial_vertical_velocity
-    _health = initial_health
+    health = initial_health
     modulate = Color.WHITE
 
-    if use_invincibility_blink_workaround_timer:
-        %InvincibilityBlinkWorkaroundTimer.wait_time = invincibility_blink_duration
-        %InvincibilityBlinkWorkaroundTimer.timeout.connect(_toggle_invincibility_blink)
+    if use_blink_workaround_timer:
+        %RecoveryBlinkWorkaroundTimer.wait_time = recovery_blink_duration
+        %RecoveryBlinkWorkaroundTimer.timeout.connect(_toggle_recovering_blink)
 
-    _start_invincibility(level_start_invincibility_duration)
+        %SuperBlinkWorkaroundTimer.wait_time = super_blink_duration
+        %SuperBlinkWorkaroundTimer.timeout.connect(_toggle_super_blink)
+
+    _update_gum_type()
+    S.hud.update_health()
+
+    _start_recovering(level_start_invincibility_duration)
 
 
 func _exit_tree() -> void:
-    S.time.clear_timeout(_invincibility_blink_interval_id)
-    S.time.clear_timeout(_end_invincibility_timeout_id)
+    S.time.clear_timeout(_recovering_blink_interval_id)
+    S.time.clear_timeout(_end_recovering_timeout_id)
+    S.time.clear_timeout(_super_blink_interval_id)
+    S.time.clear_timeout(_end_super_timeout_id)
     modulate = Color.WHITE
 
 
@@ -132,10 +151,70 @@ func get_bounds() -> Rect2:
     return %CollisionShape2D.shape.get_rect()
 
 
+func on_pickup_collided(pickup: Pickup) -> void:
+    if S.utils.ensure(pickup is BubbleGumPickup):
+        pick_up_bubble_gum(pickup)
+
+
+func pick_up_bubble_gum(bubble_gum: BubbleGumPickup) -> void:
+    S.log.print("Picked up bubble gum: %s" %
+        BubbleGumPickup.Type.keys()[bubble_gum.type])
+    _pick_up_bubble_gum_helper(bubble_gum, bubble_gum.type)
+
+
+func _pick_up_bubble_gum_helper(
+        bubble_gum: BubbleGumPickup, type: BubbleGumPickup.Type) -> void:
+    if type != BubbleGumPickup.Type.RANDOM:
+        G.session.pickups += 1
+
+    match type:
+        BubbleGumPickup.Type.FLOATY, \
+        BubbleGumPickup.Type.BOUNCY:
+            _add_gum(type)
+        BubbleGumPickup.Type.SUPER:
+            _start_super()
+        BubbleGumPickup.Type.RANDOM:
+            var options := [
+                BubbleGumPickup.Type.FLOATY,
+                BubbleGumPickup.Type.BOUNCY,
+                BubbleGumPickup.Type.SUPER,
+            ]
+            var selection: BubbleGumPickup.Type = options.pick_random()
+            _pick_up_bubble_gum_helper(bubble_gum, selection)
+        _:
+            S.utils.ensure(false)
+    bubble_gum.queue_free()
+
+
+func _add_gum(type: BubbleGumPickup.Type) -> void:
+    health.push_back(type)
+    _update_gum_type()
+    S.hud.update_health()
+
+
+func _update_gum_type() -> void:
+    if is_dead():
+        return
+
+    var next_gum_type: BubbleGumPickup.Type = health.back()
+    S.log.print("Updating gum type: %s" %
+        BubbleGumPickup.Type.keys()[next_gum_type])
+    # FIXME: LEFT OFF HERE:
+    # - Change bubble color.
+    # - Change movement params.
+    match next_gum_type:
+        BubbleGumPickup.Type.FLOATY:
+            pass
+        BubbleGumPickup.Type.BOUNCY:
+            pass
+        _:
+            S.utils.ensure(false)
+
+
 func on_ground_collided() -> void:
     if is_dead():
         return
-    if not _is_invincible:
+    if not is_invincible:
         receive_damage()
     if is_dead():
         return
@@ -144,55 +223,110 @@ func on_ground_collided() -> void:
 
 
 func on_obstacle_collided(obstacle: Obstacle) -> void:
-    if not _is_invincible:
+    if is_super:
+        _destroy_obstacle(obstacle)
+    elif not is_invincible:
         receive_damage()
+
+
+func _destroy_obstacle(obstacle: Obstacle) -> void:
+    S.log.print("Obstacle destroyed: %s" % S.utils.get_display_text(obstacle))
+    obstacle.queue_free()
+    G.session.obstacles_destroyed += 1
+    # TODO: Sfx!
 
 
 func receive_damage() -> void:
     S.log.print("Player received damage")
     $Pop.play()
-    _health -= 1
+    health.pop_back()
+    _update_gum_type()
+    S.hud.update_health()
     if is_dead():
         _on_died()
     else:
-        _start_invincibility(post_damage_invincibility_duration)
+        _start_recovering(post_damage_invincibility_duration)
         # TODO: Show a brief animation.
         # TODO: Play a sound.
 
 
-func _start_invincibility(duration: float) -> void:
-    S.utils.ensure(not _is_invincible)
-    _is_invincible = true
-    _start_invincibility_blink()
-    _end_invincibility_timeout_id = S.time.set_timeout(_end_invincibility, duration)
+func _start_recovering(duration: float) -> void:
+    S.utils.ensure(not is_recovering)
+    is_recovering = true
+    is_invincible = true
+    _start_recovering_blink()
+    _end_recovering_timeout_id = S.time.set_timeout(_end_recovering, duration)
 
 
-func _end_invincibility() -> void:
-    S.utils.ensure(_is_invincible)
-    _is_invincible = false
-    _stop_invincibility_blink()
+func _end_recovering() -> void:
+    S.utils.ensure(is_recovering)
+    is_recovering = false
+    is_invincible = false
+    _stop_recovering_blink()
 
 
-func _start_invincibility_blink() -> void:
-    _toggle_invincibility_blink()
-    if use_invincibility_blink_workaround_timer:
-        %InvincibilityBlinkWorkaroundTimer.start()
+func _start_super() -> void:
+    S.utils.ensure(not is_super)
+    is_super = true
+    is_invincible = true
+    G.level.update_music()
+    _start_super_blink()
+    _end_super_timeout_id = S.time.set_timeout(_end_super, super_duration)
+
+
+func _end_super() -> void:
+    S.utils.ensure(is_super)
+    is_super = false
+    is_invincible = false
+    G.level.update_music()
+    _stop_super_blink()
+
+
+func _start_recovering_blink() -> void:
+    _toggle_recovering_blink()
+    if use_blink_workaround_timer:
+        %RecoveryBlinkWorkaroundTimer.start()
     else:
-        _invincibility_blink_interval_id = S.time.set_interval(
-            _toggle_invincibility_blink, invincibility_blink_duration)
+        _recovering_blink_interval_id = S.time.set_interval(
+            _toggle_recovering_blink, recovery_blink_duration)
 
 
-func _stop_invincibility_blink() -> void:
-    if use_invincibility_blink_workaround_timer:
-        %InvincibilityBlinkWorkaroundTimer.stop()
+func _stop_recovering_blink() -> void:
+    if use_blink_workaround_timer:
+        %RecoveryBlinkWorkaroundTimer.stop()
     else:
-        S.time.clear_interval(_invincibility_blink_interval_id)
+        S.time.clear_interval(_recovering_blink_interval_id)
     modulate = Color.WHITE
 
 
-func _toggle_invincibility_blink() -> void:
+func _toggle_recovering_blink() -> void:
     if modulate == Color.WHITE:
-        modulate = invincibility_blink_modulation
+        modulate = recovery_blink_modulation
+    else:
+        modulate = Color.WHITE
+
+
+func _start_super_blink() -> void:
+    _toggle_super_blink()
+    if use_blink_workaround_timer:
+        %SuperBlinkWorkaroundTimer.start()
+    else:
+        _super_blink_interval_id = S.time.set_interval(
+            _toggle_super_blink, super_blink_duration)
+
+
+func _stop_super_blink() -> void:
+    if use_blink_workaround_timer:
+        %SuperBlinkWorkaroundTimer.stop()
+    else:
+        S.time.clear_interval(_super_blink_interval_id)
+    modulate = Color.WHITE
+
+
+func _toggle_super_blink() -> void:
+    if modulate == Color.WHITE:
+        # FIXME: Swap-out for a white+gray version of the player textures.
+        modulate = Color.from_hsv(randf(), 1.0, 0.5, 1.0)
     else:
         modulate = Color.WHITE
 
@@ -204,4 +338,4 @@ func _on_died() -> void:
 
 
 func is_dead() -> bool:
-    return _health <= 0
+    return health.is_empty()

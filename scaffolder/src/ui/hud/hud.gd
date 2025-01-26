@@ -1,6 +1,6 @@
 @icon("res://assets/editor_icons/Node.svg")
 class_name Hud
-extends MarginContainer
+extends PanelContainer
 
 
 func _ready() -> void:
@@ -13,3 +13,7 @@ func _process(_delta: float) -> void:
 
 func _on_pause_pressed() -> void:
     S.level.pause()
+
+
+func update_health() -> void:
+    %GumHealthDisplay.update()

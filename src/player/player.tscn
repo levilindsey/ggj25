@@ -67,5 +67,8 @@ bus = &"SFX"
 stream = ExtResource("6_x42xx")
 volume_db = -31.066
 
-[node name="InvincibilityBlinkWorkaroundTimer" type="Timer" parent="."]
+[node name="RecoveryBlinkWorkaroundTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="SuperBlinkWorkaroundTimer" type="Timer" parent="."]
 unique_name_in_owner = true

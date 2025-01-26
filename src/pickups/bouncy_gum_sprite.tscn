@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://conk4wbgq2stv"]
+
+[ext_resource type="Texture2D" uid="uid://bhcuby6xglbd" path="res://assets/sprites/bubble_gum_2.png" id="1_kl1ew"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_006gu"]
+atlas = ExtResource("1_kl1ew")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kavqa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_006gu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BouncyGumSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_kavqa")

@@ -16,6 +16,9 @@ const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
 @export var player_scene: PackedScene
 
+var _last_background_music_position := 0.0
+var _last_ambiance_position := 0.0
+
 
 func _ready() -> void:
     G.level = self
@@ -69,7 +72,6 @@ func _physics_process(delta: float) -> void:
     G.session.distance = %Anchor.position.x
 
 
-
 func _update_zoom() -> void:
     var viewport_size: Vector2 = G.main.get_viewport().size
     var viewport_basis_ratio := viewport_size / VIEWPORT_SIZE_BASIS
@@ -91,6 +93,19 @@ func game_over(success: bool) -> void:
     G.session.end_time = S.time.get_play_time()
     # TODO: Play a sound.
     S.time.set_timeout(_show_game_over_screen, GAME_OVER_SCREEN_DELAY)
+
+
+func update_music() -> void:
+    if G.player.is_super:
+        _last_background_music_position = %BackgroundMusicPlayer.get_playback_position()
+        _last_ambiance_position = %AmbiencePlayer.get_playback_position()
+        %BackgroundMusicPlayer.stop()
+        %AmbiencePlayer.stop()
+        %SuperBubbleMusicPlayer.play()
+    else:
+        %BackgroundMusicPlayer.play(_last_background_music_position)
+        %AmbiencePlayer.play(_last_ambiance_position)
+        %SuperBubbleMusicPlayer.stop()
 
 
 func _show_game_over_screen() -> void:

@@ -1,64 +1,71 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4f1lg22805p6"]
+[gd_scene load_steps=6 format=3 uid="uid://c4f1lg22805p6"]
 
 [ext_resource type="Script" uid="uid://dqk1g58ukbvqw" path="res://scaffolder/src/ui/hud/hud.gd" id="1_jobw0"]
 [ext_resource type="PackedScene" uid="uid://b1xl7km0tvbi6" path="res://scaffolder/src/ui/widgets/click_texture_button.tscn" id="2_bgesr"]
 [ext_resource type="Texture2D" uid="uid://5wxkhwya351p" path="res://assets/icons/pause.png" id="4_aujnh"]
+[ext_resource type="PackedScene" uid="uid://dg4i3rdnv142i" path="res://src/ui/gum_health_display.tscn" id="4_bgesr"]
 
-[node name="Hud" type="MarginContainer"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgesr"]
+
+[node name="Hud" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bgesr")
+script = ExtResource("1_jobw0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
-script = ExtResource("1_jobw0")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 20
 
-[node name="Spacer2" type="Control" parent="HBoxContainer"]
+[node name="Spacer2" type="Control" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer"]
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Distance" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Distance" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "1234"
 
-[node name="Spacer" type="Control" parent="HBoxContainer"]
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Pause" parent="HBoxContainer/MarginContainer" instance=ExtResource("2_bgesr")]
+[node name="Pause" parent="MarginContainer/HBoxContainer/MarginContainer" instance=ExtResource("2_bgesr")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -72,4 +79,17 @@ ignore_texture_size = true
 stretch_mode = 5
 master_texture = ExtResource("4_aujnh")
 
-[connection signal="pressed" from="HBoxContainer/MarginContainer/Pause" to="." method="_on_pause_pressed"]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GumHealthDisplay" parent="MarginContainer2" instance=ExtResource("4_bgesr")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/Pause" to="." method="_on_pause_pressed"]

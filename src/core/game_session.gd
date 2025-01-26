@@ -8,6 +8,7 @@ var start_time: float
 var end_time: float
 var distance: float
 var pickups: int
+var obstacles_destroyed: int
 
 var play_time: float:
     get:
@@ -34,3 +35,4 @@ func reset() -> void:
     end_time = 0.0
     distance = 0.0
     pickups = 0
+    obstacles_destroyed = 0

@@ -27,6 +27,6 @@ func _change_environment() -> void:
     current_environment = S.manifest.environment_sequence[manifest_index]
 
     if S.manifest.log_fragment_updates:
-        S.log.print("New environment queued: %s" % current_environment)
+        S.log.print("New environment queued: %s" % Main.EnvironmentType.keys()[current_environment])
 
     changed_environment.emit(current_environment, previous_environment)

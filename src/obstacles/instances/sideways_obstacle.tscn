@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2b5cuvuh7wvb"]
 
-[ext_resource type="Script" uid="uid://ddpperx210v3q" path="res://src/levels/obstacles/instances/sideways_obstacle.gd" id="1_5fxhc"]
+[ext_resource type="Script" uid="uid://ddpperx210v3q" path="res://src/obstacles/instances/sideways_obstacle.gd" id="1_5fxhc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fn00u"]
 radius = 9.0

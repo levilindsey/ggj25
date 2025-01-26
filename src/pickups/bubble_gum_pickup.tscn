@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://byegp775hg2he"]
+
+[ext_resource type="Script" uid="uid://bxm4gwi7wiox7" path="res://src/pickups/bubble_gum_pickup.gd" id="1_m2i3e"]
+[ext_resource type="PackedScene" uid="uid://tubuds1k6ats" path="res://src/pickups/floaty_gum_sprite.tscn" id="2_7nig7"]
+[ext_resource type="PackedScene" uid="uid://conk4wbgq2stv" path="res://src/pickups/bouncy_gum_sprite.tscn" id="3_jj0ic"]
+[ext_resource type="PackedScene" uid="uid://cnx01o1ac64vu" path="res://src/pickups/super_gum_sprite.tscn" id="4_m2i3e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ckcms"]
+
+[node name="BubbleGumPickup" type="Node2D"]
+script = ExtResource("1_m2i3e")
+sprite_scene_floaty_gum = ExtResource("2_7nig7")
+sprite_scene_bouncy_gum = ExtResource("3_jj0ic")
+sprite_scene_super_gum = ExtResource("4_m2i3e")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ckcms")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

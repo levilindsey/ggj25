@@ -1,15 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvnvhlldg5qgv"]
+[gd_scene load_steps=3 format=3 uid="uid://bbghnqpxvf7iy"]
 
-[ext_resource type="Script" uid="uid://c7tpsp6ot8560" path="res://src/levels/obstacles/instances/standing_tall_obstacle.gd" id="1_vb50e"]
+[ext_resource type="Script" uid="uid://c5copw7wooqxq" path="res://src/obstacles/instances/floating_obstacle.gd" id="1_tpojk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fn00u"]
-radius = 18.0
-height = 188.0
+radius = 13.0
+height = 44.0
 
-[node name="StandingTallObstacle" type="Node2D"]
-position = Vector2(0, 68)
-script = ExtResource("1_vb50e")
-type = 4
+[node name="FloatingObstacle" type="Node2D"]
+script = ExtResource("1_tpojk")
 
 [node name="DetectPlayerCollision" type="Area2D" parent="."]
 collision_layer = 2
@@ -17,7 +15,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayerCollision"]
 unique_name_in_owner = true
-position = Vector2(0, 2)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fn00u")
 
 [connection signal="body_entered" from="DetectPlayerCollision" to="." method="_on_detect_player_collision_body_entered"]

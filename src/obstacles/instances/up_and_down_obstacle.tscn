@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjjwj2lgbjkxu"]
 
-[ext_resource type="Script" uid="uid://yg2a6hdcimip" path="res://src/levels/obstacles/instances/up_and_down_obstacle.gd" id="1_vs6gl"]
+[ext_resource type="Script" uid="uid://yg2a6hdcimip" path="res://src/obstacles/instances/up_and_down_obstacle.gd" id="1_vs6gl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fn00u"]
 radius = 11.0
