@@ -7,5 +7,9 @@ func _ready() -> void:
     S.hud = self
 
 
+func _process(_delta: float) -> void:
+    %Distance.text = "%d" % G.session.score
+
+
 func _on_pause_pressed() -> void:
     S.level.pause()

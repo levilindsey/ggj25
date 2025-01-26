@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dog73p1pln4cl"]
+
+[ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_rld7u"]
+[ext_resource type="PackedScene" uid="uid://bbghnqpxvf7iy" path="res://src/levels/obstacles/instances/floating_obstacle.tscn" id="2_fmdtu"]
+[ext_resource type="PackedScene" uid="uid://2b5cuvuh7wvb" path="res://src/levels/obstacles/instances/sideways_obstacle.tscn" id="3_pbg5u"]
+[ext_resource type="PackedScene" uid="uid://bjjwj2lgbjkxu" path="res://src/levels/obstacles/instances/up_and_down_obstacle.tscn" id="4_kgadk"]
+[ext_resource type="PackedScene" uid="uid://du63p25gpg7t7" path="res://src/levels/obstacles/instances/standing_short_obstacle.tscn" id="5_gt2fg"]
+[ext_resource type="PackedScene" uid="uid://cvnvhlldg5qgv" path="res://src/levels/obstacles/instances/standing_tall_obstacle.tscn" id="6_xxhfw"]
+
+[node name="FragmentTest" type="Node2D"]
+script = ExtResource("1_rld7u")
+width = 1024
+
+[node name="FloatingObstacle" parent="." instance=ExtResource("2_fmdtu")]
+position = Vector2(-460, -1)
+
+[node name="SidewaysObstacle" parent="." instance=ExtResource("3_pbg5u")]
+position = Vector2(-180, -104)
+speed = 40.0
+
+[node name="UpAndDownObstacle" parent="." instance=ExtResource("4_kgadk")]
+position = Vector2(-97, -2)
+vertical_range = 256
+oscillation_period = 3.0
+goes_up_first = null
+
+[node name="StandingShortObstacle" parent="." instance=ExtResource("5_gt2fg")]
+position = Vector2(-336, 142)
+
+[node name="StandingTallObstacle" parent="." instance=ExtResource("6_xxhfw")]
+position = Vector2(-180, 120)

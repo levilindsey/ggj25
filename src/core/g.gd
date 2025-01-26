@@ -12,6 +12,7 @@ const OBSTACLE_SPRITE_MANIFEST := preload("res://src/levels/obstacles/obstacle_s
 var main: Main
 var super_hud: SuperHud
 var mic: MicHandler
+var session: GameSession
 var level: MainLevel
 var player: Player
 
@@ -20,3 +21,5 @@ func _ready() -> void:
     var mic_handler := MicHandler.new()
     add_child(mic_handler)
     mic_handler.process_mode = Node.PROCESS_MODE_ALWAYS
+
+    session = GameSession.new()

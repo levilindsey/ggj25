@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Manifest" load_steps=25 format=3 uid="uid://n2klwldxjt7u"]
+[gd_resource type="Resource" script_class="Manifest" load_steps=26 format=3 uid="uid://n2klwldxjt7u"]
 
 [ext_resource type="Script" uid="uid://i4q7p22q60vs" path="res://scaffolder/src/config/canvas_layer_config.gd" id="1_iqjv3"]
 [ext_resource type="PackedScene" uid="uid://dw40igtylnu30" path="res://src/levels/main_level.tscn" id="2_a47xt"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bc5n0nmh6rv0c" path="res://scaffolder/src/ui/screens/pause/pause_screen.tscn" id="8_hkaoq"]
 [ext_resource type="PackedScene" uid="uid://cn5n2vl7vmqeg" path="res://scaffolder/src/ui/screens/settings/settings_screen.tscn" id="9_lx0xc"]
 [ext_resource type="PackedScene" uid="uid://bmbeyk564ycnw" path="res://src/ui/mic_error_screen.tscn" id="10_x2iix"]
+[ext_resource type="PackedScene" uid="uid://1t038urjp73n" path="res://scaffolder/src/ui/screens/game_over/game_over_screen.tscn" id="11_a47xt"]
 [ext_resource type="Script" uid="uid://ctpkusaxuuelx" path="res://scaffolder/src/config/manifest.gd" id="11_gb07o"]
 [ext_resource type="AudioStream" uid="uid://bu201qxw2pgtb" path="res://scaffolder/assets/sfx/game_load.tres" id="12_bkucw"]
 [ext_resource type="AudioStream" uid="uid://ccywymppbqvq2" path="res://scaffolder/assets/sfx/level_start.tres" id="13_u8u6k"]
@@ -66,6 +67,7 @@ main_theme = ExtResource("3_e05c0")
 screens = Dictionary[String, PackedScene]({
 "blow_calibration_screen": ExtResource("4_swhmb"),
 "credits_screen": ExtResource("5_tr08y"),
+"game_over_screen": ExtResource("11_a47xt"),
 "game_screen": ExtResource("6_jmnv0"),
 "main_menu_screen": ExtResource("7_ncyll"),
 "mic_error_screen": ExtResource("10_x2iix"),

@@ -2,7 +2,9 @@ class_name GameOverScreen
 extends Screen
 
 
-# TODO: Play victory or failure sound.
+func _ready() -> void:
+    super()
+    %Score.text = "%d" % G.session.score
 
 
 func _on_play_button_pressed() -> void:

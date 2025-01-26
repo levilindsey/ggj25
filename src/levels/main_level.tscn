@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dw40igtylnu30"]
+[gd_scene load_steps=12 format=3 uid="uid://dw40igtylnu30"]
 
 [ext_resource type="Script" uid="uid://dcnxrly2dpfxt" path="res://src/levels/main_level.gd" id="1_rafda"]
-[ext_resource type="Script" uid="uid://b1r7p1qf46bwn" path="res://src/levels/parallax_layer_sky.gd" id="2_k0jp4"]
+[ext_resource type="Script" path="res://src/levels/parallax_layer_sky.gd" id="2_k0jp4"]
 [ext_resource type="Texture2D" uid="uid://pcg1d2n48qxh" path="res://assets/background_graphics/summer 2-UPDT/1-Ext.png" id="3_k0jp4"]
 [ext_resource type="Texture2D" uid="uid://bsy5oef3i1k2g" path="res://assets/background_graphics/summer 2-UPDT/2-Ext.png" id="4_1du40"]
 [ext_resource type="Texture2D" uid="uid://dvqq6o0gg5ein" path="res://assets/background_graphics/summer 2-UPDT/3-Ext.png" id="5_tygi3"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://c3rw538ealwdq" path="res://scaffolder/assets/sfx/raw/beautiful_music.mp3" id="8_1du40"]
 [ext_resource type="AudioStream" uid="uid://bm5jh0ctpso4f" path="res://scaffolder/assets/blowing_random.tres" id="8_tygi3"]
 [ext_resource type="AudioStream" uid="uid://c5d38b0qxtmei" path="res://scaffolder/assets/deflate.wav" id="9_twkqo"]
+[ext_resource type="PackedScene" uid="uid://dog73p1pln4cl" path="res://src/levels/fragments/fragment_test.tscn" id="11_ywe2d"]
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource("1_rafda")
@@ -90,3 +91,5 @@ stream = ExtResource("8_1du40")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="FragmentTest" parent="." instance=ExtResource("11_ywe2d")]

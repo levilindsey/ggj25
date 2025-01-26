@@ -105,7 +105,9 @@ func close(screen_node_or_name) -> bool:
                 top_screen.screen.screen_state != Screen.ScreenState.TOP):
             top_screen.screen.screen_state = Screen.ScreenState.TOP
 
-        if not _is_a_pausing_screen_above_level() and is_instance_valid(S.level):
+        if (not _is_a_pausing_screen_above_level()
+                and is_instance_valid(S.level)
+                and screen_entry.name != "game_screen"):
             # Unpause the level when the screens above it are closed.
             S.level.unpause()
 

@@ -2,9 +2,11 @@ class_name MainLevel
 extends Level
 
 
+const GAME_OVER_SCREEN_DELAY := 2.0
+
 const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
-var horizontal_speed := 200
+var horizontal_speed := 20
 
 
 func _ready() -> void:
@@ -13,8 +15,18 @@ func _ready() -> void:
     get_tree().get_root().size_changed.connect(_update_zoom)
 
 
+func start() -> void:
+    super()
+    G.session.reset()
+    G.session.start_time = S.time.get_play_time()
+
+
 func _physics_process(delta: float) -> void:
+    if not is_game_active:
+        return
     %Anchor.position.x += horizontal_speed * delta
+    G.session.distance = %Anchor.position.x
+
 
 
 func _update_zoom() -> void:
@@ -30,3 +42,16 @@ func get_player_lower_bound() -> float:
 
 func get_player_upper_bound() -> float:
     return %PlayerUpperBound.position.y
+
+
+func game_over(success: bool) -> void:
+    S.log.print("GAME OVER: %s" % ("success" if success else "failure"))
+    is_game_active = false
+    G.session.end_time = S.time.get_play_time()
+    # TODO: Play a sound.
+    S.time.set_timeout(_show_game_over_screen, GAME_OVER_SCREEN_DELAY)
+
+
+func _show_game_over_screen() -> void:
+    S.screens.open("game_over_screen")
+    S.screens.close("game_screen")

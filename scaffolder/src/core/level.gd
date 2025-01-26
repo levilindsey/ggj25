@@ -2,12 +2,15 @@ class_name Level
 extends Node2D
 
 
+var is_game_active := false
+
+
 func _init() -> void:
     S.level = self
 
 
 func start() -> void:
-    pass
+    is_game_active = true
 
 
 func pause() -> void:

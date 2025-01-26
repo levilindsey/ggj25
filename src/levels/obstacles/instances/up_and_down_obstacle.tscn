@@ -6,10 +6,16 @@
 radius = 11.0
 height = 32.0
 
-[node name="UpAndDownObstacle" type="Area2D"]
+[node name="UpAndDownObstacle" type="Node2D"]
 script = ExtResource("1_vs6gl")
 type = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="DetectPlayerCollision" type="Area2D" parent="."]
+collision_layer = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayerCollision"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fn00u")
+
+[connection signal="body_entered" from="DetectPlayerCollision" to="." method="_on_detect_player_collision_body_entered"]

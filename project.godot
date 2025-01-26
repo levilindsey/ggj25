@@ -28,6 +28,12 @@ G="*res://src/core/g.gd"
 
 window/size/mode=2
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="obstacle"
+2d_physics/layer_3="pickup"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

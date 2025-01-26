@@ -47,3 +47,9 @@ func _update_content_helper(sprite_scene: PackedScene) -> void:
     _sprite = sprite_scene.instantiate()
     add_child(_sprite)
     move_child(_sprite, 0)
+
+
+func _on_body_collided(body: Node2D) -> void:
+    if not S.utils.ensure(body is Player):
+        return
+    body.on_obstacle_collided(self)

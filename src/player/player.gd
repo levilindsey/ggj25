@@ -20,17 +20,41 @@ extends CharacterBody2D
 # Pixels per second.
 @export var max_vertical_speed := 150.0
 
+@export var ground_bounce_min_speed := 150.0
+
+@export var initial_health := 3
+
+@export var post_damage_invincibility_duration := 1.0
+
+@export var level_start_invincibility_duration := 3.0
+
+@export var invincibility_blink_duration := 0.1
+
+@export var invincibility_blink_modulation := Color.TRANSPARENT
+
 # [0,1]
 var _bubble_inflation := 0.0
 
 var _velocity := Vector2.ZERO
 
+var _health: int
+
+var _is_invincible := false
+
+var _invincibility_blink_interval_id: int
+
 
 func _init() -> void:
     S.player = self
     G.player = self
+
+
+func _ready() -> void:
     _bubble_inflation = initial_bubble_inflation
     _velocity.y = initial_vertical_velocity
+    _health = initial_health
+    _start_invincibility(level_start_invincibility_duration)
+
 
 func _process(delta: float) -> void:
     # [0,1]
@@ -41,12 +65,11 @@ func _process(delta: float) -> void:
     elif weight < 0.15 and !$deflate.is_playing():
         $deflate.play()
     elif weight > 0.2 and $deflate.is_playing():
-        $deflate.stop() 
+        $deflate.stop()
 
-    
 
 func _physics_process(delta: float) -> void:
-    var blow_weight := G.mic.get_blow_weight()
+    var blow_weight := G.mic.get_blow_weight() if not is_dead() else 0.0
 
     # Update inflation.
     var inflation_speed: float = lerp(
@@ -76,8 +99,74 @@ func _physics_process(delta: float) -> void:
         _velocity.y = 0.0
     if position.y > max_y:
         position.y = max_y
-        _velocity.y = 0.0
+        on_ground_collided()
 
 
 func get_bounds() -> Rect2:
     return %CollisionShape2D.shape.get_rect()
+
+
+func on_ground_collided() -> void:
+    if is_dead():
+        return
+    if not _is_invincible:
+        receive_damage()
+    if is_dead():
+        return
+    var bounce_vertical_speed: float = max(ground_bounce_min_speed, velocity.y)
+    _velocity.y = -bounce_vertical_speed
+
+
+func on_obstacle_collided(obstacle: Obstacle) -> void:
+    if not _is_invincible:
+        receive_damage()
+
+
+func receive_damage() -> void:
+    _health -= 1
+    if is_dead():
+        _on_died()
+    else:
+        _start_invincibility(post_damage_invincibility_duration)
+        # TODO: Show a brief animation.
+        # TODO: Play a sound.
+
+
+func _start_invincibility(duration: float) -> void:
+    S.utils.ensure(not _is_invincible)
+    _is_invincible = true
+    _start_invincibility_blink()
+    S.time.set_timeout(_end_invincibility, duration)
+
+
+func _end_invincibility() -> void:
+    S.utils.ensure(_is_invincible)
+    _is_invincible = false
+    _stop_invincibility_blink()
+
+
+func _start_invincibility_blink() -> void:
+    _toggle_invincibility_blink()
+    _invincibility_blink_interval_id = S.time.set_interval(
+        _toggle_invincibility_blink, invincibility_blink_duration)
+
+
+func _stop_invincibility_blink() -> void:
+    S.time.clear_interval(_invincibility_blink_interval_id)
+    modulate = Color.WHITE
+
+
+func _toggle_invincibility_blink() -> void:
+    if modulate == Color.WHITE:
+        modulate = invincibility_blink_modulation
+    else:
+        modulate = Color.WHITE
+
+
+func _on_died() -> void:
+    G.level.game_over(false)
+    # TODO: Switch to a crying animation.
+
+
+func is_dead() -> bool:
+    return _health <= 0

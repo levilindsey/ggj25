@@ -4,3 +4,4 @@
 
 [node name="Fragment1" type="Node2D"]
 script = ExtResource("1_5nlfm")
+width = 1024
