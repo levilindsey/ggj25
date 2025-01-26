@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://c53p24u5ggog8" path="res://scaffolder/assets/260633__lwdickens__outdoor-winter-ambience-birds-light-wind.cm.wav" id="12_fvmyw"]
 
 [node name="MainLevel" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_rafda")
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
