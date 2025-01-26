@@ -61,11 +61,11 @@ func _process(delta: float) -> void:
     $blowing.volume_linear = lerp($blowing.volume_linear, weight, 5 * delta)
     if weight > 0.25 and not $blowing.is_playing():
         $blowing.play()
-    elif weight < 0.1 and $blowing.is_playing():
+    elif weight < 0.2 and $blowing.is_playing():
         fade_out_and_stop($blowing)
 
 func fade_out_and_stop(player: AudioStreamPlayer) -> void:
-    var fade_duration = .15
+    var fade_duration = .1
     var initial_volume = player.volume_linear
     var timer = 0.0
 
@@ -133,6 +133,7 @@ func on_obstacle_collided(obstacle: Obstacle) -> void:
 
 
 func receive_damage() -> void:
+    $Pop.play()
     _health -= 1
     if is_dead():
         _on_died()
