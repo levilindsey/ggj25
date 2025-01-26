@@ -22,7 +22,9 @@ func _ready() -> void:
 
 
 func update_content() -> void:
-    if not is_instance_valid(S) or not is_instance_valid(S.manifest):
+    if (not is_instance_valid(S)
+            or not ("manifest" in S)
+            or not is_instance_valid(S.manifest)):
         return
 
     if is_instance_valid(_sprite):

@@ -22,6 +22,10 @@ var _start_time: float
 func _ready() -> void:
     super()
     queue_redraw()
+
+    if Engine.is_editor_hint():
+        return
+
     _start_position = position
     _start_time = S.time.get_play_time()
 
