@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
     var blow_weight := G.mic.get_blow_weight()
-    var filled_bar_count := int(lerp(0.0, bar_count, blow_weight))
+    var filled_bar_count := int(lerpf(0.0, bar_count, blow_weight))
 
     # Background
     var background_width := bar_count * (bar_height + gap_height) + gap_height

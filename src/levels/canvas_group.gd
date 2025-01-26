@@ -28,7 +28,7 @@ func fade_in(canvas_group: CanvasGroup, target_opacity: float, duration: float) 
 
     # Smoothly fade in over the given duration
     while timer < duration:
-        timer += get_process_delta_time()
+        timer += S.time.scale_delta(get_process_delta_time())
         var new_opacity = lerp(initial_opacity, target_opacity, timer / duration)
         canvas_group.modulate.a = new_opacity
         await get_tree().process_frame  # Wait for the next frame
@@ -41,7 +41,7 @@ func fade_out(canvas_group: CanvasGroup, target_opacity: float, duration: float)
 
     # Smoothly fade out over the given duration
     while timer < duration:
-        timer += get_process_delta_time()
+        timer += S.time.scale_delta(get_process_delta_time())
         var new_opacity = lerp(initial_opacity, target_opacity, timer / duration)
         canvas_group.modulate.a = new_opacity
         await get_tree().process_frame  # Wait for the next frame

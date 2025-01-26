@@ -14,7 +14,11 @@ func _ready() -> void:
 
     current_environment = S.manifest.environment_sequence[0]
     _change_environment()
-    S.time.set_interval(_change_environment, S.manifest.environment_change_interval)
+    S.time.set_interval(
+        _change_environment,
+        S.manifest.environment_change_interval,
+        [],
+        TimeType.APP_PHYSICS_SCALED)
 
 
 func _change_environment() -> void:

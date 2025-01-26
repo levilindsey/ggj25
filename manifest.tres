@@ -127,6 +127,7 @@ metadata/_custom_type_script = ExtResource("25_lx0xc")
 
 [resource]
 script = ExtResource("11_gb07o")
+debug_time_scale = 1.0
 time_to_max_fragment_difficulty = 300.0
 time_to_max_time_scale = 1200.0
 environment_change_interval = 10.0

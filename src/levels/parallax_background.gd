@@ -11,7 +11,7 @@ signal transition_out(fade_length, fade_stagger)
 
 func _ready():
     G.level_loaded.connect(_on_level_loaded)
-    
+
 func _on_level_loaded():
     var emitter = G.level
     emitter.entered_new_environment.connect(_on_entered_new_environment)
@@ -28,8 +28,8 @@ func _on_entered_new_environment(new_env: Main.EnvironmentType, old_env: Main.En
             active_environment = false
             print("fade out:", Main.EnvironmentType.keys()[old_env])
             relayer_backgrounds(fade_length, fade_stagger)
-            
+
 func relayer_backgrounds(fade_length, fade_stagger):
-    await get_tree().create_timer(fade_stagger + fade_length).timeout
+    await get_tree().create_timer((fade_stagger + fade_length) / S.time.get_combined_scale()).timeout
     var parent_node = G.level
     parent_node.move_child(self, 0)

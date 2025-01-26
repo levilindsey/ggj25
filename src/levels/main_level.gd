@@ -37,6 +37,7 @@ func _ready() -> void:
 
     fragment_spawner.entered_fragment.connect(_on_entered_fragment)
 
+    _update_time_scale()
     S.time.set_interval(_update_time_scale, TIME_SCALE_UPDATE_INTERVAL)
 
     G.level_loaded.emit()
@@ -44,7 +45,8 @@ func _ready() -> void:
 func _update_time_scale() -> void:
     var weight := G.session.play_time / S.manifest.time_to_max_time_scale
     weight = clampf(weight, 0, 1)
-    S.time.time_scale = lerp(1.0, S.manifest.max_time_scale, weight)
+    var time_scale := lerpf(1.0, S.manifest.max_time_scale, weight) * S.manifest.debug_time_scale
+    S.time.time_scale = time_scale
     if S.manifest.log_time_scale_updates:
         S.log.print("Updating time scale: %.3f" % S.time.time_scale)
 

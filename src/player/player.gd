@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 @export_range(0.0, 1.0) var initial_bubble_inflation := 0.5
-@export var initial_vertical_velocity := -75.0
+@export var initial_vertical_velocity := -130.0
 
 # Pixels per second per second.
 @export var floaty_max_blow_vertical_acceleration := -100.0
@@ -127,7 +127,7 @@ func _exit_tree() -> void:
 
 func _process(delta: float) -> void:
     var weight := G.mic.get_blow_weight()
-    $blowing.volume_linear = lerp($blowing.volume_linear, weight, 5 * delta)
+    $blowing.volume_linear = lerpf($blowing.volume_linear, weight, 5 * delta)
     if weight > 0.25 and not $blowing.is_playing():
         $blowing.play()
     elif weight < 0.2 and $blowing.is_playing():
@@ -139,8 +139,8 @@ func fade_out_and_stop(player: AudioStreamPlayer) -> void:
     var timer = 0.0
 
     while timer < fade_duration:
-        timer += get_process_delta_time()
-        player.volume_linear = lerp(initial_volume, 0.0, timer / fade_duration)
+        timer += S.time.scale_delta(get_process_delta_time())
+        player.volume_linear = lerpf(initial_volume, 0.0, timer / fade_duration)
         await get_tree().process_frame
 
     player.stop()
@@ -152,7 +152,7 @@ func _physics_process(delta: float) -> void:
     var blow_weight := G.mic.get_blow_weight() if not is_dead() else 0.0
 
     # Update inflation.
-    var inflation_speed: float = lerp(
+    var inflation_speed: float = lerpf(
         bubble_deflate_speed,
         max_blow_bubble_inflate_speed,
         blow_weight)
@@ -160,7 +160,7 @@ func _physics_process(delta: float) -> void:
     _bubble_inflation = clampf(_bubble_inflation, 0, 1)
 
     # Update speed.
-    var acceleration: float = lerp(
+    var acceleration: float = lerpf(
         max_blow_vertical_acceleration,
         gravity_acceleration,
         1 - blow_weight)

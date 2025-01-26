@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
         FREQUENCY_MIN,
         FREQUENCY_MAX,
         AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.MAGNITUDE_MAX)
-    var magnitude: float = lerp(stereo_magnitude.x, stereo_magnitude.y, 0.5)
+    var magnitude: float = lerpf(stereo_magnitude.x, stereo_magnitude.y, 0.5)
 
     # Count consecutive zero-magnitude frames.
     if magnitude == 0.0:
