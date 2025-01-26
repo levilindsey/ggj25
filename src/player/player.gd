@@ -28,9 +28,11 @@ extends CharacterBody2D
 
 @export var level_start_invincibility_duration := 3.0
 
-@export var invincibility_blink_duration := 0.1
+@export var invincibility_blink_duration := 0.07
 
 @export var invincibility_blink_modulation := Color.TRANSPARENT
+
+@export var use_invincibility_blink_workaround_timer := true
 
 # [0,1]
 var _bubble_inflation := 0.0
@@ -42,6 +44,7 @@ var _health: int
 var _is_invincible := false
 
 var _invincibility_blink_interval_id: int
+var _end_invincibility_timeout_id: int
 
 
 func _init() -> void:
@@ -53,7 +56,19 @@ func _ready() -> void:
     _bubble_inflation = initial_bubble_inflation
     _velocity.y = initial_vertical_velocity
     _health = initial_health
+    modulate = Color.WHITE
+
+    if use_invincibility_blink_workaround_timer:
+        %InvincibilityBlinkWorkaroundTimer.wait_time = invincibility_blink_duration
+        %InvincibilityBlinkWorkaroundTimer.timeout.connect(_toggle_invincibility_blink)
+
     _start_invincibility(level_start_invincibility_duration)
+
+
+func _exit_tree() -> void:
+    S.time.clear_timeout(_invincibility_blink_interval_id)
+    S.time.clear_timeout(_end_invincibility_timeout_id)
+    modulate = Color.WHITE
 
 
 func _process(delta: float) -> void:
@@ -134,6 +149,7 @@ func on_obstacle_collided(obstacle: Obstacle) -> void:
 
 
 func receive_damage() -> void:
+    S.log.print("Player received damage")
     $Pop.play()
     _health -= 1
     if is_dead():
@@ -148,7 +164,7 @@ func _start_invincibility(duration: float) -> void:
     S.utils.ensure(not _is_invincible)
     _is_invincible = true
     _start_invincibility_blink()
-    S.time.set_timeout(_end_invincibility, duration)
+    _end_invincibility_timeout_id = S.time.set_timeout(_end_invincibility, duration)
 
 
 func _end_invincibility() -> void:
@@ -159,12 +175,18 @@ func _end_invincibility() -> void:
 
 func _start_invincibility_blink() -> void:
     _toggle_invincibility_blink()
-    _invincibility_blink_interval_id = S.time.set_interval(
-        _toggle_invincibility_blink, invincibility_blink_duration)
+    if use_invincibility_blink_workaround_timer:
+        %InvincibilityBlinkWorkaroundTimer.start()
+    else:
+        _invincibility_blink_interval_id = S.time.set_interval(
+            _toggle_invincibility_blink, invincibility_blink_duration)
 
 
 func _stop_invincibility_blink() -> void:
-    S.time.clear_interval(_invincibility_blink_interval_id)
+    if use_invincibility_blink_workaround_timer:
+        %InvincibilityBlinkWorkaroundTimer.stop()
+    else:
+        S.time.clear_interval(_invincibility_blink_interval_id)
     modulate = Color.WHITE
 
 
@@ -176,6 +198,7 @@ func _toggle_invincibility_blink() -> void:
 
 
 func _on_died() -> void:
+    S.log.print("Player died")
     G.level.game_over(false)
     # TODO: Switch to a crying animation.
 

@@ -5,8 +5,7 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
-# - Add time scaling.
-# - Fix player respawn when starting a new run.
+# - Add health HUD UI.
 # - Implement pickups.
 # - Make a couple fragments.
 #   - Make them hard.

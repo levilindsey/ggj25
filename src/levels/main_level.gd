@@ -14,6 +14,8 @@ const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
 @export var horizontal_speed := 80
 
+@export var player_scene: PackedScene
+
 
 func _ready() -> void:
     G.level = self
@@ -26,6 +28,9 @@ func _ready() -> void:
 
     var environment_scheduler := EnvironmentScheduler.new()
     add_child(environment_scheduler)
+
+    var player := player_scene.instantiate()
+    %Anchor.add_child(player)
 
     fragment_spawner.entered_fragment.connect(_on_entered_fragment)
 

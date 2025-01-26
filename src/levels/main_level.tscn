@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dw40igtylnu30"]
+[gd_scene load_steps=19 format=3 uid="uid://dw40igtylnu30"]
 
 [ext_resource type="Script" uid="uid://dcnxrly2dpfxt" path="res://src/levels/main_level.gd" id="1_rafda"]
 [ext_resource type="Script" uid="uid://cbh0naqxpdtw3" path="res://src/levels/parallax_background.gd" id="2_acb5s"]
@@ -9,12 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dvqq6o0gg5ein" path="res://assets/background_graphics/summer 2-UPDT/3-Ext.png" id="5_tygi3"]
 [ext_resource type="PackedScene" uid="uid://be2nxc6t7gkdw" path="res://src/player/player.tscn" id="6_11df1"]
 [ext_resource type="Texture2D" uid="uid://dur0t1rjdjdjy" path="res://assets/background_graphics/summer 2-UPDT/4-Ext.png" id="6_twkqo"]
-[ext_resource type="AudioStream" uid="uid://dv5gjawwa3tto" path="res://scaffolder/assets/sfx/pop.tres" id="8_av45r"]
-[ext_resource type="AudioStream" uid="uid://bm5jh0ctpso4f" path="res://scaffolder/assets/blowing_random.tres" id="8_tygi3"]
 [ext_resource type="Script" uid="uid://blhn5dlqmgeaa" path="res://src/levels/parallax_background_2.gd" id="9_5xsos"]
 [ext_resource type="Texture2D" uid="uid://s3rgyaalkhj7" path="res://assets/background_graphics/summer 7-UPDT/1_Ext.png" id="9_gcuqk"]
 [ext_resource type="Script" uid="uid://bry1g56gn7tfy" path="res://src/levels/parallax_layer_a.gd" id="9_lcu7o"]
-[ext_resource type="AudioStream" uid="uid://c5d38b0qxtmei" path="res://scaffolder/assets/deflate.wav" id="9_twkqo"]
 [ext_resource type="Texture2D" uid="uid://drbca2nwpbkht" path="res://assets/background_graphics/summer 7-UPDT/3_Ext.png" id="10_fds8a"]
 [ext_resource type="AudioStream" uid="uid://bp6kttbc8qcio" path="res://scaffolder/assets/BubbleTheme.wav" id="10_twkqo"]
 [ext_resource type="Script" uid="uid://cal58bqor48n0" path="res://src/levels/parallax_layer_2_a.gd" id="11_5xsos"]
@@ -25,6 +22,7 @@
 [node name="MainLevel" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_rafda")
+player_scene = ExtResource("6_11df1")
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 script = ExtResource("9_5xsos")
@@ -125,24 +123,6 @@ offset = Vector2(576, 0)
 
 [node name="Anchor" type="Node2D" parent="."]
 unique_name_in_owner = true
-
-[node name="Player" parent="Anchor" instance=ExtResource("6_11df1")]
-unique_name_in_owner = true
-max_blow_vertical_acceleration = -600.0
-gravity_acceleration = 600.0
-max_vertical_speed = 170.0
-
-[node name="Pop" type="AudioStreamPlayer" parent="Anchor/Player"]
-stream = ExtResource("8_av45r")
-
-[node name="blowing" type="AudioStreamPlayer" parent="Anchor/Player"]
-stream = ExtResource("8_tygi3")
-volume_db = -6.654
-bus = &"SFX"
-
-[node name="deflate" type="AudioStreamPlayer" parent="Anchor/Player"]
-stream = ExtResource("9_twkqo")
-volume_db = -31.066
 
 [node name="Camera2D" type="Camera2D" parent="Anchor"]
 unique_name_in_owner = true

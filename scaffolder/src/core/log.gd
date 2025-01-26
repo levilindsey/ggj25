@@ -12,13 +12,15 @@ func _ready() -> void:
     self.on_global_init(self, "ScaffolderLog")
 
 
-func print(message = "") -> void:
+func print(message = "", print_to_console := true) -> void:
     if !(message is String):
         message = str(message)
 
     _print_queue.push(message)
 
-    print(message)
+    if print_to_console:
+        message = prepend_time(message)
+        print(message)
 
 
 # -   Using this function instead of `push_error` directly enables us to render
@@ -34,8 +36,9 @@ func error(
             S.time.get_play_time() if \
             is_instance_valid(S.time) else \
             -1.0
+    message = prepend_time(message)
     push_error("ERROR:%8.3f; %s" % [play_time, message])
-    self.print("**ERROR**:%8.3f; %s" % [play_time, message])
+    self.print("**ERROR**:%8.3f; %s" % [play_time, message], false)
     if should_assert:
          assert(false)
 
@@ -49,6 +52,7 @@ func error(
 static func static_error(
         message: String,
         should_assert := true) -> void:
+    message = prepend_time(message)
     push_error("ERROR: %s" % message)
     if should_assert:
          assert(false)
@@ -61,8 +65,9 @@ static func static_error(
 #     -   This is needed because stack traces are not available on non-main
 #         threads.
 func warning(message: String) -> void:
+    message = prepend_time(message)
     push_warning("WARNING: %s" % message)
-    self.print("**WARNING**: %s" % message)
+    self.print("**WARNING**: %s" % message, false)
 
 
 func on_global_init(
@@ -100,7 +105,7 @@ func _print_front_matter() -> void:
 # NOTE: Keep this in-sync with the duplicate function in Utils.
 static func get_datetime_string() -> String:
     var datetime := Time.get_datetime_dict_from_system()
-    return "%s-%s-%s_%s.%s.%s" % [
+    return "%02d-%02d-%02d_%02d.%02d.%02d" % [
         datetime.year,
         datetime.month,
         datetime.day,
@@ -108,3 +113,16 @@ static func get_datetime_string() -> String:
         datetime.minute,
         datetime.second,
     ]
+
+
+static func get_time_string() -> String:
+    var datetime := Time.get_datetime_dict_from_system()
+    return "%02d.%02d.%02d" % [
+        datetime.hour,
+        datetime.minute,
+        datetime.second,
+    ]
+
+
+static func prepend_time(message: String) -> String:
+    return "[%s] %s" % [get_time_string(), message]
