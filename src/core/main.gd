@@ -5,8 +5,17 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
-# - Add health HUD UI.
-# - Implement pickups.
+# - Intro animation sequence!!!!
+# - With placeholder textures.
+# - Just apply a small oscillation offset to the inflation sprite index, without actually affecting the underlying inflation value, until lift off threshold happens.
+# - Will need to create quite a few sprites for different bubble inflation sizes
+# - Add support for popping at too big.
+#   - Shade character red before the pop.
+# - Cheat and have bubble size directly relate to the vertical speed.
+# - Find old desaturate shader! And adjust to also apply tint after.
+# - Implement different movement profiles for different bubbles. Super should be bouncy.
+# - THEN art
+#
 # - Make a couple fragments.
 #   - Make them hard.
 #   - Remove the others from the manifest, for now.
@@ -40,6 +49,7 @@ extends Container
 #   - Windblown
 #   - Blow and Go
 #   - Blew Through
+#   - How Blow Can You Go?
 
 
 

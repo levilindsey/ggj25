@@ -6,10 +6,28 @@ extends CharacterBody2D
 @export var initial_vertical_velocity := -75.0
 
 # Pixels per second per second.
-@export var max_blow_vertical_acceleration := -2000.0
+@export var floaty_max_blow_vertical_acceleration := -100.0
+@export var bouncy_max_blow_vertical_acceleration := -2000.0
 
 # Pixels per second per second.
-@export var gravity_acceleration := 400.0
+@export var floaty_gravity_acceleration := 100.0
+@export var bouncy_gravity_acceleration := 400.0
+
+var max_blow_vertical_acceleration: float:
+    get:
+        return (
+            bouncy_max_blow_vertical_acceleration
+            if current_movement_type != BubbleGumPickup.Type.FLOATY
+            else floaty_max_blow_vertical_acceleration
+        )
+
+var gravity_acceleration: float:
+    get:
+        return (
+            bouncy_gravity_acceleration
+            if current_movement_type != BubbleGumPickup.Type.FLOATY
+            else floaty_gravity_acceleration
+        )
 
 # Whole-bubble-inflated per second.
 @export var max_blow_bubble_inflate_speed := 0.3
@@ -46,6 +64,23 @@ var _bubble_inflation := 0.0
 var _velocity := Vector2.ZERO
 
 var health: Array[BubbleGumPickup.Type]
+
+var current_gum_type: BubbleGumPickup.Type:
+    get:
+        if is_super:
+            return BubbleGumPickup.Type.BOUNCY
+        elif not health.is_empty():
+            return health.back()
+        else:
+            return BubbleGumPickup.Type.FLOATY
+
+var current_movement_type: BubbleGumPickup.Type:
+    get:
+        return (
+            BubbleGumPickup.Type.BOUNCY
+            if current_gum_type != BubbleGumPickup.Type.FLOATY
+            else BubbleGumPickup.Type.FLOATY
+        )
 
 var is_invincible := false
 var is_recovering := false
@@ -196,13 +231,10 @@ func _update_gum_type() -> void:
     if is_dead():
         return
 
-    var next_gum_type: BubbleGumPickup.Type = health.back()
     S.log.print("Updating gum type: %s" %
-        BubbleGumPickup.Type.keys()[next_gum_type])
-    # FIXME: LEFT OFF HERE:
-    # - Change bubble color.
-    # - Change movement params.
-    match next_gum_type:
+        BubbleGumPickup.Type.keys()[current_gum_type])
+    # FIXME: Change bubble color.
+    match current_gum_type:
         BubbleGumPickup.Type.FLOATY:
             pass
         BubbleGumPickup.Type.BOUNCY:
