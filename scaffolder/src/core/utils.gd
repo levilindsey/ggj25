@@ -620,3 +620,26 @@ static func get_type_string(type: int) -> String:
         _:
             S.log.error("Utils.get_type_string: %d" % type)
             return ""
+
+
+func get_display_text(object: Variant) -> String:
+    var path: String
+    if object is String:
+        path = object
+    elif object is Object:
+        if "scene_file_path" in object:
+            path = object.scene_file_path
+        elif "resource_path" in object:
+            path = object.resource_path
+
+    if path.is_empty():
+        return "%s" % object
+
+    var regex := RegEx.new()
+    regex.compile(r'([a-zA-Z0-9_ \-]*)\.[a-zA-Z0-9_]*$')
+    var result := regex.search(path)
+
+    if result == null:
+        return path
+
+    return result.get_string(1)

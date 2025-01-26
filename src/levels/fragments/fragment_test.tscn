@@ -9,21 +9,24 @@
 
 [node name="FragmentTest" type="Node2D"]
 script = ExtResource("1_rld7u")
-width = 1024
-
-[node name="FloatingObstacle" parent="." instance=ExtResource("2_fmdtu")]
-position = Vector2(-460, -1)
+width = 800
 
 [node name="SidewaysObstacle" parent="." instance=ExtResource("3_pbg5u")]
-position = Vector2(-180, -104)
+position = Vector2(290, 70)
 speed = 40.0
 
+[node name="FloatingObstacle" parent="." instance=ExtResource("2_fmdtu")]
+position = Vector2(101, -107)
+
+[node name="FloatingObstacle2" parent="." instance=ExtResource("2_fmdtu")]
+position = Vector2(172, -42)
+
 [node name="UpAndDownObstacle" parent="." instance=ExtResource("4_kgadk")]
-position = Vector2(-98, -25)
+position = Vector2(-46, -25)
 vertical_range = 256
 
 [node name="StandingShortObstacle" parent="." instance=ExtResource("5_gt2fg")]
-position = Vector2(-347, 115)
+position = Vector2(-295, 115)
 
 [node name="StandingTallObstacle" parent="." instance=ExtResource("6_xxhfw")]
-position = Vector2(-217, 68)
+position = Vector2(-165, 68)

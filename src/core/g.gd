@@ -7,13 +7,12 @@ extends Node
 ##     Scaffolder module.
 
 
-const OBSTACLE_SPRITE_MANIFEST := preload("res://src/levels/obstacles/obstacle_sprite_manifest.tres")
-
 var main: Main
 var super_hud: SuperHud
 var mic: MicHandler
 var session: GameSession
 var level: MainLevel
+var fragment_spawner: FragmentSpawner
 var player: Player
 
 

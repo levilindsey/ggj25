@@ -38,15 +38,32 @@ extends Container
 #     - Then, the spawner can think about the piece of difficult fragments.
 #     - And the spawner can think about what content for the current phase of the run.
 #     - Make some bits of content seriously to support re using fragments across phases?
-#   - Moving enemies:
-#       - Have then also be hand encoded within fragments.
-#       - Have one move straight forward slightly faster than the surrounding blocks.
-#       - Have one oscillate up and down at a constant x coordinate.
-#       - Is that it?
-# - Add a UI widget for clicking a button when they pop the bubble by blowing.
-#   - Use this to start a new run from the game-over screen.
-#   - Use a shared utility for tracking ballon inflation for the initial
-#     take-off when starting a level.
+# - ART:
+#   - Player:
+#     - Player standing at start
+#     - Player floating
+#     - Bubble at different sizes
+#       - Hook-up bubble inflation controls.
+#   - Nature:
+#     -
+#   - Urban:
+#     -
+#   - Misc:
+#     - Bubble inflation widget for restarting level.
+#       - Hook-up bubble inflation controls and widget activation.
+#         - OLD NOTES: Add a UI widget for clicking a button when they pop the bubble by blowing.
+#            - Use this to start a new run from the game-over screen.
+#            - Use a shared utility for tracking ballon inflation for the initial
+#              take-off when starting a level.
+#   - Taken-damage animation.
+#   - Death animation.
+#   - Intro animation.
+# - Name ideas:
+#   - You Blew It
+#   - Blown Away
+#   - Blow Me
+#   - Windblown
+#   - Blow and Go
 
 
 enum ObstacleType {

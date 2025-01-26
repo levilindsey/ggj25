@@ -12,7 +12,7 @@ const DEBUG_LINE_COLOR := Color("purple", 0.4)
         speed = value
         queue_redraw()
 
-@export var start_moving_at_player_distance := 200.0:
+@export var start_moving_at_player_distance := 500.0:
     set(value):
         start_moving_at_player_distance = value
         if is_instance_valid(%PlayerInRangeShape):

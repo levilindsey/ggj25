@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvq5jrbjneokb"]
+
+[ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_kbhs0"]
+
+[node name="Fragment4" type="Node2D"]
+script = ExtResource("1_kbhs0")

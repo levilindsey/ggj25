@@ -7,9 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://du63p25gpg7t7" path="res://src/levels/obstacles/instances/standing_short_obstacle.tscn" id="5_yvf6c"]
 [ext_resource type="PackedScene" uid="uid://cvnvhlldg5qgv" path="res://src/levels/obstacles/instances/standing_tall_obstacle.tscn" id="6_xnk8g"]
 
-[node name="FragmentTest" type="Node2D"]
+[node name="FragmentStart" type="Node2D"]
 script = ExtResource("1_pqalh")
-width = 1024
 
 [node name="FloatingObstacle" parent="." instance=ExtResource("2_144iu")]
 
@@ -18,5 +17,6 @@ width = 1024
 [node name="UpAndDownObstacle" parent="." instance=ExtResource("4_6m7cb")]
 
 [node name="StandingShortObstacle" parent="." instance=ExtResource("5_yvf6c")]
+position = Vector2(0, 115)
 
 [node name="StandingTallObstacle" parent="." instance=ExtResource("6_xnk8g")]

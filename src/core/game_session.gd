@@ -29,6 +29,7 @@ func _init() -> void:
 
 
 func reset() -> void:
+    randomize()
     start_time = 0.0
     end_time = 0.0
     distance = 0.0

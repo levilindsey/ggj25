@@ -6,13 +6,17 @@ const GAME_OVER_SCREEN_DELAY := 2.0
 
 const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
-@export var horizontal_speed := 40
+@export var horizontal_speed := 80
 
 
 func _ready() -> void:
     G.level = self
+
     _update_zoom()
     get_tree().get_root().size_changed.connect(_update_zoom)
+
+    var fragment_spawner := FragmentSpawner.new()
+    add_child(fragment_spawner)
 
 
 func start() -> void:

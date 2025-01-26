@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
         max_blow_bubble_inflate_speed,
         blow_weight)
     _bubble_inflation += inflation_speed * delta
-    _bubble_inflation = clamp(_bubble_inflation, 0.0, 1.0)
+    _bubble_inflation = clampf(_bubble_inflation, 0, 1)
 
     # Update speed.
     var acceleration: float = lerp(
@@ -95,7 +95,7 @@ func _physics_process(delta: float) -> void:
         gravity_acceleration,
         1 - blow_weight)
     _velocity.y += acceleration * delta
-    _velocity.y = clamp(_velocity.y, -max_vertical_speed, max_vertical_speed)
+    _velocity.y = clampf(_velocity.y, -max_vertical_speed, max_vertical_speed)
 
     # Update position.
     position.y += _velocity.y * delta

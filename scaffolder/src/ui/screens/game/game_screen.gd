@@ -20,7 +20,7 @@ func start(level_scene: PackedScene) -> void:
 
     S.audio.play_sfx("level_start")
 
-    S.log.print("Level started: %s" % level_scene)
+    S.log.print("Level started: %s" % S.utils.get_display_text(level_scene))
 
 
 func on_level_ended() -> void:

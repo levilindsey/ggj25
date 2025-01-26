@@ -84,7 +84,8 @@ func _move_screen_to_top(screen_name: String) -> void:
 
 
 func close(screen_node_or_name) -> bool:
-    S.log.print("ScreenHandler.close( %s )" % screen_node_or_name)
+    var display_text := S.utils.get_display_text(screen_node_or_name)
+    S.log.print("ScreenHandler.close( %s )" % display_text)
 
     var screen_entry: ActiveScreen
     if screen_node_or_name is String:
@@ -113,7 +114,7 @@ func close(screen_node_or_name) -> bool:
 
         return true
 
-    S.log.print("Screen not open: %s" % screen_node_or_name)
+    S.log.print("Screen not open: %s" % display_text)
 
     return false
 

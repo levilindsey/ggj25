@@ -22,20 +22,23 @@ func _ready() -> void:
 
 
 func update_content() -> void:
+    if not is_instance_valid(S) or not is_instance_valid(S.manifest):
+        return
+
     if is_instance_valid(_sprite):
         _sprite.queue_free()
 
     match [type, environment_type]:
         [Main.ObstacleType.FLOATING, Main.EnvironmentType.NATURE]:
-            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.cloud)
+            _update_content_helper(S.manifest.obstacle_cloud)
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.NATURE]:
-            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.dragonfly)
+            _update_content_helper(S.manifest.obstacle_dragonfly)
         [Main.ObstacleType.UP_AND_DOWN, Main.EnvironmentType.NATURE]:
-            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.bird)
+            _update_content_helper(S.manifest.obstacle_bird)
         [Main.ObstacleType.STANDING_SHORT, Main.EnvironmentType.NATURE]:
-            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.tree_short)
+            _update_content_helper(S.manifest.obstacle_tree_short)
         [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.NATURE]:
-            _update_content_helper(Game.OBSTACLE_SPRITE_MANIFEST.tree_tall)
+            _update_content_helper(S.manifest.obstacle_tree_tall)
         _:
             S.utils.ensure(
                 false,

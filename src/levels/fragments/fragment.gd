@@ -4,6 +4,12 @@ class_name Fragment
 extends Node2D
 
 
+enum FragmentSeamType {
+    OPEN,
+    CLOSED_TOP,
+    CLOSED_BOTTOM,
+}
+
 const HEIGHT := 324
 
 const DEBUG_LINE_WIDTH := 6.0
@@ -18,6 +24,17 @@ const DEBUG_LINE_COLOR := Color("orange", 0.4)
         width = value
         queue_redraw()
 
+var size: Vector2:
+    get:
+        return Vector2(width, HEIGHT)
+
+var bounds: Rect2:
+    get:
+        return Rect2(
+            position - size / 2.0,
+            size
+        )
+
 
 func _ready() -> void:
     queue_redraw()
@@ -27,7 +44,7 @@ func _draw() -> void:
     if not Engine.is_editor_hint() and not S.manifest.dev_mode:
         return
 
-    var extents := Vector2(width, HEIGHT) / 2
+    var extents := size / 2
 
     var top_left_corner := Vector2(-extents.x, -extents.y)
     var top_right_corner := Vector2(extents.x, -extents.y)

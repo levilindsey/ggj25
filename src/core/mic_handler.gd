@@ -17,8 +17,6 @@ const MIC_PRINT_PERIOD := 0.3
 
 const NO_DEVICE_DETECTED_CONSECUTIVE_ZERO_MAGNITUDE_FRAME_COUNT_THRESHOLD := 8
 
-var log_mic_debugging := true
-
 var spectrum: AudioEffectSpectrumAnalyzerInstance
 
 var _throttled_sample: Callable
@@ -72,6 +70,7 @@ func _sample_throttled() -> void:
 
 
 func _print_throttled() -> void:
+    if S.manifest.log_mic_debugging:
         S.log.print("Current mic magnitude (throttled): %.5f (%.2f)" %
             [latest_magnitude, get_blow_weight()])
 
@@ -80,5 +79,5 @@ func _print_throttled() -> void:
 func get_blow_weight() -> float:
     var lower_threshold := S.settings.mic_magnitude_lower_threshold
     var upper_threshold := S.settings.mic_magnitude_upper_threshold
-    var magnitude: float = clamp(latest_magnitude, lower_threshold, upper_threshold)
+    var magnitude: float = clampf(latest_magnitude, lower_threshold, upper_threshold)
     return (magnitude - lower_threshold) / (upper_threshold - lower_threshold)

@@ -252,7 +252,7 @@ class _SubTween extends RefCounted:
         var elapsed_time := current_time - start_time
         if elapsed_time < delay:
             return
-        progress = clamp(
+        progress = clampf(
             (elapsed_time - delay) / duration,
             0,
             1)

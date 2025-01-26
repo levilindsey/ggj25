@@ -7,6 +7,8 @@ extends Resource
 
 @export var pauses_on_focus_out := true
 
+@export var log_mic_debugging := false
+
 @export var dev_mode_level := preload("res://src/levels/main_level.tscn")
 @export var main_level := preload("res://src/levels/main_level.tscn")
 
@@ -25,6 +27,17 @@ extends Resource
     unpause = preload("res://scaffolder/assets/sfx/unpause.tres"),
     widget_click = preload("res://scaffolder/assets/sfx/menu_click.tres"),
 }
+
+@export var start_fragment: FragmentConfig
+@export var fragments: Array[FragmentConfig]
+
+@export_group("Obstacle sprites")
+@export var obstacle_tree_short: PackedScene
+@export var obstacle_tree_tall: PackedScene
+@export var obstacle_bird: PackedScene
+@export var obstacle_cloud: PackedScene
+@export var obstacle_dragonfly: PackedScene
+@export_group("")
 
 var initial_screen: String:
     get:

@@ -2,7 +2,7 @@ class_name ScaffolderLog
 extends Node
 
 
-var logs_early_bootstrap_events := true
+var logs_early_bootstrap_events := false
 
 var _print_queue := CircularBuffer.new(200)
 
