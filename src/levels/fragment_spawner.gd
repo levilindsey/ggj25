@@ -62,7 +62,7 @@ func _bucketize_fragments() -> void:
 
 
 func _process(_delta: float) -> void:
-    var player_position_x := G.player.position.x
+    var player_position_x := G.player.global_position.x
     # Check for transitions to the next fragment.
     var is_past_current_fragment := player_position_x > _current_fragment.bounds.end.x
     var is_past_next_fragment := (
@@ -101,12 +101,8 @@ func _spawn_start_fragment() -> void:
 
 
 func _spawn_next_fragment() -> void:
-    S.utils.ensure(
-        not is_instance_valid(_next_fragment),
-        "Current fragment is not wider than the next-fragment-spawn-distance: %s %s" % [
-                S.utils.get_display_text(_current_fragment),
-                NEW_FRAGMENT_DISTANCE_FROM_PLAYER_SPAWN_THRESHELD,
-            ])
+    if is_instance_valid(_next_fragment):
+        return
 
     var config := _select_next_fragment()
 
@@ -115,7 +111,7 @@ func _spawn_next_fragment() -> void:
 
     _next_fragment = config.scene.instantiate()
     _next_fragment.position.x = (
-        _current_fragment.bounds.end.x + _next_fragment.width)
+        _current_fragment.bounds.end.x + _next_fragment.width / 2.0)
     add_child(_next_fragment)
     _fragment_count += 1
 
@@ -164,7 +160,8 @@ func _select_next_fragment() -> FragmentConfig:
 
     var bucket_index := clampi(basis_index + index_delta, 0, bucket_count - 1)
 
-    var bucket: Array[FragmentConfig] = fragment_difficulty_buckets[bucket_index]
+    # Array[FragmentConfig]
+    var bucket: Array = fragment_difficulty_buckets[bucket_index]
     var config_index := randi_range(0, bucket.size() - 1)
 
     return bucket[config_index]
