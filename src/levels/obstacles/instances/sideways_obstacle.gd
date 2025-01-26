@@ -26,10 +26,10 @@ func _ready() -> void:
     queue_redraw()
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
     if not _is_moving:
         return
-    position.x -= speed * _delta
+    position.x -= speed * delta
 
 
 func _draw() -> void:

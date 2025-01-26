@@ -6,7 +6,8 @@ extends Node2D
 
 const HEIGHT := 324
 
-const DEBUG_LINE_WIDTH := 4.0
+const DEBUG_LINE_WIDTH := 6.0
+const DEBUG_BORDER_WIDTH := 1.0
 const DEBUG_LINE_LENGTH := 40.0
 const DEBUG_LINE_COLOR := Color("orange", 0.4)
 
@@ -58,6 +59,14 @@ func _draw() -> void:
             bottom_right_corner - debug_line_horizontal_span,
         ],
     ]
-
     for points in corner_points:
         draw_polyline(points, DEBUG_LINE_COLOR, DEBUG_LINE_WIDTH)
+
+    var border_points := [
+        top_left_corner,
+        top_right_corner,
+        bottom_right_corner,
+        bottom_left_corner,
+        top_left_corner,
+    ]
+    draw_polyline(border_points, DEBUG_LINE_COLOR, DEBUG_BORDER_WIDTH)

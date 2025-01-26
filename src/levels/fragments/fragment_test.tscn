@@ -19,13 +19,11 @@ position = Vector2(-180, -104)
 speed = 40.0
 
 [node name="UpAndDownObstacle" parent="." instance=ExtResource("4_kgadk")]
-position = Vector2(-97, -2)
+position = Vector2(-98, -25)
 vertical_range = 256
-oscillation_period = 3.0
-goes_up_first = null
 
 [node name="StandingShortObstacle" parent="." instance=ExtResource("5_gt2fg")]
-position = Vector2(-336, 142)
+position = Vector2(-347, 115)
 
 [node name="StandingTallObstacle" parent="." instance=ExtResource("6_xxhfw")]
-position = Vector2(-180, 120)
+position = Vector2(-217, 68)

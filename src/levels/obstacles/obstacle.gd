@@ -49,6 +49,14 @@ func _update_content_helper(sprite_scene: PackedScene) -> void:
     move_child(_sprite, 0)
 
 
+func _snap_to_ground() -> void:
+    var half_height: float = %CollisionShape2D.shape.get_rect().size.y / 2.0
+    if not Engine.is_editor_hint() and is_instance_valid(G.level):
+        position.y = G.level.get_lower_bound() - half_height
+    elif Engine.is_editor_hint():
+        position.y = Fragment.HEIGHT / 2.0 - half_height
+
+
 func _on_body_collided(body: Node2D) -> void:
     if not S.utils.ensure(body is Player):
         return

@@ -6,7 +6,7 @@ const GAME_OVER_SCREEN_DELAY := 2.0
 
 const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
-var horizontal_speed := 20
+@export var horizontal_speed := 40
 
 
 func _ready() -> void:
@@ -36,11 +36,11 @@ func _update_zoom() -> void:
     %Camera2D.zoom = Vector2.ONE * zoom
 
 
-func get_player_lower_bound() -> float:
+func get_lower_bound() -> float:
     return %PlayerLowerBound.position.y
 
 
-func get_player_upper_bound() -> float:
+func get_upper_bound() -> float:
     return %PlayerUpperBound.position.y
 
 

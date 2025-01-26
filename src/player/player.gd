@@ -54,7 +54,7 @@ func _ready() -> void:
     _velocity.y = initial_vertical_velocity
     _health = initial_health
     _start_invincibility(level_start_invincibility_duration)
-        
+
 
 func _process(delta: float) -> void:
     var weight := G.mic.get_blow_weight()
@@ -73,7 +73,7 @@ func fade_out_and_stop(player: AudioStreamPlayer) -> void:
         timer += get_process_delta_time()
         player.volume_linear = lerp(initial_volume, 0.0, timer / fade_duration)
         await get_tree().process_frame
-    
+
     player.stop()
     player.volume_linear = 0
 
@@ -102,8 +102,8 @@ func _physics_process(delta: float) -> void:
 
     var bounds := get_bounds()
     var extents := bounds.size / 2.0
-    var min_y := G.level.get_player_upper_bound() + extents.y
-    var max_y := G.level.get_player_lower_bound() - extents.y
+    var min_y := G.level.get_upper_bound() + extents.y
+    var max_y := G.level.get_lower_bound() - extents.y
     if position.y < min_y:
         position.y = min_y
         _velocity.y = 0.0
