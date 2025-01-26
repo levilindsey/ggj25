@@ -54,24 +54,11 @@ func _ready() -> void:
     _velocity.y = initial_vertical_velocity
     _health = initial_health
     _start_invincibility(level_start_invincibility_duration)
-
-
-func _process(delta: float) -> void:
-    # [0,1]
-    var weight := G.mic.get_blow_weight()
-    if weight > 0.25 and !$blowing.is_playing():
-        $blowing.play()
-        $blowing.volume_linear = weight
-    elif weight < 0.15 and !$deflate.is_playing():
-        $deflate.play()
-    elif weight > 0.2 and $deflate.is_playing():
-        $deflate.stop()
         
 
 func _process(delta: float) -> void:
     var weight := G.mic.get_blow_weight()
     $blowing.volume_linear = lerp($blowing.volume_linear, weight, 5 * delta)
-    print($blowing.volume_linear)
     if weight > 0.25 and not $blowing.is_playing():
         $blowing.play()
     elif weight < 0.1 and $blowing.is_playing():

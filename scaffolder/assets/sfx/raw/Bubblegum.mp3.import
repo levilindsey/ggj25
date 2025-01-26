@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://cfpn00464orsa"
-path="res://.godot/imported/Bubblegum.mp3-b53737e8d79450612c7ef24e7f15e8ca.mp3str"
+path="res://.godot/imported/bubblegum.mp3-2b8a941dafa7c688665b687d62ca7d0c.mp3str"
 
 [deps]
 
-source_file="res://scaffolder/assets/sfx/raw/Bubblegum.mp3"
-dest_files=["res://.godot/imported/Bubblegum.mp3-b53737e8d79450612c7ef24e7f15e8ca.mp3str"]
+source_file="res://scaffolder/assets/sfx/raw/bubblegum.mp3"
+dest_files=["res://.godot/imported/bubblegum.mp3-2b8a941dafa7c688665b687d62ca7d0c.mp3str"]
 
 [params]
 
