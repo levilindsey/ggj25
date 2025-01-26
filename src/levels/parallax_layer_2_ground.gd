@@ -1,12 +1,8 @@
 extends ParallaxLayer
 
-@export var cloud_speed: float =0
 @onready var canvas_group = $"."  # Replace with the actual path to your CanvasGroup
-
 @onready var fade_length = $"..".background1_fade_length
-@onready var time_to_fade = $"..".background1_fade_out -5.0
-
-
+@onready var time_to_fade = $"..".background1_fade_out
 
 var fade_started = false
 var elapsed_time = 0.0
@@ -15,8 +11,6 @@ func _ready() -> void:
     modulate.a = 1.0
 
 func _process(delta: float) -> void:
-    motion_offset.x += cloud_speed
-
     # Track elapsed game time
     elapsed_time += delta
 

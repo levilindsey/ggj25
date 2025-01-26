@@ -1,31 +1,21 @@
-extends ParallaxLayer
-
-@export var cloud_speed: float =0
-@onready var canvas_group = $"."  # Replace with the actual path to your CanvasGroup
-
-@onready var fade_length = $"..".background1_fade_length
-@onready var time_to_fade = $"..".background1_fade_out -5.0
+extends CanvasGroup
 
 
+@onready var canvas_group = $"."
 
 var fade_started = false
 var elapsed_time = 0.0
 
-func _ready() -> void:
-    modulate.a = 1.0
-
 func _process(delta: float) -> void:
-    motion_offset.x += cloud_speed
-
     # Track elapsed game time
     elapsed_time += delta
 
     # Start fading after 15 seconds
-    if elapsed_time >= time_to_fade and not fade_started:
+    if elapsed_time >= 5.0 and not fade_started:
         fade_started = true
-        fade_background(canvas_group, 0.0, fade_length)  # Fade to 0 opacity over 10 seconds
+        fade_background(canvas_group, 0.0, 50.0)  # Fade to 0 opacity over 10 seconds
 
-func fade_background(canvas_group: ParallaxLayer, target_opacity: float, duration: float) -> void:
+func fade_background(canvas_group: CanvasGroup, target_opacity: float, duration: float) -> void:
     var timer = 0.0
     var initial_opacity = canvas_group.modulate.a
 
