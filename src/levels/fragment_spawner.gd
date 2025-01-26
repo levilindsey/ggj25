@@ -4,8 +4,6 @@ extends Node2D
 
 signal entered_fragment
 
-const FRAGMENT_COUNT_TO_MAX_DIFFICULTY := 10
-
 const NEW_FRAGMENT_DISTANCE_FROM_PLAYER_SPAWN_THRESHELD := 500.0
 const OLD_FRAGMENT_DISTANCE_FROM_PLAYER_DESPAWN_THRESHELD := 300.0
 
@@ -21,6 +19,8 @@ var _next_fragment: Fragment
 var previous_fragment_environment: Main.EnvironmentType
 var current_fragment_environment: Main.EnvironmentType
 var next_fragment_environment: Main.EnvironmentType
+
+var time_to_next_fragment: float = INF
 
 
 func _ready() -> void:
@@ -97,6 +97,16 @@ func _process(_delta: float) -> void:
         if is_far_enough_from_start_of_current_fragment:
             _despawn_previous_fragment()
 
+    # Estimate the time until the next fragment.
+    if is_instance_valid(_next_fragment):
+        var distance_to_next_fragment := (
+            _next_fragment.bounds.position.x - player_position_x)
+        time_to_next_fragment = (
+            distance_to_next_fragment /
+            (G.level.horizontal_speed * S.time.get_combined_scale()))
+    else:
+        time_to_next_fragment = INF
+
 
 func _spawn_start_fragment() -> void:
     var config := S.manifest.start_fragment
@@ -113,8 +123,9 @@ func _spawn_next_fragment() -> void:
 
     var config := _select_next_fragment()
 
-    S.log.print("Spawning next fragment: %s" %
-        S.utils.get_display_text(config.scene))
+    if S.manifest.log_fragment_updates:
+        S.log.print("Spawning next fragment: %s" %
+            S.utils.get_display_text(config.scene))
 
     _next_fragment = config.scene.instantiate()
     _next_fragment.position.x = (
@@ -125,8 +136,9 @@ func _spawn_next_fragment() -> void:
 
 
 func _transition_to_next_fragment() -> void:
-    S.log.print("Player entered next fragment: %s" %
-        S.utils.get_display_text(_next_fragment))
+    if S.manifest.log_fragment_updates:
+        S.log.print("Player entered next fragment: %s" %
+            S.utils.get_display_text(_next_fragment))
 
     _despawn_previous_fragment()
     _previous_fragment = _current_fragment
@@ -143,15 +155,16 @@ func _despawn_previous_fragment() -> void:
     if not is_instance_valid(_previous_fragment):
         return
 
-    S.log.print("Despawning previous fragment: %s" %
-        S.utils.get_display_text(_previous_fragment))
+    if S.manifest.log_fragment_updates:
+        S.log.print("Despawning previous fragment: %s" %
+            S.utils.get_display_text(_previous_fragment))
 
     _previous_fragment.queue_free()
     _previous_fragment = null
 
 
 func _select_next_fragment() -> FragmentConfig:
-    var difficulty_weight := _fragment_count / FRAGMENT_COUNT_TO_MAX_DIFFICULTY
+    var difficulty_weight := G.session.play_time / S.manifest.time_to_max_fragment_difficulty
     difficulty_weight = clampf(difficulty_weight, 0.0, 1.0)
 
     var bucket_count := fragment_difficulty_buckets.size()

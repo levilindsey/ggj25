@@ -6,6 +6,8 @@ signal entered_new_environment(
     new: Main.EnvironmentType,
     old: Main.EnvironmentType)
 
+const TIME_SCALE_UPDATE_INTERVAL := 4.0
+
 const GAME_OVER_SCREEN_DELAY := 2.0
 
 const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
@@ -27,12 +29,23 @@ func _ready() -> void:
 
     fragment_spawner.entered_fragment.connect(_on_entered_fragment)
 
+    S.time.set_interval(_update_time_scale, TIME_SCALE_UPDATE_INTERVAL)
+
+
+func _update_time_scale() -> void:
+    var weight := G.session.play_time / S.manifest.time_to_max_time_scale
+    weight = clampf(weight, 0, 1)
+    S.time.time_scale = lerp(1.0, S.manifest.max_time_scale, weight)
+    if S.manifest.log_time_scale_updates:
+        S.log.print("Updating time scale: %.3f" % S.time.time_scale)
+
 
 func _on_entered_fragment() -> void:
     if (G.fragment_spawner.current_fragment_environment !=
             G.fragment_spawner.previous_fragment_environment):
-        S.log.print("Entered new environment: %s" %
-            G.fragment_spawner.current_fragment_environment)
+        if S.manifest.log_fragment_updates:
+            S.log.print("Entered new environment: %s" %
+                G.fragment_spawner.current_fragment_environment)
         entered_new_environment.emit(
             G.fragment_spawner.current_fragment_environment,
             G.fragment_spawner.previous_fragment_environment)
@@ -47,7 +60,7 @@ func start() -> void:
 func _physics_process(delta: float) -> void:
     if not is_game_active:
         return
-    %Anchor.position.x += horizontal_speed * delta
+    %Anchor.position.x += horizontal_speed * S.time.scale_delta(delta)
     G.session.distance = %Anchor.position.x
 
 

@@ -29,7 +29,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
     if not _is_moving:
         return
-    position.x -= speed * delta
+    position.x -= speed * S.time.scale_delta(delta)
 
 
 func _draw() -> void:

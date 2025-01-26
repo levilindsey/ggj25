@@ -9,7 +9,7 @@ var end_time: float
 var distance: float
 var pickups: int
 
-var play_time: int:
+var play_time: float:
     get:
         if start_time > 0:
             if end_time > 0:

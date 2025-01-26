@@ -79,6 +79,7 @@ func fade_out_and_stop(player: AudioStreamPlayer) -> void:
 
 
 func _physics_process(delta: float) -> void:
+    delta = S.time.scale_delta(delta)
     var blow_weight := G.mic.get_blow_weight() if not is_dead() else 0.0
 
     # Update inflation.

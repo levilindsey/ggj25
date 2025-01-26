@@ -5,8 +5,8 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
-# - Fix pausing.
 # - Add time scaling.
+# - Fix player respawn when starting a new run.
 # - Implement pickups.
 # - Make a couple fragments.
 #   - Make them hard.

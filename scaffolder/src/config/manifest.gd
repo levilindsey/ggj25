@@ -2,16 +2,28 @@ class_name Manifest
 extends Resource
 
 
-@export var time_to_max_difficulty: float = 5 * 60
+## We choose more difficult fragments as time goes on.
+@export var time_to_max_fragment_difficulty: float = 5 * 60
 
+## The frame rate speeds up as time goes on.
+@export var time_to_max_time_scale: float = 20 * 60
+
+## We change the environment (background and sprite textures) as time goes on.
 @export var environment_change_interval: float = 5
+
+## This speeds up the frame rate (makes everything faster!).
+@export var max_time_scale: float = 3.0
 
 @export var dev_mode := true
 @export var skip_main_menu_in_dev_mode := false
 
 @export var pauses_on_focus_out := true
 
+@export_group("Logging")
+@export var log_fragment_updates := false
+@export var log_time_scale_updates := false
 @export var log_mic_debugging := false
+@export_group("")
 
 @export var dev_mode_level := preload("res://src/levels/main_level.tscn")
 @export var main_level := preload("res://src/levels/main_level.tscn")

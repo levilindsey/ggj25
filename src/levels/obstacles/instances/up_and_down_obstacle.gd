@@ -27,13 +27,13 @@ func _ready() -> void:
         return
 
     _start_position = position
-    _start_time = S.time.get_play_time()
+    _start_time = S.time.get_scaled_play_time()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     if Engine.is_editor_hint():
         return
-    var current_time := S.time.get_play_time()
+    var current_time := S.time.get_scaled_play_time()
     var progress := fmod(current_time - _start_time, oscillation_period) / oscillation_period
     var vertical_delta := sin(progress * TAU) * vertical_range / 2.0
     position.y = _start_position.y - vertical_delta

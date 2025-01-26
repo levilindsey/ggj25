@@ -27,5 +27,5 @@ canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
 physics_object_picking = true
 physics_object_picking_sort = true
-size = Vector2i(1152, 648)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
