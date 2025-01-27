@@ -39,9 +39,12 @@ var bounds: Rect2:
 func _ready() -> void:
     queue_redraw()
 
+
+func update_content() -> void:
     for child in get_children():
         if child is Obstacle:
             child.environment_type = environment_type
+            child.update_content()
 
 
 func _draw() -> void:

@@ -114,6 +114,7 @@ func _spawn_start_fragment() -> void:
     _current_fragment.environment_type = G.environment_scheduler.current_environment
     #_current_fragment.position.x = _current_fragment.width / 2.0
     add_child(_current_fragment)
+    _current_fragment.update_content()
     _fragment_count += 1
     current_fragment_environment = S.manifest.environment_sequence[0]
 
@@ -133,6 +134,7 @@ func _spawn_next_fragment() -> void:
     _next_fragment.position.x = (
         _current_fragment.bounds.end.x + _next_fragment.width / 2.0)
     add_child(_next_fragment)
+    _next_fragment.update_content()
     _fragment_count += 1
     next_fragment_environment = G.environment_scheduler.current_environment
 

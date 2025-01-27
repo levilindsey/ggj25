@@ -13,5 +13,5 @@ position = Vector2(0, 125)
 texture = ExtResource("5_gsffr")
 
 [node name="SidewaysObstacle" parent="." instance=ExtResource("3_5tq0b")]
-position = Vector2(464, -104)
+position = Vector2(107, -21)
 speed = 40.0
