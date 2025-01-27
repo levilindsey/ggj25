@@ -60,8 +60,6 @@ text = "Play Again"
 
 [node name="InflationTrigger" parent="CenterContainer/VBoxContainer" instance=ExtResource("5_hfhby")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="TopBar" parent="." instance=ExtResource("5_v4snt")]
 layout_mode = 2

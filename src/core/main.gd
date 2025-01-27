@@ -5,6 +5,8 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
+# - Fix pause button.
+#
 # - Bubble inflation widget for restarting level.
 #   - Hook-up bubble inflation controls and widget activation.
 #     - OLD NOTES: Add a UI widget for clicking a button when they pop the bubble by blowing.

@@ -19,6 +19,7 @@ script = ExtResource("1_jobw0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -39,6 +40,7 @@ mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
@@ -60,6 +62,7 @@ mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -81,6 +84,7 @@ master_texture = ExtResource("4_aujnh")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -91,5 +95,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+mouse_filter = 2
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/Pause" to="." method="_on_pause_pressed"]

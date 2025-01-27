@@ -25,6 +25,7 @@ theme_override_constants/separation = 20
 
 [node name="BlowIndicator" parent="HBoxContainer" instance=ExtResource("2_otevn")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Spacer" type="Control" parent="HBoxContainer"]
 layout_mode = 2

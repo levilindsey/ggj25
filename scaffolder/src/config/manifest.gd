@@ -63,6 +63,7 @@ extends Resource
 
 var initial_screen: String:
     get:
+        #return "game_over_screen"
         return "game_screen"
         #return (
             #"game_screen"

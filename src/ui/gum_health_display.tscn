@@ -10,6 +10,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 24.0
 offset_bottom = 24.0
+mouse_filter = 2
 script = ExtResource("1_bipt8")
 inner_scale = 4.0
 floaty_gum_texture = ExtResource("2_ssflk")
@@ -23,8 +24,10 @@ scale = Vector2(4, 4)
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 
 [node name="ActiveBorder" type="TextureRect" parent="InnerWrapper"]
 offset_right = 24.0
 offset_bottom = 24.0
+mouse_filter = 2
 texture = ExtResource("2_316a0")

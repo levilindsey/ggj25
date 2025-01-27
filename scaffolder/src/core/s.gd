@@ -92,4 +92,4 @@ func _on_loaded() -> void:
     if S.log.logs_early_bootstrap_events:
         S.log.print("S.loaded")
     loaded.emit()
-    audio.play_sfx("game_load")
+    #audio.play_sfx("game_load")

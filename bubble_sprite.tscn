@@ -190,7 +190,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_erwiu")
 }],
-"loop": true,
+"loop": false,
 "name": &"inflate_bouncy",
 "speed": 5.0
 }, {
@@ -254,9 +254,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iwllv")
 }],
-"loop": true,
+"loop": false,
 "name": &"pop_bouncy",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -276,10 +276,10 @@ animations = [{
 }],
 "loop": false,
 "name": &"pop_floaty",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [node name="BubbleSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_o822w")
-animation = &"inflate_floaty"
+animation = &"pop_floaty"
 script = ExtResource("2_p31hq")

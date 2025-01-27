@@ -33,10 +33,10 @@
 [ext_resource type="AudioStream" uid="uid://dre3xa4dff13l" path="res://scaffolder/assets/sfx/level_failure.tres" id="15_khe4v"]
 [ext_resource type="AudioStream" uid="uid://bdcxfq7hd0iak" path="res://scaffolder/assets/sfx/pause.tres" id="16_4bhqj"]
 [ext_resource type="AudioStream" uid="uid://coe3qd5rsfkhp" path="res://scaffolder/assets/sfx/unpause.tres" id="17_3gob2"]
-[ext_resource type="AudioStream" uid="uid://d4buaef6wotn2" path="res://scaffolder/assets/sfx/menu_click.tres" id="18_8hoe7"]
 [ext_resource type="PackedScene" uid="uid://yhk04lta674g" path="res://src/obstacles/sprites/nature/ufo.tscn" id="19_72khu"]
 [ext_resource type="Script" uid="uid://da8hpd5e11wvx" path="res://src/levels/fragments/fragment_config.gd" id="25_lx0xc"]
 [ext_resource type="PackedScene" uid="uid://dpor57x24rddo" path="res://src/levels/fragments/fragment_start.tscn" id="26_x2iix"]
+[ext_resource type="AudioStream" uid="uid://dv5gjawwa3tto" path="res://scaffolder/assets/sfx/pop.tres" id="36_hm6qt"]
 
 [sub_resource type="Resource" id="Resource_nkort"]
 script = ExtResource("1_iqjv3")
@@ -196,7 +196,7 @@ sfxs = Dictionary[String, AudioStream]({
 "level_success": ExtResource("14_etdav"),
 "pause": ExtResource("16_4bhqj"),
 "unpause": ExtResource("17_3gob2"),
-"widget_click": ExtResource("18_8hoe7")
+"widget_click": ExtResource("36_hm6qt")
 })
 start_fragment = SubResource("Resource_gb07o")
 fragments = Array[ExtResource("25_lx0xc")]([SubResource("Resource_bkucw"), SubResource("Resource_2vhlc"), SubResource("Resource_nsh70"), SubResource("Resource_lfmop"), SubResource("Resource_rsjxi"), SubResource("Resource_hm6qt"), SubResource("Resource_2lcjo"), SubResource("Resource_pa4w7"), SubResource("Resource_44vru"), SubResource("Resource_wgx10")])

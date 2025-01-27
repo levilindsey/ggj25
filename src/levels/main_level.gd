@@ -59,9 +59,6 @@ func _ready() -> void:
     _update_time_scale()
     S.time.set_interval(_update_time_scale, TIME_SCALE_UPDATE_INTERVAL)
 
-    %AmbiencePlayer.play()
-    %BackgroundMusicPlayer.play()
-
     _default_camera_position = %Camera2D.position
     %Camera2D.position = start_pan
 
@@ -72,6 +69,11 @@ func _ready() -> void:
     horizontal_speed = 0.0
 
     G.level_loaded.emit()
+
+    await get_tree().create_timer(1.0).timeout
+
+    %AmbiencePlayer.play()
+    %BackgroundMusicPlayer.play()
 
 
 func _update_time_scale() -> void:
