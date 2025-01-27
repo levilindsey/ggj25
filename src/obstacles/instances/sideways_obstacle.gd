@@ -55,3 +55,7 @@ func _on_detect_player_proximity_body_entered(body: Node2D) -> void:
 
 func _on_detect_player_in_range_body_entered(body: Node2D) -> void:
     _is_moving = true
+
+
+func get_type() -> Main.ObstacleType:
+    return Main.ObstacleType.SIDEWAYS

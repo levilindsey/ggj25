@@ -35,7 +35,7 @@ func update_content() -> void:
     if is_instance_valid(_sprite):
         _sprite.queue_free()
 
-    match [type, environment_type]:
+    match [get_type(), environment_type]:
         [Main.ObstacleType.FLOATING, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_cloud)
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.NATURE]:
@@ -54,7 +54,7 @@ func update_content() -> void:
             _update_content_helper(S.manifest.obstacle_palm_short)
         [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.DESERT]:
             _update_content_helper(S.manifest.obstacle_palm_tall)
-            
+
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_dragonfly)
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.FOREST]:
@@ -64,7 +64,7 @@ func update_content() -> void:
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.DESERT]:
             _update_content_helper(S.manifest.obstacle_ufo)
         _:
-            match type:
+            match get_type():
                 Main.ObstacleType.FLOATING:
                     _update_content_helper(S.manifest.obstacle_cloud)
                 Main.ObstacleType.SIDEWAYS:
@@ -79,7 +79,7 @@ func update_content() -> void:
                     S.utils.ensure(
                         false,
                         "Obstacle or environment type not recognized: %s, %s" %
-                            [type, environment_type])
+                            [get_type(), environment_type])
 
 
 func _update_content_helper(sprite_scene: PackedScene) -> void:
@@ -106,3 +106,8 @@ func _on_body_proximity(body: Node2D) -> void:
     if not S.utils.ensure(body is Player):
         return
     body.on_obstacle_proximity(self)
+
+
+func get_type() -> Main.ObstacleType:
+    S.utils.ensure(false, "This should be overridden!")
+    return Main.ObstacleType.FLOATING

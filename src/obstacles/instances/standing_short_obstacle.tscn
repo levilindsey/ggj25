@@ -7,13 +7,11 @@ radius = 12.0
 height = 94.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqg0v"]
-size = Vector2(1000, 576)
+size = Vector2(1152, 576)
 
 [node name="StandingShortObstacle" type="Node2D"]
 position = Vector2(0, 115)
 script = ExtResource("1_c7a8w")
-type = null
-environment_type = null
 
 [node name="DetectPlayerCollision" type="Area2D" parent="."]
 collision_layer = 2
