@@ -57,6 +57,7 @@ extends Resource
 @export var obstacle_cloud: PackedScene
 @export var obstacle_dragonfly: PackedScene
 @export var obstacle_bluebird: PackedScene
+@export var obstacle_seagull: PackedScene
 @export_group("")
 
 @export var environment_sequence: Array[Main.EnvironmentType]

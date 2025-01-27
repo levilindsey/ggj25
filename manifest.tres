@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Manifest" load_steps=55 format=3 uid="uid://n2klwldxjt7u"]
+[gd_resource type="Resource" script_class="Manifest" load_steps=56 format=3 uid="uid://n2klwldxjt7u"]
 
 [ext_resource type="Script" uid="uid://i4q7p22q60vs" path="res://scaffolder/src/config/canvas_layer_config.gd" id="1_iqjv3"]
 [ext_resource type="PackedScene" uid="uid://dw40igtylnu30" path="res://src/levels/main_level.tscn" id="2_a47xt"]
@@ -33,6 +33,8 @@
 [ext_resource type="AudioStream" uid="uid://dre3xa4dff13l" path="res://scaffolder/assets/sfx/level_failure.tres" id="15_khe4v"]
 [ext_resource type="AudioStream" uid="uid://bdcxfq7hd0iak" path="res://scaffolder/assets/sfx/pause.tres" id="16_4bhqj"]
 [ext_resource type="AudioStream" uid="uid://coe3qd5rsfkhp" path="res://scaffolder/assets/sfx/unpause.tres" id="17_3gob2"]
+[ext_resource type="PackedScene" uid="uid://b1jp8itgxrfmv" path="res://src/obstacles/sprites/nature/seagull.tscn" id="18_2lcjo"]
+[ext_resource type="AudioStream" uid="uid://d4buaef6wotn2" path="res://scaffolder/assets/sfx/menu_click.tres" id="18_8hoe7"]
 [ext_resource type="PackedScene" uid="uid://yhk04lta674g" path="res://src/obstacles/sprites/nature/ufo.tscn" id="19_72khu"]
 [ext_resource type="Script" uid="uid://da8hpd5e11wvx" path="res://src/levels/fragments/fragment_config.gd" id="25_lx0xc"]
 [ext_resource type="PackedScene" uid="uid://dpor57x24rddo" path="res://src/levels/fragments/fragment_start.tscn" id="26_x2iix"]
@@ -207,4 +209,5 @@ obstacle_bird = ExtResource("4_ncyll")
 obstacle_cloud = ExtResource("5_hkaoq")
 obstacle_dragonfly = ExtResource("6_lx0xc")
 obstacle_bluebird = ExtResource("15_hm6qt")
-environment_sequence = Array[int]([3, 0, 2, 3, 0, 1, 2, 3])
+obstacle_seagull = ExtResource("18_2lcjo")
+environment_sequence = Array[int]([0, 2, 2, 3, 0, 1, 2, 3])

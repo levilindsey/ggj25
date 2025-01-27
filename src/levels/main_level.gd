@@ -117,8 +117,10 @@ func change_ambience(new: Main.EnvironmentType):
 
     if ambience != current_ambience:
         await get_tree().create_timer(3.0 / S.time.get_combined_scale()).timeout
-        %AmbiencePlayer.get_stream_playback().switch_to_clip_by_name(ambience)
-
+        if is_instance_valid(%AmbiencePlayer.get_stream_playback()):
+            %AmbiencePlayer.get_stream_playback().switch_to_clip_by_name(ambience)
+        else:
+            %AmbiencePlayer.switch_to_clip(0)
 
 func start() -> void:
     super()

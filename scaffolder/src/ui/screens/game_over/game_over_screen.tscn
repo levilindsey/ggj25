@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://1t038urjp73n"]
+[gd_scene load_steps=8 format=3 uid="uid://1t038urjp73n"]
 
 [ext_resource type="Script" uid="uid://cm68p8ixbp1t8" path="res://scaffolder/src/ui/screens/game_over/game_over_screen.gd" id="1_bko5b"]
 [ext_resource type="Script" uid="uid://bpc7dvcqlnfon" path="res://scaffolder/src/ui/screens/screen.gd" id="2_klv2i"]
+[ext_resource type="AudioStream" uid="uid://blxf6meh6bi7y" path="res://scaffolder/assets/sfx_assets/EndMusic_04.wav" id="3_i1u6j"]
 [ext_resource type="PackedScene" uid="uid://cncbapiuueajh" path="res://scaffolder/src/ui/widgets/header.tscn" id="3_u2unf"]
 [ext_resource type="PackedScene" uid="uid://dcisa6xson4x6" path="res://scaffolder/src/ui/widgets/click_button.tscn" id="4_mnaib"]
 [ext_resource type="PackedScene" uid="uid://dsty514eavyuw" path="res://src/ui/inflation_trigger.tscn" id="5_hfhby"]
@@ -15,6 +16,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bko5b")
 metadata/_custom_type_script = ExtResource("2_klv2i")
+
+[node name="EndMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_i1u6j")
+bus = &"Music"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2

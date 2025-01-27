@@ -36,18 +36,26 @@ func update_content() -> void:
     match [type, environment_type]:
         [Main.ObstacleType.FLOATING, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_cloud)
-        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.NATURE]:
-            _update_content_helper(S.manifest.obstacle_dragonfly)
+            
         [Main.ObstacleType.UP_AND_DOWN, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_bird)
+        [Main.ObstacleType.UP_AND_DOWN, Main.EnvironmentType.DESERT]:
+            _update_content_helper(S.manifest.obstacle_ufo)
+            
         [Main.ObstacleType.STANDING_SHORT, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_tree_short)
         [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_tree_tall)
-        [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.FOREST]:
+            
+        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.NATURE]:
+            _update_content_helper(S.manifest.obstacle_dragonfly)
+        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.FOREST]:
             _update_content_helper(S.manifest.obstacle_bluebird)
+        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.BEACH]:
+            _update_content_helper(S.manifest.obstacle_seagull)    
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.DESERT]:
-            _update_content_helper(S.manifest.obstacle_ufo)
+            _update_content_helper(S.manifest.obstacle_bluebird)        
+
         _:
             match type:
                 Main.ObstacleType.FLOATING:
