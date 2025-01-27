@@ -8,20 +8,6 @@ extends Container
 # - Cover image.
 # - Trailer.
 # - Submission pages.
-#
-# - MORE ART.
-#   - Add simple shading and animation to pickups.
-#   - Add shading to all obstacles.
-#   - Add bird animation.
-#
-# - ART:
-#     - Fix cloud
-#     - Fix dragonfly
-#     - Fix bird
-#     - Fix ufo
-#     - Fix pickups
-#     - Beachball
-#     - UFO abducting human
 
 
 enum ObstacleType {

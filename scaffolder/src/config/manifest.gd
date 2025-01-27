@@ -23,6 +23,8 @@ extends Resource
 
 @export var pauses_on_focus_out := true
 
+@export var render_debug_annotations := false
+
 @export_group("Logging")
 @export var log_fragment_updates := false
 @export var log_time_scale_updates := false
@@ -62,6 +64,8 @@ extends Resource
 @export var obstacle_palm_short: PackedScene
 @export var obstacle_palm_tall: PackedScene
 @export var obstacle_ufo: PackedScene
+@export var obstacle_ufo_short: PackedScene
+@export var obstacle_ufo_tall: PackedScene
 @export_group("")
 
 @export var environment_sequence: Array[Main.EnvironmentType]

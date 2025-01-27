@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_pqalh"]
 [ext_resource type="PackedScene" uid="uid://dtnbjo2fhdiqq" path="res://src/wind/windy_spot.tscn" id="3_5tq0b"]
-[ext_resource type="Texture2D" uid="uid://dtvcgdry2bi2t" path="res://assets/sprites/starting_hill.png" id="5_gsffr"]
+[ext_resource type="Texture2D" uid="uid://dtvcgdry2bi2t" path="res://assets/sprites/starting_hill/starting_hill.png" id="4_j1e48"]
 
 [node name="FragmentStart" type="Node2D"]
 script = ExtResource("1_pqalh")
@@ -10,7 +10,7 @@ width = 986
 
 [node name="StartingHill" type="Sprite2D" parent="."]
 position = Vector2(0, 125)
-texture = ExtResource("5_gsffr")
+texture = ExtResource("4_j1e48")
 
 [node name="WindySpot" parent="." instance=ExtResource("3_5tq0b")]
 range = Vector2(162, 162)

@@ -51,7 +51,7 @@ func update_content() -> void:
         [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.BEACH]:
             _update_content_helper(S.manifest.obstacle_palm_tall)
         [Main.ObstacleType.STANDING_SHORT, Main.EnvironmentType.DESERT]:
-            _update_content_helper(S.manifest.obstacle_palm_short)
+            _update_content_helper(S.manifest.obstacle_ufo_short)
         [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.DESERT]:
             _update_content_helper(S.manifest.obstacle_palm_tall)
 

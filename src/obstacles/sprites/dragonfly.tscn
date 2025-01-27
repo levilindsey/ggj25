@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://nfw1y0whsmpu"]
+
+[ext_resource type="Texture2D" uid="uid://dnbsickqglwln" path="res://assets/sprites/obstacles/dragonfly.png" id="1_2viy8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgdql"]
+atlas = ExtResource("1_2viy8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ybp2"]
+atlas = ExtResource("1_2viy8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sji8"]
+atlas = ExtResource("1_2viy8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lltt"]
+atlas = ExtResource("1_2viy8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02atx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgdql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ybp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sji8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lltt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="Dragonfly" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_02atx")
+autoplay = "default"
+frame_progress = 0.39799

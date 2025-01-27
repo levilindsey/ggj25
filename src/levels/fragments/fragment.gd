@@ -48,7 +48,7 @@ func update_content() -> void:
 
 
 func _draw() -> void:
-    if not Engine.is_editor_hint() and not S.manifest.dev_mode:
+    if not Engine.is_editor_hint() and not S.manifest.render_debug_annotations:
         return
 
     var extents := size / 2

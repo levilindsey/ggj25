@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://yhk04lta674g"]
+
+[ext_resource type="Texture2D" uid="uid://dx0mncvojtxxr" path="res://assets/sprites/obstacles/ufo.png" id="1_jwwyv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5m8h"]
+atlas = ExtResource("1_jwwyv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnnjp"]
+atlas = ExtResource("1_jwwyv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omph0"]
+atlas = ExtResource("1_jwwyv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bte5c"]
+atlas = ExtResource("1_jwwyv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekft7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5m8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnnjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omph0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bte5c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Ufo" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ekft7")
+autoplay = "default"
+frame_progress = 0.712562

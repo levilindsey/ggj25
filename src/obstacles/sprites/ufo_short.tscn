@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctkrkowmhkf5a"]
+
+[ext_resource type="Texture2D" uid="uid://b5b7p0iftobss" path="res://assets/sprites/obstacles/ufo_abducting_short.png" id="1_8sqwx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8syb"]
+atlas = ExtResource("1_8sqwx")
+region = Rect2(0, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0yps"]
+atlas = ExtResource("1_8sqwx")
+region = Rect2(48, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q161r"]
+atlas = ExtResource("1_8sqwx")
+region = Rect2(96, 0, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqt6f"]
+atlas = ExtResource("1_8sqwx")
+region = Rect2(144, 0, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02atx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8syb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0yps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q161r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqt6f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="UfoShort" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_02atx")
+autoplay = "default"

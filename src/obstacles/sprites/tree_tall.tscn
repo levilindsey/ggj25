@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvdaff2o8372a"]
+
+[ext_resource type="Texture2D" uid="uid://dy6pl3dk3acyw" path="res://assets/sprites/obstacles/tree_tall.png" id="1_4s0yu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02atx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4s0yu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TreeTall" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_02atx")

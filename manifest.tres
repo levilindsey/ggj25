@@ -1,25 +1,20 @@
-[gd_resource type="Resource" script_class="Manifest" load_steps=58 format=3 uid="uid://n2klwldxjt7u"]
+[gd_resource type="Resource" script_class="Manifest" load_steps=60 format=3 uid="uid://n2klwldxjt7u"]
 
 [ext_resource type="Script" uid="uid://i4q7p22q60vs" path="res://scaffolder/src/config/canvas_layer_config.gd" id="1_iqjv3"]
 [ext_resource type="PackedScene" uid="uid://dw40igtylnu30" path="res://src/levels/main_level.tscn" id="2_a47xt"]
 [ext_resource type="Theme" uid="uid://buacfvrg1r3la" path="res://src/ui/main_theme.tres" id="3_e05c0"]
-[ext_resource type="PackedScene" uid="uid://cudofpxodt0ee" path="res://src/obstacles/sprites/nature/bird.tscn" id="4_ncyll"]
 [ext_resource type="PackedScene" uid="uid://dcduejnqy0gx" path="res://src/ui/blow_calibration_screen.tscn" id="4_swhmb"]
 [ext_resource type="PackedScene" uid="uid://cw8a7obl5w51m" path="res://src/levels/fragments/fragment_1.tscn" id="4_x2iix"]
 [ext_resource type="PackedScene" uid="uid://dtnflay4w560o" path="res://src/levels/fragments/fragment_easy1.tscn" id="5_8hoe7"]
-[ext_resource type="PackedScene" uid="uid://dragdniiylt8x" path="res://src/obstacles/sprites/nature/cloud.tscn" id="5_hkaoq"]
 [ext_resource type="PackedScene" uid="uid://bcp24jc1ix6ho" path="res://src/levels/fragments/fragment_2.tscn" id="5_khe4v"]
 [ext_resource type="PackedScene" uid="uid://cfb2gmm7xhvgn" path="res://scaffolder/src/ui/screens/credits/credits_screen.tscn" id="5_tr08y"]
 [ext_resource type="PackedScene" uid="uid://fbid2odv0c4w" path="res://src/levels/fragments/fragment_3.tscn" id="6_4bhqj"]
 [ext_resource type="PackedScene" uid="uid://bqjips7oxy7ky" path="res://src/levels/fragments/fragment_easy2.tscn" id="6_72khu"]
 [ext_resource type="PackedScene" uid="uid://blwby8enw3e2c" path="res://scaffolder/src/ui/screens/game/game_screen.tscn" id="6_jmnv0"]
-[ext_resource type="PackedScene" uid="uid://nfw1y0whsmpu" path="res://src/obstacles/sprites/nature/dragonfly.tscn" id="6_lx0xc"]
 [ext_resource type="PackedScene" uid="uid://dvq5jrbjneokb" path="res://src/levels/fragments/fragment_4.tscn" id="7_3gob2"]
 [ext_resource type="PackedScene" uid="uid://b7cbrvg6va6f0" path="res://src/levels/fragments/fragment_easy3.tscn" id="7_hm6qt"]
 [ext_resource type="PackedScene" uid="uid://bxmph3ye6mk0i" path="res://scaffolder/src/ui/screens/main_menu/main_menu_screen.tscn" id="7_ncyll"]
-[ext_resource type="PackedScene" uid="uid://b2curdq2tupf8" path="res://src/obstacles/sprites/nature/tree_short.tscn" id="7_x2iix"]
 [ext_resource type="PackedScene" uid="uid://cbeqfhpyieixk" path="res://src/levels/fragments/fragment_5.tscn" id="8_8hoe7"]
-[ext_resource type="PackedScene" uid="uid://dvdaff2o8372a" path="res://src/obstacles/sprites/nature/tree_tall.tscn" id="8_gb07o"]
 [ext_resource type="PackedScene" uid="uid://bc5n0nmh6rv0c" path="res://scaffolder/src/ui/screens/pause/pause_screen.tscn" id="8_hkaoq"]
 [ext_resource type="PackedScene" uid="uid://d3l5ta6wyia8g" path="res://src/levels/fragments/fragment_6.tscn" id="9_72khu"]
 [ext_resource type="PackedScene" uid="uid://cn5n2vl7vmqeg" path="res://scaffolder/src/ui/screens/settings/settings_screen.tscn" id="9_lx0xc"]
@@ -28,16 +23,23 @@
 [ext_resource type="Script" uid="uid://ctpkusaxuuelx" path="res://scaffolder/src/config/manifest.gd" id="11_gb07o"]
 [ext_resource type="AudioStream" uid="uid://bu201qxw2pgtb" path="res://scaffolder/assets/sfx/game_load.tres" id="12_bkucw"]
 [ext_resource type="AudioStream" uid="uid://ccywymppbqvq2" path="res://scaffolder/assets/sfx/level_start.tres" id="13_u8u6k"]
+[ext_resource type="PackedScene" uid="uid://cudofpxodt0ee" path="res://src/obstacles/sprites/bird.tscn" id="14_44vru"]
 [ext_resource type="AudioStream" uid="uid://ix3if7cq1a8q" path="res://scaffolder/assets/sfx/level_success.tres" id="14_etdav"]
-[ext_resource type="PackedScene" uid="uid://djth0f6lf7ru2" path="res://src/obstacles/sprites/nature/blue_bird.tscn" id="15_hm6qt"]
 [ext_resource type="AudioStream" uid="uid://dre3xa4dff13l" path="res://scaffolder/assets/sfx/level_failure.tres" id="15_khe4v"]
+[ext_resource type="PackedScene" uid="uid://djth0f6lf7ru2" path="res://src/obstacles/sprites/blue_bird.tscn" id="15_wgx10"]
+[ext_resource type="PackedScene" uid="uid://dragdniiylt8x" path="res://src/obstacles/sprites/cloud.tscn" id="16_2vhlc"]
 [ext_resource type="AudioStream" uid="uid://bdcxfq7hd0iak" path="res://scaffolder/assets/sfx/pause.tres" id="16_4bhqj"]
 [ext_resource type="AudioStream" uid="uid://coe3qd5rsfkhp" path="res://scaffolder/assets/sfx/unpause.tres" id="17_3gob2"]
-[ext_resource type="PackedScene" uid="uid://b1jp8itgxrfmv" path="res://src/obstacles/sprites/nature/seagull.tscn" id="18_2lcjo"]
-[ext_resource type="PackedScene" uid="uid://cbxs1deownpvq" path="res://src/obstacles/sprites/nature/palm_short.tscn" id="18_pa4w7"]
-[ext_resource type="PackedScene" uid="uid://yhk04lta674g" path="res://src/obstacles/sprites/nature/ufo.tscn" id="19_72khu"]
-[ext_resource type="PackedScene" uid="uid://cycavwkuaypb5" path="res://src/obstacles/sprites/nature/palm_tall.tscn" id="20_2lcjo"]
+[ext_resource type="PackedScene" uid="uid://nfw1y0whsmpu" path="res://src/obstacles/sprites/dragonfly.tscn" id="17_nsh70"]
+[ext_resource type="PackedScene" uid="uid://cbxs1deownpvq" path="res://src/obstacles/sprites/palm_short.tscn" id="18_lfmop"]
+[ext_resource type="PackedScene" uid="uid://cycavwkuaypb5" path="res://src/obstacles/sprites/palm_tall.tscn" id="19_rsjxi"]
+[ext_resource type="PackedScene" uid="uid://b1jp8itgxrfmv" path="res://src/obstacles/sprites/seagull.tscn" id="20_tmhmk"]
+[ext_resource type="PackedScene" uid="uid://b2curdq2tupf8" path="res://src/obstacles/sprites/tree_short.tscn" id="21_f2khg"]
+[ext_resource type="PackedScene" uid="uid://dvdaff2o8372a" path="res://src/obstacles/sprites/tree_tall.tscn" id="22_gm2qf"]
+[ext_resource type="PackedScene" uid="uid://yhk04lta674g" path="res://src/obstacles/sprites/ufo.tscn" id="23_70xvi"]
+[ext_resource type="PackedScene" uid="uid://ctkrkowmhkf5a" path="res://src/obstacles/sprites/ufo_short.tscn" id="24_2vhlc"]
 [ext_resource type="Script" uid="uid://da8hpd5e11wvx" path="res://src/levels/fragments/fragment_config.gd" id="25_lx0xc"]
+[ext_resource type="PackedScene" uid="uid://r5vwftubfdnn" path="res://src/obstacles/sprites/ufo_tall.tscn" id="25_nsh70"]
 [ext_resource type="PackedScene" uid="uid://dpor57x24rddo" path="res://src/levels/fragments/fragment_start.tscn" id="26_x2iix"]
 [ext_resource type="AudioStream" uid="uid://dv5gjawwa3tto" path="res://scaffolder/assets/sfx/pop.tres" id="36_hm6qt"]
 
@@ -167,7 +169,7 @@ metadata/_custom_type_script = ExtResource("25_lx0xc")
 
 [resource]
 script = ExtResource("11_gb07o")
-god_mode = true
+god_mode = false
 debug_time_scale = 1.0
 time_to_max_fragment_difficulty = 300.0
 time_to_max_time_scale = 1200.0
@@ -175,8 +177,9 @@ environment_change_interval = 25.0
 max_time_scale = 3.0
 dev_mode = true
 skip_main_menu_in_dev_mode = false
-pauses_on_focus_out = false
-log_fragment_updates = true
+pauses_on_focus_out = true
+render_debug_annotations = false
+log_fragment_updates = false
 log_time_scale_updates = false
 log_mic_debugging = false
 dev_mode_level = ExtResource("2_a47xt")
@@ -204,14 +207,16 @@ sfxs = Dictionary[String, AudioStream]({
 })
 start_fragment = SubResource("Resource_gb07o")
 fragments = Array[ExtResource("25_lx0xc")]([SubResource("Resource_bkucw"), SubResource("Resource_2vhlc"), SubResource("Resource_nsh70"), SubResource("Resource_lfmop"), SubResource("Resource_rsjxi"), SubResource("Resource_hm6qt"), SubResource("Resource_2lcjo"), SubResource("Resource_pa4w7"), SubResource("Resource_44vru"), SubResource("Resource_wgx10")])
-obstacle_tree_short = ExtResource("7_x2iix")
-obstacle_tree_tall = ExtResource("8_gb07o")
-obstacle_bird = ExtResource("4_ncyll")
-obstacle_cloud = ExtResource("5_hkaoq")
-obstacle_dragonfly = ExtResource("6_lx0xc")
-obstacle_bluebird = ExtResource("15_hm6qt")
-obstacle_seagull = ExtResource("18_2lcjo")
-obstacle_palm_short = ExtResource("18_pa4w7")
-obstacle_palm_tall = ExtResource("20_2lcjo")
-obstacle_ufo = ExtResource("19_72khu")
+obstacle_tree_short = ExtResource("21_f2khg")
+obstacle_tree_tall = ExtResource("22_gm2qf")
+obstacle_bird = ExtResource("14_44vru")
+obstacle_cloud = ExtResource("16_2vhlc")
+obstacle_dragonfly = ExtResource("17_nsh70")
+obstacle_bluebird = ExtResource("15_wgx10")
+obstacle_seagull = ExtResource("20_tmhmk")
+obstacle_palm_short = ExtResource("18_lfmop")
+obstacle_palm_tall = ExtResource("19_rsjxi")
+obstacle_ufo = ExtResource("23_70xvi")
+obstacle_ufo_short = ExtResource("24_2vhlc")
+obstacle_ufo_tall = ExtResource("25_nsh70")
 environment_sequence = Array[int]([0, 2, 1, 3, 0, 1, 2, 3])

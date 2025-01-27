@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://do8444anlxffl"]
+
+[ext_resource type="Texture2D" uid="uid://d3hxrfmo6iano" path="res://assets/sprites/obstacles/beachball.png" id="1_iwt80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k41w2"]
+atlas = ExtResource("1_iwt80")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02atx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k41w2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Beachball" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_02atx")
+frame_progress = 0.890926
