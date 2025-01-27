@@ -40,6 +40,9 @@ var has_triggered_start := false
 
 var ambience_player
 
+var current_environment := Main.EnvironmentType.NATURE
+
+
 func _ready() -> void:
     G.level = self
 

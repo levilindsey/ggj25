@@ -259,7 +259,7 @@ func _update_gum_type() -> void:
 func on_ground_collided() -> void:
     if is_dead():
         return
-    if not is_invincible:
+    if not is_invincible and not S.manifest.god_mode:
         receive_damage()
     if is_dead():
         return
@@ -277,7 +277,7 @@ func on_obstacle_collided(obstacle: Obstacle) -> void:
         return
     elif is_super:
         _destroy_obstacle(obstacle)
-    elif not is_invincible:
+    elif not is_invincible and not S.manifest.god_mode:
         receive_damage()
 
 
@@ -287,30 +287,35 @@ func on_obstacle_proximity(obstacle: Obstacle) -> void:
         Main.ObstacleType.keys()[obstacle.get_type()],
         Main.EnvironmentType.keys()[obstacle.environment_type],
     ])
-    if G.environment_scheduler.current_environment != obstacle.environment_type:
+    if G.level.current_environment != obstacle.environment_type:
+        G.level.current_environment = obstacle.environment_type
+
+        S.log.print("--- NEW ENVIRONMENT: %s ---" % obstacle.environment_type)
+
+        # FIXME: REMOVE ME!
+        #S.audio.play_sfx("game_load")
+
         G.level.entered_new_environment.emit(
-            obstacle.environment_type, G.environment_scheduler.current_environment)
+            obstacle.environment_type, G.level.current_environment)
         change_ambience(G.fragment_spawner.current_fragment_environment)
 
 func change_ambience(new: Main.EnvironmentType):
     match new:
         Main.EnvironmentType.NATURE:
             ambience = "NATURE"
-            print("Ambience:", ambience)
         Main.EnvironmentType.FOREST:
             ambience = "NATURE"
-            print("Ambience:", ambience)
         Main.EnvironmentType.BEACH:
             ambience = "BEACH"
-            print("Ambience:", ambience)
         Main.EnvironmentType.DESERT:
             ambience = "DESERT"
-            print("Ambience:", ambience)
 
     var current_ambience = G.level.ambience_player.current_ambience
-    print("Current ambience:", current_ambience)
+
+    S.log.print("change_ambiance: old: %s, new: %s" % [current_ambience, ambience])
 
     if ambience != current_ambience:
+        S.log.print("Changing ambiance: %s" % ambience)
         await get_tree().create_timer(3.0 / S.time.get_combined_scale()).timeout
         G.level.ambience_player.get_stream_playback().switch_to_clip_by_name(ambience)
 

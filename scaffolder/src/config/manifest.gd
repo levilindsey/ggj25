@@ -2,6 +2,8 @@ class_name Manifest
 extends Resource
 
 
+@export var god_mode := false
+
 @export_range(0.5, 5.0, 0.1) var debug_time_scale := 1.0
 
 ## We choose more difficult fragments as time goes on.
