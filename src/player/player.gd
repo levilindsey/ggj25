@@ -43,7 +43,7 @@ var gravity_acceleration: float:
 @export var initial_health: Array[BubbleGumPickup.Type] = [
     BubbleGumPickup.Type.FLOATY,
     BubbleGumPickup.Type.FLOATY,
-    BubbleGumPickup.Type.FLOATY,
+    BubbleGumPickup.Type.BOUNCY,
 ]
 
 @export var post_damage_invincibility_duration := 1.0
@@ -250,14 +250,8 @@ func _update_gum_type() -> void:
 
     S.log.print("Updating gum type: %s" %
         BubbleGumPickup.Type.keys()[current_gum_type])
-    # FIXME: Change bubble color.
-    match current_gum_type:
-        BubbleGumPickup.Type.FLOATY:
-            pass
-        BubbleGumPickup.Type.BOUNCY:
-            pass
-        _:
-            S.utils.ensure(false)
+
+    %BubbleSprite.type = current_gum_type
 
 
 func on_ground_collided() -> void:
@@ -272,7 +266,9 @@ func on_ground_collided() -> void:
 
 
 func on_obstacle_collided(obstacle: Obstacle) -> void:
-    if is_super:
+    if is_dead():
+        return
+    elif is_super:
         _destroy_obstacle(obstacle)
     elif not is_invincible:
         receive_damage()
