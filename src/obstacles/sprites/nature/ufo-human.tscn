@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bhslchw6slndd"]
 
-[ext_resource type="Texture2D" uid="uid://b2lh748kiust7" path="res://assets/sprites/Ufo Abducting Human Sprite Sheets.png" id="1_4csg2"]
+[ext_resource type="Texture2D" uid="uid://b2lh748kiust7" path="res://assets/sprites/obstacles/Ufo Abducting Human Sprite Sheets.png" id="1_4csg2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4tmg"]
 atlas = ExtResource("1_4csg2")

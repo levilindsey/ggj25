@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bc87v5h7an3e8"
-path="res://.godot/imported/palm_tree_tall.png-0b7975cd851d41eda138877622fe7c3f.ctex"
+path="res://.godot/imported/palm_tree_tall.png-02d65babbcd5ce47756ee0b9a13db0e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background_graphics/summer 2-UPDT/palm_tree_tall.png"
-dest_files=["res://.godot/imported/palm_tree_tall.png-0b7975cd851d41eda138877622fe7c3f.ctex"]
+source_file="res://assets/sprites/obstacles/palm_tree_tall.png"
+dest_files=["res://.godot/imported/palm_tree_tall.png-02d65babbcd5ce47756ee0b9a13db0e7.ctex"]
 
 [params]
 

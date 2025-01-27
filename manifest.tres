@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Manifest" load_steps=55 format=3 uid="uid://n2klwldxjt7u"]
+[gd_resource type="Resource" script_class="Manifest" load_steps=58 format=3 uid="uid://n2klwldxjt7u"]
 
 [ext_resource type="Script" uid="uid://i4q7p22q60vs" path="res://scaffolder/src/config/canvas_layer_config.gd" id="1_iqjv3"]
 [ext_resource type="PackedScene" uid="uid://dw40igtylnu30" path="res://src/levels/main_level.tscn" id="2_a47xt"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bxmph3ye6mk0i" path="res://scaffolder/src/ui/screens/main_menu/main_menu_screen.tscn" id="7_ncyll"]
 [ext_resource type="PackedScene" uid="uid://b2curdq2tupf8" path="res://src/obstacles/sprites/nature/tree_short.tscn" id="7_x2iix"]
 [ext_resource type="PackedScene" uid="uid://cbeqfhpyieixk" path="res://src/levels/fragments/fragment_5.tscn" id="8_8hoe7"]
-[ext_resource type="PackedScene" uid="uid://cycavwkuaypb5" path="res://src/obstacles/sprites/nature/tree_tall.tscn" id="8_gb07o"]
+[ext_resource type="PackedScene" uid="uid://dvdaff2o8372a" path="res://src/obstacles/sprites/nature/tree_tall.tscn" id="8_gb07o"]
 [ext_resource type="PackedScene" uid="uid://bc5n0nmh6rv0c" path="res://scaffolder/src/ui/screens/pause/pause_screen.tscn" id="8_hkaoq"]
 [ext_resource type="PackedScene" uid="uid://d3l5ta6wyia8g" path="res://src/levels/fragments/fragment_6.tscn" id="9_72khu"]
 [ext_resource type="PackedScene" uid="uid://cn5n2vl7vmqeg" path="res://scaffolder/src/ui/screens/settings/settings_screen.tscn" id="9_lx0xc"]
@@ -33,7 +33,10 @@
 [ext_resource type="AudioStream" uid="uid://dre3xa4dff13l" path="res://scaffolder/assets/sfx/level_failure.tres" id="15_khe4v"]
 [ext_resource type="AudioStream" uid="uid://bdcxfq7hd0iak" path="res://scaffolder/assets/sfx/pause.tres" id="16_4bhqj"]
 [ext_resource type="AudioStream" uid="uid://coe3qd5rsfkhp" path="res://scaffolder/assets/sfx/unpause.tres" id="17_3gob2"]
+[ext_resource type="PackedScene" uid="uid://b1jp8itgxrfmv" path="res://src/obstacles/sprites/nature/seagull.tscn" id="18_2lcjo"]
+[ext_resource type="PackedScene" uid="uid://cbxs1deownpvq" path="res://src/obstacles/sprites/nature/palm_short.tscn" id="18_pa4w7"]
 [ext_resource type="PackedScene" uid="uid://yhk04lta674g" path="res://src/obstacles/sprites/nature/ufo.tscn" id="19_72khu"]
+[ext_resource type="PackedScene" uid="uid://cycavwkuaypb5" path="res://src/obstacles/sprites/nature/palm_tall.tscn" id="20_2lcjo"]
 [ext_resource type="Script" uid="uid://da8hpd5e11wvx" path="res://src/levels/fragments/fragment_config.gd" id="25_lx0xc"]
 [ext_resource type="PackedScene" uid="uid://dpor57x24rddo" path="res://src/levels/fragments/fragment_start.tscn" id="26_x2iix"]
 [ext_resource type="AudioStream" uid="uid://dv5gjawwa3tto" path="res://scaffolder/assets/sfx/pop.tres" id="36_hm6qt"]
@@ -207,4 +210,7 @@ obstacle_bird = ExtResource("4_ncyll")
 obstacle_cloud = ExtResource("5_hkaoq")
 obstacle_dragonfly = ExtResource("6_lx0xc")
 obstacle_bluebird = ExtResource("15_hm6qt")
+obstacle_seagull = ExtResource("18_2lcjo")
+obstacle_palm_short = ExtResource("18_pa4w7")
+obstacle_palm_tall = ExtResource("20_2lcjo")
 environment_sequence = Array[int]([0, 1, 2, 3, 0, 1, 2, 3])
