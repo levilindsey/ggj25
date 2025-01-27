@@ -13,7 +13,12 @@ theme_override_constants/margin_bottom = 20
 script = ExtResource("1_b3kvt")
 
 [node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="BubbleSprite" parent="Control" instance=ExtResource("2_nsyls")]
-position = Vector2(-20, -20)
+process_mode = 3
+position = Vector2(50, 20)
+scale = Vector2(2.8, 2.8)
