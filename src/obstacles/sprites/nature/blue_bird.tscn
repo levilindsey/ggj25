@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://djth0f6lf7ru2"]
+
+[ext_resource type="Texture2D" uid="uid://cymytw7rvv362" path="res://assets/sprites/BirdSprite.png" id="1_c4eym"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4eym"]
+atlas = ExtResource("1_c4eym")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkysk"]
+atlas = ExtResource("1_c4eym")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1rqh"]
+atlas = ExtResource("1_c4eym")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6r4c"]
+atlas = ExtResource("1_c4eym")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0gst"]
+atlas = ExtResource("1_c4eym")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mnno"]
+atlas = ExtResource("1_c4eym")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkrtt"]
+atlas = ExtResource("1_c4eym")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy512"]
+atlas = ExtResource("1_c4eym")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71jq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4eym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkysk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1rqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6r4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0gst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mnno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkrtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy512")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bird" type="Node2D"]
+scale = Vector2(1.2, 1.2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.4, 1.4)
+sprite_frames = SubResource("SpriteFrames_71jq4")
+frame_progress = 0.0627486

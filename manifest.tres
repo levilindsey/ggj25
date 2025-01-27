@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Manifest" load_steps=54 format=3 uid="uid://n2klwldxjt7u"]
+[gd_resource type="Resource" script_class="Manifest" load_steps=55 format=3 uid="uid://n2klwldxjt7u"]
 
 [ext_resource type="Script" uid="uid://i4q7p22q60vs" path="res://scaffolder/src/config/canvas_layer_config.gd" id="1_iqjv3"]
 [ext_resource type="PackedScene" uid="uid://dw40igtylnu30" path="res://src/levels/main_level.tscn" id="2_a47xt"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://bu201qxw2pgtb" path="res://scaffolder/assets/sfx/game_load.tres" id="12_bkucw"]
 [ext_resource type="AudioStream" uid="uid://ccywymppbqvq2" path="res://scaffolder/assets/sfx/level_start.tres" id="13_u8u6k"]
 [ext_resource type="AudioStream" uid="uid://ix3if7cq1a8q" path="res://scaffolder/assets/sfx/level_success.tres" id="14_etdav"]
+[ext_resource type="PackedScene" uid="uid://djth0f6lf7ru2" path="res://src/obstacles/sprites/nature/blue_bird.tscn" id="15_hm6qt"]
 [ext_resource type="AudioStream" uid="uid://dre3xa4dff13l" path="res://scaffolder/assets/sfx/level_failure.tres" id="15_khe4v"]
 [ext_resource type="AudioStream" uid="uid://bdcxfq7hd0iak" path="res://scaffolder/assets/sfx/pause.tres" id="16_4bhqj"]
 [ext_resource type="AudioStream" uid="uid://coe3qd5rsfkhp" path="res://scaffolder/assets/sfx/unpause.tres" id="17_3gob2"]
@@ -205,4 +206,5 @@ obstacle_tree_tall = ExtResource("8_gb07o")
 obstacle_bird = ExtResource("4_ncyll")
 obstacle_cloud = ExtResource("5_hkaoq")
 obstacle_dragonfly = ExtResource("6_lx0xc")
+obstacle_bluebird = ExtResource("15_hm6qt")
 environment_sequence = Array[int]([0, 3, 2, 3, 0, 1, 2, 3])

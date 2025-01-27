@@ -41,6 +41,8 @@ func update_content() -> void:
             _update_content_helper(S.manifest.obstacle_tree_short)
         [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_tree_tall)
+        [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.FOREST]:
+            _update_content_helper(S.manifest.obstacle_bluebird)
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.DESERT]:
             _update_content_helper(S.manifest.obstacle_ufo)
         _:
