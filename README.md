@@ -1,10 +1,8 @@
-# Global Game Jam 2025
+# Oh, the Places You'll Blow
 
-**Play the game**: TODO
+**Play the game**: http://levi.dev/ggj25
 
-TODO: Add cover art
-
-Built for GMTK Game Jam 2025. Theme: **TODO**.
+Built for GMTK Game Jam 2025. Theme: **Bubble**.
 
 ## Credits
 
