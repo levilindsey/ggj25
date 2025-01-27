@@ -16,7 +16,9 @@ extends Container
 # - Add wispy wind effect animations.
 # - Look at TODOs.
 # - MORE ART.
-
+#   - Add simple shading and animation to pickups and hud sprites.
+#   - Add shading to all obstacles.
+#   - Add bird animation.
 #
 # - ART:
 #   - Nature:

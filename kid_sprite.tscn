@@ -140,5 +140,5 @@ animations = [{
 
 [node name="KidSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_5c1al")
-animation = &"standing"
+animation = &"floating"
 script = ExtResource("2_krd2s")
