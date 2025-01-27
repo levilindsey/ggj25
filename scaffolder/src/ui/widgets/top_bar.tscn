@@ -23,11 +23,6 @@ size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 20
 
-[node name="Spacer" type="Control" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
 [node name="Credits" parent="HBoxContainer" instance=ExtResource("2_k8w21")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
@@ -40,6 +35,11 @@ texture_focused = ExtResource("3_2dvok")
 ignore_texture_size = true
 stretch_mode = 5
 master_texture = ExtResource("3_2dvok")
+
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="Settings" parent="HBoxContainer" instance=ExtResource("2_k8w21")]
 unique_name_in_owner = true

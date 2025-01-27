@@ -24,8 +24,7 @@ func _handle_next_spawn() -> void:
 
     # Schedule next spawn.
     var delay := randf_range(wind_spawn_delay_min, wind_spawn_delay_max)
-    await get_tree().create_timer(delay).timeout
-    _handle_next_spawn()
+    S.time.set_timeout(_handle_next_spawn, delay, [], TimeType.PLAY_PHYSICS_SCALED)
 
 
 func _on_finished(wind: Wind) -> void:

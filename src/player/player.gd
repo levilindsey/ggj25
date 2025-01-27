@@ -364,6 +364,7 @@ func _start_recovering(duration: float) -> void:
 
 func _end_recovering() -> void:
     S.utils.ensure(is_recovering)
+    S.time.clear_timeout(_end_recovering_timeout_id)
     is_recovering = false
     is_invincible = false
     _stop_recovering_blink()
@@ -382,6 +383,7 @@ func _start_super() -> void:
 
 func _end_super() -> void:
     S.utils.ensure(is_super)
+    S.time.clear_timeout(_end_super_timeout_id)
     is_super = false
     is_invincible = false
     G.level.update_music()
