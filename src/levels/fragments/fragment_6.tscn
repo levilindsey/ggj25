@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3l5ta6wyia8g"]
+[gd_scene load_steps=7 format=3 uid="uid://d3l5ta6wyia8g"]
 
 [ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_uw4mr"]
+[ext_resource type="PackedScene" uid="uid://2b5cuvuh7wvb" path="res://src/obstacles/instances/sideways_obstacle.tscn" id="2_2hadi"]
+[ext_resource type="PackedScene" uid="uid://bbghnqpxvf7iy" path="res://src/obstacles/instances/floating_obstacle.tscn" id="3_bc55t"]
+[ext_resource type="PackedScene" uid="uid://du63p25gpg7t7" path="res://src/obstacles/instances/standing_short_obstacle.tscn" id="5_ur54i"]
+[ext_resource type="PackedScene" uid="uid://byegp775hg2he" path="res://src/pickups/bubble_gum_pickup.tscn" id="6_2hadi"]
+[ext_resource type="PackedScene" uid="uid://cvnvhlldg5qgv" path="res://src/obstacles/instances/standing_tall_obstacle.tscn" id="6_cdyjk"]
 
 [node name="Fragment6" type="Node2D"]
 script = ExtResource("1_uw4mr")
+
+[node name="SidewaysObstacle" parent="." instance=ExtResource("2_2hadi")]
+position = Vector2(400, -145)
+speed = 40.0
+
+[node name="FloatingObstacle" parent="." instance=ExtResource("3_bc55t")]
+position = Vector2(-169, -136)
+
+[node name="FloatingObstacle3" parent="." instance=ExtResource("3_bc55t")]
+position = Vector2(-132, -100)
+
+[node name="FloatingObstacle4" parent="." instance=ExtResource("3_bc55t")]
+position = Vector2(-86, -63)
+
+[node name="FloatingObstacle5" parent="." instance=ExtResource("3_bc55t")]
+position = Vector2(-44, -27)
+
+[node name="FloatingObstacle6" parent="." instance=ExtResource("3_bc55t")]
+position = Vector2(-3, 7)
+
+[node name="FloatingObstacle7" parent="." instance=ExtResource("3_bc55t")]
+position = Vector2(34, 48)
+
+[node name="StandingShortObstacle" parent="." instance=ExtResource("5_ur54i")]
+position = Vector2(-160, 115)
+
+[node name="StandingTallObstacle" parent="." instance=ExtResource("6_cdyjk")]
+position = Vector2(229, 68)
+
+[node name="BubbleGumPickup" parent="." instance=ExtResource("6_2hadi")]
+position = Vector2(39, 121)
+type = 2

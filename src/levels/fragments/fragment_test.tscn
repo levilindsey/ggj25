@@ -16,13 +16,13 @@ position = Vector2(290, 70)
 speed = 40.0
 
 [node name="FloatingObstacle" parent="." instance=ExtResource("2_fmdtu")]
-position = Vector2(101, -107)
+position = Vector2(112, -106)
 
 [node name="FloatingObstacle2" parent="." instance=ExtResource("2_fmdtu")]
-position = Vector2(172, -42)
+position = Vector2(236, -48)
 
 [node name="UpAndDownObstacle" parent="." instance=ExtResource("4_kgadk")]
-position = Vector2(-46, -25)
+position = Vector2(1, -21)
 vertical_range = 256
 
 [node name="StandingShortObstacle" parent="." instance=ExtResource("5_gt2fg")]

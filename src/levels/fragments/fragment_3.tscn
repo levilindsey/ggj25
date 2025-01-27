@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://fbid2odv0c4w"]
+[gd_scene load_steps=7 format=3 uid="uid://fbid2odv0c4w"]
 
 [ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_gmqp5"]
+[ext_resource type="PackedScene" uid="uid://2b5cuvuh7wvb" path="res://src/obstacles/instances/sideways_obstacle.tscn" id="2_qf0i6"]
+[ext_resource type="PackedScene" uid="uid://bbghnqpxvf7iy" path="res://src/obstacles/instances/floating_obstacle.tscn" id="3_qwxp8"]
+[ext_resource type="PackedScene" uid="uid://bjjwj2lgbjkxu" path="res://src/obstacles/instances/up_and_down_obstacle.tscn" id="4_6x0up"]
+[ext_resource type="PackedScene" uid="uid://cvnvhlldg5qgv" path="res://src/obstacles/instances/standing_tall_obstacle.tscn" id="5_4sr1a"]
+[ext_resource type="PackedScene" uid="uid://byegp775hg2he" path="res://src/pickups/bubble_gum_pickup.tscn" id="6_qwxp8"]
 
 [node name="Fragment3" type="Node2D"]
 script = ExtResource("1_gmqp5")
+
+[node name="SidewaysObstacle" parent="." instance=ExtResource("2_qf0i6")]
+position = Vector2(290, 70)
+speed = 40.0
+
+[node name="FloatingObstacle" parent="." instance=ExtResource("3_qwxp8")]
+position = Vector2(225, -131)
+
+[node name="UpAndDownObstacle" parent="." instance=ExtResource("4_6x0up")]
+position = Vector2(-139, -16)
+vertical_range = 256
+
+[node name="UpAndDownObstacle2" parent="." instance=ExtResource("4_6x0up")]
+position = Vector2(159, -13)
+vertical_range = 256
+
+[node name="StandingTallObstacle" parent="." instance=ExtResource("5_4sr1a")]
+
+[node name="BubbleGumPickup2" parent="." instance=ExtResource("6_qwxp8")]
+position = Vector2(-10, -108)
+type = 2

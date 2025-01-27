@@ -3,14 +3,14 @@ extends CharacterBody2D
 
 
 @export_range(0.0, 1.0) var initial_bubble_inflation := 0.5
-@export var initial_vertical_velocity := -130.0
+@export var initial_vertical_velocity := -120.0
 
 # Pixels per second per second.
-@export var floaty_max_blow_vertical_acceleration := -100.0
+@export var floaty_max_blow_vertical_acceleration := -125.0
 @export var bouncy_max_blow_vertical_acceleration := -2000.0
 
 # Pixels per second per second.
-@export var floaty_gravity_acceleration := 100.0
+@export var floaty_gravity_acceleration := 125.0
 @export var bouncy_gravity_acceleration := 400.0
 
 var max_blow_vertical_acceleration: float:

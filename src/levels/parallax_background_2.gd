@@ -2,7 +2,6 @@ extends ParallaxBackground
 
 @export var fade_length := 3.0
 @export var background_environment_type := Main.EnvironmentType.FOREST
-
 @export var fade_stagger := 2.0
 
 var active_environment := false

@@ -1,6 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvq5jrbjneokb"]
+[gd_scene load_steps=5 format=3 uid="uid://dvq5jrbjneokb"]
 
 [ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_kbhs0"]
+[ext_resource type="PackedScene" uid="uid://2b5cuvuh7wvb" path="res://src/obstacles/instances/sideways_obstacle.tscn" id="2_ap6g0"]
+[ext_resource type="PackedScene" uid="uid://byegp775hg2he" path="res://src/pickups/bubble_gum_pickup.tscn" id="2_aume4"]
+[ext_resource type="PackedScene" uid="uid://cvnvhlldg5qgv" path="res://src/obstacles/instances/standing_tall_obstacle.tscn" id="6_uftkd"]
 
 [node name="Fragment4" type="Node2D"]
 script = ExtResource("1_kbhs0")
+width = 700
+
+[node name="BubbleGumPickup2" parent="." instance=ExtResource("2_aume4")]
+position = Vector2(-306, -129)
+type = 2
+
+[node name="SidewaysObstacle" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(-155, -139)
+speed = 40.0
+
+[node name="SidewaysObstacle2" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(-104, -106)
+speed = 40.0
+
+[node name="SidewaysObstacle3" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(-45, -74)
+speed = 40.0
+
+[node name="SidewaysObstacle4" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(10, -47)
+speed = 40.0
+
+[node name="SidewaysObstacle5" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(75, 130)
+speed = 40.0
+
+[node name="SidewaysObstacle6" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(134, 95)
+speed = 40.0
+
+[node name="SidewaysObstacle7" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(190, 66)
+speed = 40.0
+
+[node name="SidewaysObstacle8" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(257, 10)
+speed = 40.0
+
+[node name="SidewaysObstacle9" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(321, -45)
+speed = 40.0
+
+[node name="SidewaysObstacle10" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(393, -88)
+speed = 40.0
+
+[node name="SidewaysObstacle11" parent="." instance=ExtResource("2_ap6g0")]
+position = Vector2(462, -134)
+speed = 40.0
+
+[node name="StandingTallObstacle" parent="." instance=ExtResource("6_uftkd")]
+position = Vector2(489, 68)
