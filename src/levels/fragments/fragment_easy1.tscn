@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtnflay4w560o"]
+
+[ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_qtnsx"]
+[ext_resource type="PackedScene" uid="uid://byegp775hg2he" path="res://src/pickups/bubble_gum_pickup.tscn" id="2_47m2x"]
+[ext_resource type="PackedScene" uid="uid://du63p25gpg7t7" path="res://src/obstacles/instances/standing_short_obstacle.tscn" id="4_j7qti"]
+[ext_resource type="PackedScene" uid="uid://cvnvhlldg5qgv" path="res://src/obstacles/instances/standing_tall_obstacle.tscn" id="5_aagj2"]
+
+[node name="Fragment1" type="Node2D"]
+script = ExtResource("1_qtnsx")
+width = 700
+
+[node name="BubbleGumPickup" parent="." instance=ExtResource("2_47m2x")]
+position = Vector2(2, -43)
+type = 1
+
+[node name="StandingShortObstacle" parent="." instance=ExtResource("4_j7qti")]
+position = Vector2(-149, 115)
+
+[node name="StandingTallObstacle" parent="." instance=ExtResource("5_aagj2")]
+position = Vector2(183, 68)

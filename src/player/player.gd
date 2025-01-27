@@ -388,6 +388,7 @@ func _toggle_super_blink() -> void:
 func _on_died() -> void:
     S.log.print("Player died")
     %KidSprite.set_crying()
+    $Crying.play()
     %BubbleSprite.visible = false
     G.level.game_over(false)
     # TODO: Switch to a crying animation.

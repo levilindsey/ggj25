@@ -33,4 +33,5 @@ func _on_entered_new_environment(new_env: Main.EnvironmentType, old_env: Main.En
 func relayer_backgrounds(fade_length, fade_stagger):
     await get_tree().create_timer((fade_stagger + fade_length) / S.time.get_combined_scale()).timeout
     var parent_node = G.level
+    print("NATURE to bottom")
     parent_node.move_child(self, 0)

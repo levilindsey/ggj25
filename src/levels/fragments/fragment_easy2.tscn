@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqjips7oxy7ky"]
+
+[ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_053vn"]
+[ext_resource type="PackedScene" uid="uid://bbghnqpxvf7iy" path="res://src/obstacles/instances/floating_obstacle.tscn" id="2_y707x"]
+[ext_resource type="PackedScene" uid="uid://du63p25gpg7t7" path="res://src/obstacles/instances/standing_short_obstacle.tscn" id="4_japao"]
+[ext_resource type="PackedScene" uid="uid://cvnvhlldg5qgv" path="res://src/obstacles/instances/standing_tall_obstacle.tscn" id="5_bbx44"]
+
+[node name="Fragment1" type="Node2D"]
+script = ExtResource("1_053vn")
+width = 700
+
+[node name="FloatingObstacle2" parent="." instance=ExtResource("2_y707x")]
+position = Vector2(-4, -142)
+
+[node name="StandingShortObstacle" parent="." instance=ExtResource("4_japao")]
+position = Vector2(-186, 115)
+
+[node name="StandingTallObstacle" parent="." instance=ExtResource("5_bbx44")]
+position = Vector2(214, 68)
