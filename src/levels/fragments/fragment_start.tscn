@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpor57x24rddo"]
+[gd_scene load_steps=4 format=3 uid="uid://dpor57x24rddo"]
 
 [ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_pqalh"]
+[ext_resource type="PackedScene" uid="uid://dtnbjo2fhdiqq" path="res://src/wind/windy_spot.tscn" id="3_5tq0b"]
 [ext_resource type="Texture2D" uid="uid://dtvcgdry2bi2t" path="res://assets/sprites/starting_hill.png" id="5_gsffr"]
 
 [node name="FragmentStart" type="Node2D"]
@@ -10,3 +11,10 @@ width = 986
 [node name="StartingHill" type="Sprite2D" parent="."]
 position = Vector2(0, 125)
 texture = ExtResource("5_gsffr")
+
+[node name="WindySpot" parent="." instance=ExtResource("3_5tq0b")]
+range = Vector2(162, 162)
+
+[node name="WindySpot2" parent="." instance=ExtResource("3_5tq0b")]
+position = Vector2(246.5, 0)
+range = Vector2(493, 324)

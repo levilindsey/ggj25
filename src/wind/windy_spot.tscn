@@ -1,0 +1,11 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtnbjo2fhdiqq"]
+
+[ext_resource type="Script" uid="uid://cgpk467plcdkd" path="res://src/wind/windy_spot.gd" id="1_88llh"]
+[ext_resource type="PackedScene" uid="uid://3nv2144gf3sv" path="res://src/wind/wind_1.tscn" id="2_kr0d7"]
+[ext_resource type="PackedScene" uid="uid://rahgwacbbqiq" path="res://src/wind/wind_2.tscn" id="3_bs5sp"]
+[ext_resource type="PackedScene" uid="uid://mbg4qrm8c7kj" path="res://src/wind/wind_3.tscn" id="4_ouv4s"]
+[ext_resource type="PackedScene" uid="uid://dn7rk35qjt0k8" path="res://src/wind/wind_4.tscn" id="5_7jefj"]
+
+[node name="WindySpot" type="Node2D"]
+script = ExtResource("1_88llh")
+wind_scenes = Array[PackedScene]([ExtResource("2_kr0d7"), ExtResource("3_bs5sp"), ExtResource("4_ouv4s"), ExtResource("5_7jefj")])

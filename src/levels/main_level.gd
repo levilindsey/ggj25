@@ -165,7 +165,7 @@ func trigger_start() -> void:
         zoom_out_duration,
         "ease_in_out",
         zoom_out_delay,
-        TimeType.APP_PHYSICS_SCALED)
+        TimeType.PLAY_PHYSICS_SCALED)
 
     S.time.tween_property(
         %Camera2D,
@@ -175,7 +175,7 @@ func trigger_start() -> void:
         zoom_out_duration,
         "ease_in_out",
         zoom_out_delay,
-        TimeType.APP_PHYSICS_SCALED)
+        TimeType.PLAY_PHYSICS_SCALED)
 
     S.time.tween_property(
         self,
@@ -185,7 +185,7 @@ func trigger_start() -> void:
         auto_rise_duration,
         "ease_in",
         0.0,
-        TimeType.APP_PHYSICS_SCALED)
+        TimeType.PLAY_PHYSICS_SCALED)
 
     # Rise moves 10 pixels over four frames at 5 frames per second.
     var rise_vertical_distance := 10.0
@@ -209,7 +209,7 @@ func trigger_start() -> void:
         rise_duration,
         "ease_in_out",
         0.0,
-        TimeType.APP_PHYSICS_SCALED)
+        TimeType.PLAY_PHYSICS_SCALED)
 
     S.time.tween_property(
         G.player,
@@ -219,7 +219,7 @@ func trigger_start() -> void:
         auto_rise_duration - rise_duration,
         "ease_out",
         rise_duration,
-        TimeType.APP_PHYSICS_SCALED)
+        TimeType.PLAY_PHYSICS_SCALED)
 
     S.time.set_timeout(_start, auto_rise_duration)
 

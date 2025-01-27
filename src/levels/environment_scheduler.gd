@@ -18,7 +18,7 @@ func _ready() -> void:
         _change_environment,
         S.manifest.environment_change_interval,
         [],
-        TimeType.APP_PHYSICS_SCALED)
+        TimeType.PLAY_PHYSICS_SCALED)
 
 
 func _change_environment() -> void:
