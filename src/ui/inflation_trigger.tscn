@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsty514eavyuw"]
+
+[ext_resource type="Script" uid="uid://bjofkm7m4y8b0" path="res://src/ui/inflation_trigger.gd" id="1_b3kvt"]
+[ext_resource type="PackedScene" uid="uid://bgjspstcbwggx" path="res://bubble_sprite.tscn" id="2_nsyls"]
+
+[node name="InflationTrigger" type="MarginContainer"]
+offset_right = 355.0
+offset_bottom = 80.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_b3kvt")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="BubbleSprite" parent="Control" instance=ExtResource("2_nsyls")]
+position = Vector2(-20, -20)

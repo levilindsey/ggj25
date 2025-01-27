@@ -45,11 +45,11 @@ func _ready() -> void:
     _update_zoom()
     get_tree().get_root().size_changed.connect(_update_zoom)
 
-    var fragment_spawner := FragmentSpawner.new()
-    %Fragments.add_child(fragment_spawner)
-
     var environment_scheduler := EnvironmentScheduler.new()
     add_child(environment_scheduler)
+
+    var fragment_spawner := FragmentSpawner.new()
+    %Fragments.add_child(fragment_spawner)
 
     var player := player_scene.instantiate()
     %Anchor.add_child(player)

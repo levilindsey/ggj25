@@ -43,7 +43,7 @@ var gravity_acceleration: float:
 @export var initial_health: Array[BubbleGumPickup.Type] = [
     BubbleGumPickup.Type.FLOATY,
     BubbleGumPickup.Type.FLOATY,
-    BubbleGumPickup.Type.BOUNCY,
+    BubbleGumPickup.Type.FLOATY,
 ]
 
 @export var post_damage_invincibility_duration := 1.0

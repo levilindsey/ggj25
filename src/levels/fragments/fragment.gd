@@ -39,6 +39,10 @@ var bounds: Rect2:
 func _ready() -> void:
     queue_redraw()
 
+    for child in get_children():
+        if child is Obstacle:
+            child.environment_type = environment_type
+
 
 func _draw() -> void:
     if not Engine.is_editor_hint() and not S.manifest.dev_mode:
