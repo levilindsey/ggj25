@@ -399,7 +399,6 @@ func _on_died() -> void:
     $Crying.play()
     %BubbleSprite.visible = false
     G.level.game_over(false)
-    # TODO: Switch to a crying animation.
 
 
 func is_dead() -> bool:

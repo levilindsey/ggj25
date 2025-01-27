@@ -16,5 +16,5 @@ position = Vector2(154, 115)
 position = Vector2(-156, 68)
 
 [node name="SidewaysObstacle" parent="." instance=ExtResource("4_f5ql2")]
-position = Vector2(449, -102)
+position = Vector2(402, -106)
 speed = 40.0

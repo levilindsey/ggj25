@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://yhk04lta674g"]
+
+[ext_resource type="Texture2D" uid="uid://c1dwjtj2uckn5" path="res://assets/sprites/Ufo Sprite Sheets.png" id="1_tpk28"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpk28"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj5hn"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp5ft"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjqsk"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbrea"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(4096, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk5wq"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1yax"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(1024, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w4oc"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(2048, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jglc2"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(3072, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqyc8"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(4096, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaj5j"]
+atlas = ExtResource("1_tpk28")
+region = Rect2(0, 2048, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekft7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpk28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj5hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp5ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjqsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbrea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk5wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1yax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w4oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jglc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqyc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaj5j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ufo" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ekft7")
+frame_progress = 0.822444

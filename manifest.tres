@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Manifest" load_steps=53 format=3 uid="uid://n2klwldxjt7u"]
+[gd_resource type="Resource" script_class="Manifest" load_steps=54 format=3 uid="uid://n2klwldxjt7u"]
 
 [ext_resource type="Script" uid="uid://i4q7p22q60vs" path="res://scaffolder/src/config/canvas_layer_config.gd" id="1_iqjv3"]
 [ext_resource type="PackedScene" uid="uid://dw40igtylnu30" path="res://src/levels/main_level.tscn" id="2_a47xt"]
@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://bdcxfq7hd0iak" path="res://scaffolder/assets/sfx/pause.tres" id="16_4bhqj"]
 [ext_resource type="AudioStream" uid="uid://coe3qd5rsfkhp" path="res://scaffolder/assets/sfx/unpause.tres" id="17_3gob2"]
 [ext_resource type="AudioStream" uid="uid://d4buaef6wotn2" path="res://scaffolder/assets/sfx/menu_click.tres" id="18_8hoe7"]
+[ext_resource type="PackedScene" uid="uid://yhk04lta674g" path="res://src/obstacles/sprites/nature/ufo.tscn" id="19_72khu"]
 [ext_resource type="Script" uid="uid://da8hpd5e11wvx" path="res://src/levels/fragments/fragment_config.gd" id="25_lx0xc"]
 [ext_resource type="PackedScene" uid="uid://dpor57x24rddo" path="res://src/levels/fragments/fragment_start.tscn" id="26_x2iix"]
 
@@ -199,6 +200,7 @@ sfxs = Dictionary[String, AudioStream]({
 start_fragment = SubResource("Resource_gb07o")
 fragments = Array[ExtResource("25_lx0xc")]([SubResource("Resource_bkucw"), SubResource("Resource_2vhlc"), SubResource("Resource_nsh70"), SubResource("Resource_lfmop"), SubResource("Resource_rsjxi"), SubResource("Resource_hm6qt"), SubResource("Resource_2lcjo"), SubResource("Resource_pa4w7"), SubResource("Resource_44vru"), SubResource("Resource_wgx10")])
 obstacle_tree_short = ExtResource("7_x2iix")
+obstacle_ufo = ExtResource("19_72khu")
 obstacle_tree_tall = ExtResource("8_gb07o")
 obstacle_bird = ExtResource("4_ncyll")
 obstacle_cloud = ExtResource("5_hkaoq")

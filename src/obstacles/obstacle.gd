@@ -14,7 +14,7 @@ extends Node2D
         environment_type = value
         update_content()
 
-var _sprite: AnimatedSprite2D
+var _sprite: Node2D
 
 
 func _ready() -> void:
@@ -41,6 +41,8 @@ func update_content() -> void:
             _update_content_helper(S.manifest.obstacle_tree_short)
         [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_tree_tall)
+        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.DESERT]:
+            _update_content_helper(S.manifest.obstacle_ufo)
         _:
             S.utils.ensure(
                 false,

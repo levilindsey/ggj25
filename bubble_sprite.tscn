@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://bgjspstcbwggx"]
 
 [ext_resource type="Texture2D" uid="uid://du6rj0ohdjcp4" path="res://assets/sprites/bubble.png" id="1_x4jli"]
-[ext_resource type="Script" uid="uid://cldt877k2tjgk" path="res://bubble_sprite.gd" id="2_p31hq"]
+[ext_resource type="Script" path="res://bubble_sprite.gd" id="2_p31hq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p31hq"]
 atlas = ExtResource("1_x4jli")

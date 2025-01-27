@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://c8h8ecrxandlb"]
 
 [ext_resource type="Texture2D" uid="uid://djp3481tbtgvb" path="res://assets/sprites/kid.png" id="1_bt6i1"]
-[ext_resource type="Script" uid="uid://o2kvmvaw5y4p" path="res://kid_sprite.gd" id="2_krd2s"]
+[ext_resource type="Script" path="res://kid_sprite.gd" id="2_krd2s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krd2s"]
 atlas = ExtResource("1_bt6i1")
@@ -140,5 +140,5 @@ animations = [{
 
 [node name="KidSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_5c1al")
-animation = &"floating"
+animation = &"crying"
 script = ExtResource("2_krd2s")
