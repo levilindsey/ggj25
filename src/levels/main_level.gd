@@ -90,7 +90,7 @@ func _on_entered_fragment() -> void:
             G.fragment_spawner.previous_fragment_environment):
         if S.manifest.log_fragment_updates:
             S.log.print("Entered new environment: %s" %
-                G.fragment_spawner.current_fragment_environment)
+                Main.EnvironmentType.keys()[G.fragment_spawner.current_fragment_environment])
         #entered_new_environment.emit(
             #G.fragment_spawner.current_fragment_environment,
             #G.fragment_spawner.previous_fragment_environment)

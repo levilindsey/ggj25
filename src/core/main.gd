@@ -5,7 +5,6 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
-# - Add wispy wind effect animations.
 # - MORE ART.
 #   - Add simple shading and animation to pickups.
 #   - Add shading to all obstacles.
