@@ -49,10 +49,22 @@ func update_content() -> void:
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.DESERT]:
             _update_content_helper(S.manifest.obstacle_ufo)
         _:
-            S.utils.ensure(
-                false,
-                "Obstacle or environment type not recognized: %s, %s" %
-                    [type, environment_type])
+            match type:
+                Main.ObstacleType.FLOATING:
+                    _update_content_helper(S.manifest.obstacle_cloud)
+                Main.ObstacleType.SIDEWAYS:
+                    _update_content_helper(S.manifest.obstacle_dragonfly)
+                Main.ObstacleType.UP_AND_DOWN:
+                    _update_content_helper(S.manifest.obstacle_bird)
+                Main.ObstacleType.STANDING_SHORT:
+                    _update_content_helper(S.manifest.obstacle_tree_short)
+                Main.ObstacleType.STANDING_TALL:
+                    _update_content_helper(S.manifest.obstacle_tree_tall)
+                _:
+                    S.utils.ensure(
+                        false,
+                        "Obstacle or environment type not recognized: %s, %s" %
+                            [type, environment_type])
 
 
 func _update_content_helper(sprite_scene: PackedScene) -> void:

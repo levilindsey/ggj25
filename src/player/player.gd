@@ -30,7 +30,7 @@ var gravity_acceleration: float:
         )
 
 # Whole-bubble-inflated per second.
-@export var max_blow_bubble_inflate_speed := .8
+@export var max_blow_bubble_inflate_speed := 0.8
 
 # Whole-bubble-inflated per second.
 @export var bubble_deflate_speed := -0.6

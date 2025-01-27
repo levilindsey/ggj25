@@ -68,3 +68,4 @@ layout_mode = 2
 shows_credits = false
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="triggered" from="CenterContainer/VBoxContainer/InflationTrigger" to="." method="_on_inflation_trigger_triggered"]

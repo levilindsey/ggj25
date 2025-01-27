@@ -8,5 +8,13 @@ func _ready() -> void:
 
 
 func _on_play_button_pressed() -> void:
+    _play()
+
+
+func _on_inflation_trigger_triggered() -> void:
+    _play()
+
+
+func _play() -> void:
     S.screens.open("game_screen")
     S.screens.close(self)
