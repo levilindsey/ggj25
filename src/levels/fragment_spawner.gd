@@ -111,7 +111,7 @@ func _process(_delta: float) -> void:
 func _spawn_start_fragment() -> void:
     var config := S.manifest.start_fragment
     _current_fragment = config.scene.instantiate()
-    _current_fragment.position.x = _current_fragment.width / 2.0
+    #_current_fragment.position.x = _current_fragment.width / 2.0
     add_child(_current_fragment)
     _fragment_count += 1
     current_fragment_environment = S.manifest.environment_sequence[0]

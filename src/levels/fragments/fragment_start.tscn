@@ -1,22 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpor57x24rddo"]
+[gd_scene load_steps=3 format=3 uid="uid://dpor57x24rddo"]
 
 [ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_pqalh"]
-[ext_resource type="PackedScene" uid="uid://byegp775hg2he" path="res://src/pickups/bubble_gum_pickup.tscn" id="4_j1e48"]
-[ext_resource type="PackedScene" uid="uid://du63p25gpg7t7" path="res://src/obstacles/instances/standing_short_obstacle.tscn" id="5_yvf6c"]
-[ext_resource type="PackedScene" uid="uid://cvnvhlldg5qgv" path="res://src/obstacles/instances/standing_tall_obstacle.tscn" id="6_xnk8g"]
+[ext_resource type="Texture2D" uid="uid://dtvcgdry2bi2t" path="res://assets/sprites/starting_hill.png" id="5_gsffr"]
 
 [node name="FragmentStart" type="Node2D"]
 script = ExtResource("1_pqalh")
+width = 986
 
-[node name="StandingShortObstacle" parent="." instance=ExtResource("5_yvf6c")]
-position = Vector2(112, 115)
-
-[node name="StandingShortObstacle2" parent="." instance=ExtResource("5_yvf6c")]
-position = Vector2(223, 115)
-
-[node name="StandingTallObstacle" parent="." instance=ExtResource("6_xnk8g")]
-position = Vector2(160, 68)
-
-[node name="BubbleGumPickup" parent="." instance=ExtResource("4_j1e48")]
-position = Vector2(67, -143)
-type = 2
+[node name="StartingHill" type="Sprite2D" parent="."]
+position = Vector2(0, 125)
+texture = ExtResource("5_gsffr")
