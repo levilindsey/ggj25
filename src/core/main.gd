@@ -5,8 +5,6 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
-# - Change blown bubble gum color based on equipped.
-# - Make level speed faster when super.
 # - Bubble inflation widget for restarting level.
 #   - Hook-up bubble inflation controls and widget activation.
 #     - OLD NOTES: Add a UI widget for clicking a button when they pop the bubble by blowing.

@@ -13,6 +13,7 @@ const GAME_OVER_SCREEN_DELAY := 2.0
 const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
 @export var horizontal_speed := 80.0
+@export var super_horizontal_speed := 160.0
 
 @export var player_scene: PackedScene
 
@@ -130,7 +131,12 @@ func _physics_process(delta: float) -> void:
     if not has_triggered_start:
         return
 
-    %Anchor.position.x += horizontal_speed * S.time.scale_delta(delta)
+    var speed := (
+        super_horizontal_speed
+        if G.player.is_super
+        else horizontal_speed
+    )
+    %Anchor.position.x += speed * S.time.scale_delta(delta)
     G.session.distance = %Anchor.position.x
 
 
