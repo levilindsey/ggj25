@@ -11,27 +11,13 @@ extends Container
 #   - Add bird animation.
 #
 # - ART:
-#     - Fix trees
 #     - Fix cloud
 #     - Fix dragonfly
 #     - Fix bird
 #     - Fix ufo
 #     - Fix pickups
-#     - Palmtrees
 #     - Beachball
 #     - UFO abducting human
-#     - Wispy wind effect.
-#
-# - Name ideas:
-#   - You Blew It
-#   - Blown Away
-#   - Blow Me
-#   - Blow Up
-#   - Windblown
-#   - Blow and Go
-#   - Blew Through
-#   - How Blow Can You Go?
-#   - Oh, the Places You'll Blow
 
 
 enum ObstacleType {
