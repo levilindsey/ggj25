@@ -76,6 +76,9 @@ func change_ambience(new: Main.EnvironmentType):
         Main.EnvironmentType.BEACH:
             ambience = "BEACH"
             print("Ambience:", ambience)
+        Main.EnvironmentType.DESERT:
+            ambience = "DESERT"
+            print("Ambience:", ambience)
             
     var current_ambience = %AmbiencePlayer.current_ambience
     print("Current ambience:", current_ambience)

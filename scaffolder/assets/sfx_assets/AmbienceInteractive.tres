@@ -1,16 +1,20 @@
-[gd_resource type="AudioStreamInteractive" load_steps=3 format=3 uid="uid://cm2j4kl3wgeum"]
+[gd_resource type="AudioStreamInteractive" load_steps=4 format=3 uid="uid://cm2j4kl3wgeum"]
 
 [ext_resource type="AudioStream" uid="uid://c53p24u5ggog8" path="res://scaffolder/assets/sfx_assets/NatureAmb.wav" id="1_cis6a"]
 [ext_resource type="AudioStream" uid="uid://dps52kwd2j8q3" path="res://scaffolder/assets/sfx_assets/BeachAmb.wav" id="2_rksec"]
+[ext_resource type="AudioStream" uid="uid://dmfjljvyy1d0" path="res://scaffolder/assets/sfx_assets/DesertAmb.wav" id="3_rksec"]
 
 [resource]
-clip_count = 2
+clip_count = 3
 clip_0/name = &"NATURE"
 clip_0/stream = ExtResource("1_cis6a")
 clip_0/auto_advance = 0
 clip_1/name = &"BEACH"
 clip_1/stream = ExtResource("2_rksec")
 clip_1/auto_advance = 0
+clip_2/name = &"DESERT"
+clip_2/stream = ExtResource("3_rksec")
+clip_2/auto_advance = 0
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 2.0,
