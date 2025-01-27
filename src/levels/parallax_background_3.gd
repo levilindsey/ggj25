@@ -1,12 +1,13 @@
 extends ParallaxBackground
 
 @export var fade_length := 3.0
-@export var background_environment_type := Main.EnvironmentType.FOREST
+@export var background_environment_type := Main.EnvironmentType.BEACH
 
 @export var fade_stagger := 2.0
 
 var active_environment := false
-var starting_opacity := 0.0
+var starting_opacity := 1.0
+
 
 signal transition_in(fade_length, fade_stagger)
 signal transition_out(fade_length, fade_stagger)

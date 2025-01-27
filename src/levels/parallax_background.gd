@@ -5,6 +5,7 @@ extends ParallaxBackground
 @export var fade_stagger := 2.0
 
 var active_environment := true
+var starting_opacity := 1.0
 
 signal transition_in(fade_length, fade_stagger)
 signal transition_out(fade_length, fade_stagger)
