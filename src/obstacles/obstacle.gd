@@ -7,12 +7,14 @@ extends Node2D
 @export var type := Main.ObstacleType.FLOATING:
     set(value):
         type = value
-        update_content()
+        if Engine.is_editor_hint():
+            update_content()
 
 @export var environment_type := Main.EnvironmentType.NATURE:
     set(value):
         environment_type = value
-        update_content()
+        if Engine.is_editor_hint():
+            update_content()
 
 var _sprite: Node2D
 

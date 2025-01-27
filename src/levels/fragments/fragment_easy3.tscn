@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7cbrvg6va6f0"]
+[gd_scene load_steps=6 format=3 uid="uid://b7cbrvg6va6f0"]
 
 [ext_resource type="Script" uid="uid://busprrgtpbfn2" path="res://src/levels/fragments/fragment.gd" id="1_jratr"]
 [ext_resource type="PackedScene" uid="uid://2b5cuvuh7wvb" path="res://src/obstacles/instances/sideways_obstacle.tscn" id="4_f5ql2"]
 [ext_resource type="PackedScene" uid="uid://du63p25gpg7t7" path="res://src/obstacles/instances/standing_short_obstacle.tscn" id="4_xeh8k"]
+[ext_resource type="PackedScene" uid="uid://bbghnqpxvf7iy" path="res://src/obstacles/instances/floating_obstacle.tscn" id="5_jratr"]
 [ext_resource type="PackedScene" uid="uid://cvnvhlldg5qgv" path="res://src/obstacles/instances/standing_tall_obstacle.tscn" id="5_wke63"]
 
 [node name="Fragment1" type="Node2D"]
@@ -18,3 +19,6 @@ position = Vector2(-156, 68)
 [node name="SidewaysObstacle" parent="." instance=ExtResource("4_f5ql2")]
 position = Vector2(402, -106)
 speed = 40.0
+
+[node name="FloatingObstacle" parent="." instance=ExtResource("5_jratr")]
+position = Vector2(-53, -145)
