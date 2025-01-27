@@ -3,11 +3,10 @@
 [ext_resource type="Script" uid="uid://don13l3e8x4cb" path="res://src/obstacles/instances/standing_short_obstacle.gd" id="1_c7a8w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fn00u"]
-radius = 12.0
 height = 94.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqg0v"]
-size = Vector2(1152, 576)
+size = Vector2(2000, 576)
 
 [node name="StandingShortObstacle" type="Node2D"]
 position = Vector2(0, 115)

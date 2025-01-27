@@ -16,7 +16,7 @@ extends Node2D
         #if Engine.is_editor_hint():
             #update_content()
 
-var proximity_range := 576.0
+var proximity_range := 1000.0
 
 var _sprite: Node2D
 
