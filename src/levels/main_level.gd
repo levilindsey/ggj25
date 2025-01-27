@@ -12,6 +12,9 @@ const GAME_OVER_SCREEN_DELAY := 2.0
 
 const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
+const MAX_ASPECT_RATIO := 16.0/9.0
+const MIN_ASPECT_RATIO := 9.0/16.0
+
 @export var horizontal_speed := 80.0
 @export var super_horizontal_speed := 160.0
 
@@ -38,7 +41,7 @@ var has_started := false
 
 var has_triggered_start := false
 
-var ambience_player
+var ambience_player: AudioStreamPlayer
 
 var current_environment := Main.EnvironmentType.NATURE
 
@@ -233,9 +236,35 @@ func trigger_start() -> void:
 
 func _update_zoom() -> void:
     var viewport_size: Vector2 = G.main.get_viewport().size
-    var viewport_basis_ratio := viewport_size / VIEWPORT_SIZE_BASIS
-    var zoom: float = max(viewport_basis_ratio.x, viewport_basis_ratio.y)
-    %Camera2D.zoom = Vector2.ONE * zoom
+    var viewport_aspect_ratio := viewport_size.x / viewport_size.y
+
+    var sub_viewport := S.game_screen.sub_viewport
+    var sub_viewport_container: SubViewportContainer = sub_viewport.get_parent()
+
+    var sub_viewport_size: Vector2
+    var sub_viewport_position: Vector2
+
+    if viewport_aspect_ratio > MAX_ASPECT_RATIO:
+        # Too wide.
+        sub_viewport_size = Vector2(viewport_size.y * MAX_ASPECT_RATIO, viewport_size.y)
+        sub_viewport_position = Vector2((viewport_size.x - sub_viewport_size.x) / 2.0, 0)
+    elif viewport_aspect_ratio < MIN_ASPECT_RATIO:
+        # Too tall.
+        sub_viewport_size = Vector2(viewport_size.x, viewport_size.x / MIN_ASPECT_RATIO)
+        sub_viewport_position = Vector2(0, (viewport_size.y - sub_viewport_size.y) / 2.0)
+    else:
+        sub_viewport_size = viewport_size
+        sub_viewport_position = Vector2.ZERO
+
+    var sub_viewport_aspect_ratio := sub_viewport_size.x / sub_viewport_size.y
+    var sub_viewport_basis_ratio := sub_viewport_size / VIEWPORT_SIZE_BASIS
+
+    sub_viewport.size = sub_viewport_size
+    S.game_screen.size = viewport_size
+    sub_viewport_container.position = sub_viewport_position
+
+    _default_camera_zoom = max(sub_viewport_basis_ratio.x, sub_viewport_basis_ratio.y) * Vector2.ONE
+    %Camera2D.zoom = _default_camera_zoom
 
 
 func get_lower_bound() -> float:

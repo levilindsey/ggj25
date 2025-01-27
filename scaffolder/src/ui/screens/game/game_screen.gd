@@ -2,8 +2,20 @@ class_name GameScreen
 extends Screen
 
 
+var sub_viewport: SubViewport
+
+
+func _enter_tree() -> void:
+    S.game_screen = self
+
+
 func _ready() -> void:
     super()
+
+    sub_viewport = %SubViewport
+
+    await get_tree().process_frame
+
     # TODO: Configure different levels?
     var level_scene = (
         S.manifest.dev_mode_level

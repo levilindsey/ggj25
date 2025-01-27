@@ -26,6 +26,7 @@ var settings: Settings
 var audio: Audio
 var screens: ScreenHandler
 var shell: ScaffolderShell
+var game_screen: GameScreen
 
 var level: Level
 var hud: Hud

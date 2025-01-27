@@ -317,7 +317,9 @@ func change_ambience(new: Main.EnvironmentType):
     if ambience != current_ambience:
         S.log.print("Changing ambiance: %s" % ambience)
         await get_tree().create_timer(3.0 / S.time.get_combined_scale()).timeout
-        G.level.ambience_player.get_stream_playback().switch_to_clip_by_name(ambience)
+        var playback := G.level.ambience_player.get_stream_playback()
+        if S.utils.ensure(is_instance_valid(playback), "Ambience playback stopped!"):
+            playback.switch_to_clip_by_name(ambience)
 
 
 func _destroy_obstacle(obstacle: Obstacle) -> void:

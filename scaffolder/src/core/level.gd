@@ -11,6 +11,7 @@ func _init() -> void:
 
 func start() -> void:
     is_game_active = true
+    unpause()
 
 
 func pause() -> void:
