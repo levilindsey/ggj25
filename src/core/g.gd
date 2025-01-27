@@ -18,6 +18,9 @@ var player: Player
 
 signal level_loaded
 
+signal level_started
+
+
 func _ready() -> void:
     var mic_handler := MicHandler.new()
     add_child(mic_handler)

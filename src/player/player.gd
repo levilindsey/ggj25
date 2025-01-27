@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
-@export_range(0.0, 1.0) var initial_bubble_inflation := 0.8
+@export_range(0.0, 1.0) var start_level_bubble_inflation_threshold := 0.8
 @export var initial_vertical_velocity := -130.0
 
 # Pixels per second per second.
@@ -47,7 +47,7 @@ var gravity_acceleration: float:
 ]
 
 @export var post_damage_invincibility_duration := 1.0
-@export var level_start_invincibility_duration := 3.0
+#@export var level_start_invincibility_duration := 3.0
 
 @export var super_duration := 7.0
 
@@ -60,9 +60,6 @@ var gravity_acceleration: float:
 
 # [0,1]
 var _bubble_inflation := 0.0
-
-# [0,1]
-var _sprite_inflation := 0.0
 
 var _velocity := Vector2.ZERO
 
@@ -89,6 +86,8 @@ var is_invincible := false
 var is_recovering := false
 var is_super := false
 
+var _previous_position: Vector2
+
 var _recovering_blink_interval_id: int
 var _end_recovering_timeout_id: int
 
@@ -102,7 +101,8 @@ func _init() -> void:
 
 
 func _ready() -> void:
-    _bubble_inflation = initial_bubble_inflation
+    _previous_position = position
+    _bubble_inflation = 0.0
     _velocity.y = initial_vertical_velocity
     health = initial_health
     modulate = Color.WHITE
@@ -117,11 +117,9 @@ func _ready() -> void:
     _update_gum_type()
     S.hud.update_health()
 
-    %KidSprite.set_floating()
+    %KidSprite.set_standing()
 
     _update_inflation_sprite()
-
-    _start_recovering(level_start_invincibility_duration)
 
 
 func _exit_tree() -> void:
@@ -139,6 +137,7 @@ func _process(delta: float) -> void:
         $blowing.play()
     elif weight < 0.2 and $blowing.is_playing():
         fade_out_and_stop($blowing)
+
 
 func fade_out_and_stop(player: AudioStreamPlayer) -> void:
     var fade_duration = .1
@@ -166,6 +165,14 @@ func _physics_process(delta: float) -> void:
     _bubble_inflation += inflation_speed * delta
     _bubble_inflation = clampf(_bubble_inflation, 0, 1)
 
+    if not G.level.has_started:
+        _update_inflation_sprite()
+        if _bubble_inflation > start_level_bubble_inflation_threshold:
+            G.level.trigger_start()
+        velocity = (position - _previous_position) / delta
+        _previous_position = position
+        return
+
     # Update speed.
     var acceleration: float = lerpf(
         max_blow_vertical_acceleration,
@@ -173,11 +180,6 @@ func _physics_process(delta: float) -> void:
         1 - blow_weight)
     _velocity.y += acceleration * delta
     _velocity.y = clampf(_velocity.y, -max_vertical_speed, max_vertical_speed)
-
-    # Interpolate inflation between original inflate value and speed.
-    var speed_weight := 1.0 - (_velocity.y + max_vertical_speed) / max_vertical_speed * 2.0
-    #_sprite_inflation = lerpf(_bubble_inflation, speed_weight, 0.1)
-    _sprite_inflation = _bubble_inflation
 
     # Update position.
     position.y += _velocity.y * delta
@@ -301,7 +303,11 @@ func receive_damage() -> void:
 
 
 func _update_inflation_sprite() -> void:
-    %BubbleSprite.set_inflation(_sprite_inflation)
+    %BubbleSprite.set_inflation(_bubble_inflation)
+
+
+func start_rise_animation() -> void:
+    %KidSprite.set_rising()
 
 
 func _start_recovering(duration: float) -> void:
@@ -320,7 +326,9 @@ func _end_recovering() -> void:
 
 
 func _start_super() -> void:
-    S.utils.ensure(not is_super)
+    if is_super:
+        _end_super()
+
     is_super = true
     is_invincible = true
     G.level.update_music()

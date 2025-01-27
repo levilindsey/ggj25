@@ -5,38 +5,26 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
-# - Intro animation sequence!!!!
-#   - With placeholder textures.
-#   - Just apply a small oscillation offset to the inflation sprite index, without actually affecting the underlying inflation value, until lift off threshold happens.
-# - Make the separate bubble Node.
-# - Will need to create quite a few sprites for different bubble inflation sizes.
-# - Add support for popping at too big.
-#   - Shade character red before the pop.
-#   - Cheat and have bubble size directly relate to the vertical speed.
+# - Change blown bubble gum color based on equipped.
+# - Make level speed faster when super.
+# - Bubble inflation widget for restarting level.
+#   - Hook-up bubble inflation controls and widget activation.
+#     - OLD NOTES: Add a UI widget for clicking a button when they pop the bubble by blowing.
+#       - Use this to start a new run from the game-over screen.
+#       - Use a shared utility for tracking ballon inflation for the initial
+#          take-off when starting a level.
 # - Add wispy wind effect animations.
-# - Find old desaturate shader! And adjust to also apply tint after.
-# - THEN art
+# - Look at TODOs.
+# - MORE ART.
+
 #
 # - ART:
-#   - Player:
-#     - Player standing at start
-#     - Player floating
-#     - Bubble at different sizes
-#       - Hook-up bubble inflation controls.
 #   - Nature:
 #     -
 #   - Urban:
 #     -
 #   - Misc:
-#     - Bubble inflation widget for restarting level.
-#       - Hook-up bubble inflation controls and widget activation.
-#         - OLD NOTES: Add a UI widget for clicking a button when they pop the bubble by blowing.
-#            - Use this to start a new run from the game-over screen.
-#            - Use a shared utility for tracking ballon inflation for the initial
-#              take-off when starting a level.
-#   - Taken-damage animation.
-#   - Death animation.
-#   - Intro animation.
+#     -
 #
 # - Name ideas:
 #   - You Blew It

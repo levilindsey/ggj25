@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cvdn6e23arr6r" path="res://assets/background_graphics/summer 7-UPDT/2_Ext.png" id="12_5xsos"]
 [ext_resource type="AudioStream" uid="uid://blbolycngefxx" path="res://scaffolder/assets/sfx_assets/invincibubble.02.wav" id="19_gcuqk"]
 [ext_resource type="AudioStream" uid="uid://cm2j4kl3wgeum" path="res://scaffolder/assets/sfx_assets/AmbienceInteractive.tres" id="24_td5io"]
-[ext_resource type="Script" uid="uid://cptu414bpb882" path="res://src/levels/ambience_player.gd" id="25_sdn75"]
+[ext_resource type="Script" path="res://src/levels/ambience_player.gd" id="25_sdn75"]
 
 [node name="MainLevel" type="Node2D"]
 process_mode = 1
@@ -267,6 +267,9 @@ script = ExtResource("4_3ksew")
 texture_repeat = 2
 texture = ExtResource("6_twkqo")
 offset = Vector2(576, 0)
+
+[node name="Fragments" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Anchor" type="Node2D" parent="."]
 unique_name_in_owner = true

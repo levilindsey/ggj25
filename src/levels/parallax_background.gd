@@ -11,9 +11,9 @@ signal transition_in(fade_length, fade_stagger)
 signal transition_out(fade_length, fade_stagger)
 
 func _ready():
-    G.level_loaded.connect(_on_level_loaded)
+    G.level_started.connect(_on_level_started)
 
-func _on_level_loaded():
+func _on_level_started():
     var emitter = G.level
     emitter.entered_new_environment.connect(_on_entered_new_environment)
 

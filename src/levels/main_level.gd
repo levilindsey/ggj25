@@ -12,13 +12,31 @@ const GAME_OVER_SCREEN_DELAY := 2.0
 
 const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
-@export var horizontal_speed := 80
+@export var horizontal_speed := 80.0
 
 @export var player_scene: PackedScene
+
+@export_group("Intro")
+@export var start_zoom := 24.0
+@export var start_pan := Vector2(12, -18)
+@export var zoom_out_duration := 2.0
+@export var zoom_out_delay := 0.9
+@export var auto_rise_duration := 2.0
+@export var player_auto_rise_distance := 20.0
+@export_group("")
 
 var _last_background_music_position := 0.0
 var _last_ambiance_position := 0.0
 var ambience
+
+var _default_camera_position: Vector2
+var _default_camera_zoom: Vector2
+var _default_horizontal_speed: float
+
+var has_started := false
+
+var has_triggered_start := false
+
 
 func _ready() -> void:
     G.level = self
@@ -27,7 +45,7 @@ func _ready() -> void:
     get_tree().get_root().size_changed.connect(_update_zoom)
 
     var fragment_spawner := FragmentSpawner.new()
-    add_child(fragment_spawner)
+    %Fragments.add_child(fragment_spawner)
 
     var environment_scheduler := EnvironmentScheduler.new()
     add_child(environment_scheduler)
@@ -39,11 +57,21 @@ func _ready() -> void:
 
     _update_time_scale()
     S.time.set_interval(_update_time_scale, TIME_SCALE_UPDATE_INTERVAL)
-    
+
     %AmbiencePlayer.play()
     %BackgroundMusicPlayer.play()
-    
+
+    _default_camera_position = %Camera2D.position
+    %Camera2D.position = start_pan
+
+    _default_camera_zoom = %Camera2D.zoom
+    %Camera2D.zoom = Vector2.ONE * start_zoom
+
+    _default_horizontal_speed = horizontal_speed
+    horizontal_speed = 0.0
+
     G.level_loaded.emit()
+
 
 func _update_time_scale() -> void:
     var weight := G.session.play_time / S.manifest.time_to_max_time_scale
@@ -65,6 +93,7 @@ func _on_entered_fragment() -> void:
             G.fragment_spawner.previous_fragment_environment)
         change_ambience(G.fragment_spawner.current_fragment_environment)
 
+
 func change_ambience(new: Main.EnvironmentType):
     match new:
         Main.EnvironmentType.NATURE:
@@ -79,10 +108,10 @@ func change_ambience(new: Main.EnvironmentType):
         Main.EnvironmentType.DESERT:
             ambience = "DESERT"
             print("Ambience:", ambience)
-            
+
     var current_ambience = %AmbiencePlayer.current_ambience
     print("Current ambience:", current_ambience)
-    
+
     if ambience != current_ambience:
         await get_tree().create_timer(3.0 / S.time.get_combined_scale()).timeout
         %AmbiencePlayer.get_stream_playback().switch_to_clip_by_name(ambience)
@@ -97,8 +126,72 @@ func start() -> void:
 func _physics_process(delta: float) -> void:
     if not is_game_active:
         return
+
+    if not has_triggered_start:
+        return
+
     %Anchor.position.x += horizontal_speed * S.time.scale_delta(delta)
     G.session.distance = %Anchor.position.x
+
+
+func _start() -> void:
+    S.log.print("Starting level gameplay")
+
+    has_started = true
+    G.level_started.emit()
+
+
+func trigger_start() -> void:
+    if has_triggered_start:
+        return
+
+    S.log.print("Triggering rise animations")
+
+    has_triggered_start = true
+
+    S.time.tween_property(
+        %Camera2D,
+        "zoom",
+        %Camera2D.zoom,
+        _default_camera_zoom,
+        zoom_out_duration,
+        "ease_in_out",
+        zoom_out_delay,
+        TimeType.APP_PHYSICS_SCALED)
+
+    S.time.tween_property(
+        %Camera2D,
+        "position",
+        %Camera2D.position,
+        _default_camera_position,
+        zoom_out_duration,
+        "ease_in_out",
+        zoom_out_delay,
+        TimeType.APP_PHYSICS_SCALED)
+
+    S.time.tween_property(
+        G.player,
+        "position",
+        G.player.position,
+        G.player.position + player_auto_rise_distance * Vector2.UP,
+        auto_rise_duration,
+        "ease_in",
+        0.0,
+        TimeType.APP_PHYSICS_SCALED)
+
+    S.time.tween_property(
+        self,
+        "horizontal_speed",
+        horizontal_speed,
+        _default_horizontal_speed,
+        auto_rise_duration,
+        "ease_in",
+        0.0,
+        TimeType.APP_PHYSICS_SCALED)
+
+    S.time.set_timeout(_start, auto_rise_duration)
+
+    G.player.start_rise_animation()
 
 
 func _update_zoom() -> void:

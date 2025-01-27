@@ -3,15 +3,15 @@ extends ParallaxLayer
 @export var cloud_speed: float = 0.0
 
 func _ready():
-    G.level_loaded.connect(_on_level_loaded)
-    
+    G.level_started.connect(_on_level_started)
 
-func _on_level_loaded():
+
+func _on_level_started():
     var emitter = $".."
     emitter.transition_in.connect(fade_in.bind(1.0))
     emitter.transition_out.connect(fade_out.bind(0.0))
     modulate.a = $"..".starting_opacity
-    
+
 func _process(delta: float) -> void:
     motion_offset.x += cloud_speed
 
