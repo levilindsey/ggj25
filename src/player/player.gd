@@ -2,8 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 
-@export_range(0.0, 1.0) var initial_bubble_inflation := 0.5
-@export var initial_vertical_velocity := -120.0
+@export_range(0.0, 1.0) var initial_bubble_inflation := 0.8
+@export var initial_vertical_velocity := -130.0
 
 # Pixels per second per second.
 @export var floaty_max_blow_vertical_acceleration := -125.0
@@ -30,10 +30,10 @@ var gravity_acceleration: float:
         )
 
 # Whole-bubble-inflated per second.
-@export var max_blow_bubble_inflate_speed := 0.3
+@export var max_blow_bubble_inflate_speed := .8
 
 # Whole-bubble-inflated per second.
-@export var bubble_deflate_speed := -0.1
+@export var bubble_deflate_speed := -0.6
 
 # Pixels per second.
 @export var max_vertical_speed := 150.0
@@ -60,6 +60,9 @@ var gravity_acceleration: float:
 
 # [0,1]
 var _bubble_inflation := 0.0
+
+# [0,1]
+var _sprite_inflation := 0.0
 
 var _velocity := Vector2.ZERO
 
@@ -114,6 +117,10 @@ func _ready() -> void:
     _update_gum_type()
     S.hud.update_health()
 
+    %KidSprite.set_floating()
+
+    _update_inflation_sprite()
+
     _start_recovering(level_start_invincibility_duration)
 
 
@@ -167,6 +174,11 @@ func _physics_process(delta: float) -> void:
     _velocity.y += acceleration * delta
     _velocity.y = clampf(_velocity.y, -max_vertical_speed, max_vertical_speed)
 
+    # Interpolate inflation between original inflate value and speed.
+    var speed_weight := 1.0 - (_velocity.y + max_vertical_speed) / max_vertical_speed * 2.0
+    #_sprite_inflation = lerpf(_bubble_inflation, speed_weight, 0.1)
+    _sprite_inflation = _bubble_inflation
+
     # Update position.
     position.y += _velocity.y * delta
 
@@ -180,6 +192,8 @@ func _physics_process(delta: float) -> void:
     if position.y > max_y:
         position.y = max_y
         on_ground_collided()
+
+    _update_inflation_sprite()
 
 
 func get_bounds() -> Rect2:
@@ -273,15 +287,21 @@ func _destroy_obstacle(obstacle: Obstacle) -> void:
 func receive_damage() -> void:
     S.log.print("Player received damage")
     $Pop.play()
+    _bubble_inflation = 0.0
     health.pop_back()
     _update_gum_type()
     S.hud.update_health()
+    _update_inflation_sprite()
     if is_dead():
         _on_died()
     else:
         _start_recovering(post_damage_invincibility_duration)
         # TODO: Show a brief animation.
         # TODO: Play a sound.
+
+
+func _update_inflation_sprite() -> void:
+    %BubbleSprite.set_inflation(_sprite_inflation)
 
 
 func _start_recovering(duration: float) -> void:
@@ -367,6 +387,8 @@ func _toggle_super_blink() -> void:
 
 func _on_died() -> void:
     S.log.print("Player died")
+    %KidSprite.set_crying()
+    %BubbleSprite.visible = false
     G.level.game_over(false)
     # TODO: Switch to a crying animation.
 

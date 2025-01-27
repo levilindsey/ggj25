@@ -17,10 +17,6 @@ extends Container
 # - Find old desaturate shader! And adjust to also apply tint after.
 # - THEN art
 #
-# - Make a couple fragments.
-#   - Make them hard.
-#   - Remove the others from the manifest, for now.
-#
 # - ART:
 #   - Player:
 #     - Player standing at start
