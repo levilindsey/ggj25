@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://blwby8enw3e2c"]
+[gd_scene load_steps=3 format=3 uid="uid://blwby8enw3e2c"]
 
 [ext_resource type="Script" uid="uid://lpmpeu53enf4" path="res://scaffolder/src/ui/screens/game/game_screen.gd" id="1_gqhyb"]
 [ext_resource type="Script" uid="uid://bpc7dvcqlnfon" path="res://scaffolder/src/ui/screens/screen.gd" id="2_ibojm"]
-[ext_resource type="Theme" uid="uid://buacfvrg1r3la" path="res://src/ui/main_theme.tres" id="3_qvepc"]
 
 [node name="GameScreen" type="PanelContainer"]
 offset_right = 1152.0
@@ -14,10 +13,6 @@ script = ExtResource("1_gqhyb")
 canvas_layer = "game"
 pauses_game_when_open = false
 metadata/_custom_type_script = ExtResource("2_ibojm")
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 2
-theme = ExtResource("3_qvepc")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 2

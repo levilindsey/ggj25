@@ -292,7 +292,7 @@ func on_obstacle_proximity(obstacle: Obstacle) -> void:
 
         S.log.print("--- NEW ENVIRONMENT: %s ---" % obstacle.environment_type)
 
-        # FIXME: REMOVE ME!
+        # TODO: Uncomment to debug environment transitions.
         #S.audio.play_sfx("game_load")
 
         G.level.entered_new_environment.emit(
@@ -435,7 +435,7 @@ func _stop_super_blink() -> void:
 
 func _toggle_super_blink() -> void:
     if modulate == Color.WHITE:
-        # FIXME: Swap-out for a white+gray version of the player textures.
+        # TODO: Swap-out for a white+gray version of the player textures.
         modulate = Color.from_hsv(randf(), 1.0, 1.0, 1.0)
     else:
         modulate = Color.WHITE

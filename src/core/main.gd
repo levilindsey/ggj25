@@ -5,7 +5,6 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
-# - Game icon.
 # - Cover image.
 # - Trailer.
 # - Submission pages.
