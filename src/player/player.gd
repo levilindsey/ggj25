@@ -266,7 +266,11 @@ func on_ground_collided() -> void:
 
 
 func on_obstacle_collided(obstacle: Obstacle) -> void:
-    S.log.print("Obstacle collided: %s" % S.utils.get_display_text(obstacle))
+    S.log.print("Obstacle collided: %s %s %s" % [
+        S.utils.get_display_text(obstacle),
+        Main.ObstacleType.keys()[obstacle.type],
+        Main.EnvironmentType.keys()[obstacle.environment_type],
+    ])
     if is_dead():
         return
     elif is_super:
@@ -276,7 +280,11 @@ func on_obstacle_collided(obstacle: Obstacle) -> void:
 
 
 func _destroy_obstacle(obstacle: Obstacle) -> void:
-    S.log.print("Obstacle destroyed: %s" % S.utils.get_display_text(obstacle))
+    S.log.print("Obstacle destroyed: %s %s %s" % [
+        S.utils.get_display_text(obstacle),
+        Main.ObstacleType.keys()[obstacle.type],
+        Main.EnvironmentType.keys()[obstacle.environment_type],
+    ])
     $SplatRandom.play()
     obstacle.queue_free()
     G.session.obstacles_destroyed += 1
