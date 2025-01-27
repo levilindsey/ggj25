@@ -12,10 +12,9 @@ script = ExtResource("1_gs877")
 
 [node name="BubbleGumPickup" parent="." instance=ExtResource("2_inl2c")]
 position = Vector2(7, 111)
-type = 1
+type = 3
 
 [node name="SidewaysObstacle" parent="." instance=ExtResource("2_h03qs")]
-visible = false
 position = Vector2(219, -126)
 speed = 40.0
 
