@@ -18,7 +18,7 @@ const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
 var _last_background_music_position := 0.0
 var _last_ambiance_position := 0.0
-
+var ambience
 
 func _ready() -> void:
     G.level = self
@@ -39,7 +39,10 @@ func _ready() -> void:
 
     _update_time_scale()
     S.time.set_interval(_update_time_scale, TIME_SCALE_UPDATE_INTERVAL)
-
+    
+    %AmbiencePlayer.play()
+    %BackgroundMusicPlayer.play()
+    
     G.level_loaded.emit()
 
 func _update_time_scale() -> void:
@@ -60,6 +63,26 @@ func _on_entered_fragment() -> void:
         entered_new_environment.emit(
             G.fragment_spawner.current_fragment_environment,
             G.fragment_spawner.previous_fragment_environment)
+        change_ambience(G.fragment_spawner.current_fragment_environment)
+
+func change_ambience(new: Main.EnvironmentType):
+    match new:
+        Main.EnvironmentType.NATURE:
+            ambience = "NATURE"
+            print("Ambience:", ambience)
+        Main.EnvironmentType.FOREST:
+            ambience = "NATURE"
+            print("Ambience:", ambience)
+        Main.EnvironmentType.BEACH:
+            ambience = "BEACH"
+            print("Ambience:", ambience)
+            
+    var current_ambience = %AmbiencePlayer.current_ambience
+    print("Current ambience:", current_ambience)
+    
+    if ambience != current_ambience:
+        await get_tree().create_timer(3.0 / S.time.get_combined_scale()).timeout
+        %AmbiencePlayer.get_stream_playback().switch_to_clip_by_name(ambience)
 
 
 func start() -> void:

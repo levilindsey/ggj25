@@ -62,6 +62,7 @@ enum EnvironmentType {
     NATURE,
     FOREST,
     BEACH,
+    DESERT,
     URBAN,
 }
 

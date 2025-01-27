@@ -1,7 +1,9 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://dxnif3h0gkj2e"]
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://dxnif3h0gkj2e"]
 
-[ext_resource type="AudioStream" uid="uid://jvs3dof5kqe2" path="res://scaffolder/assets/splat1.wav" id="1_3yen6"]
+[ext_resource type="AudioStream" uid="uid://jvs3dof5kqe2" path="res://scaffolder/assets/sfx_assets/splat1.wav" id="1_3yen6"]
+[ext_resource type="AudioStream" uid="uid://7m7oi1bnvbvi" path="res://scaffolder/assets/sfx_assets/splat.wav" id="2_nejh7"]
 
 [resource]
 streams_count = 2
 stream_0/stream = ExtResource("1_3yen6")
+stream_1/stream = ExtResource("2_nejh7")

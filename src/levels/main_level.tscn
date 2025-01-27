@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dw40igtylnu30"]
+[gd_scene load_steps=27 format=3 uid="uid://dw40igtylnu30"]
 
 [ext_resource type="Script" uid="uid://dcnxrly2dpfxt" path="res://src/levels/main_level.gd" id="1_rafda"]
 [ext_resource type="Script" uid="uid://cbh0naqxpdtw3" path="res://src/levels/parallax_background.gd" id="2_acb5s"]
@@ -23,8 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://duopnastery8g" path="res://assets/background_graphics/BeachBackground/decor_ext1.png" id="11_gnf1i"]
 [ext_resource type="Texture2D" uid="uid://bvmwu4bevnkri" path="res://assets/background_graphics/summer 7-UPDT/4_Ext.png" id="11_lcu7o"]
 [ext_resource type="Texture2D" uid="uid://cvdn6e23arr6r" path="res://assets/background_graphics/summer 7-UPDT/2_Ext.png" id="12_5xsos"]
-[ext_resource type="AudioStream" uid="uid://c53p24u5ggog8" path="res://scaffolder/assets/sfx_assets/260633__lwdickens__outdoor-winter-ambience-birds-light-wind.cm.wav" id="12_fvmyw"]
 [ext_resource type="AudioStream" uid="uid://blbolycngefxx" path="res://scaffolder/assets/sfx_assets/invincibubble.02.wav" id="19_gcuqk"]
+[ext_resource type="AudioStream" uid="uid://cm2j4kl3wgeum" path="res://scaffolder/assets/sfx_assets/AmbienceInteractive.tres" id="24_td5io"]
+[ext_resource type="Script" uid="uid://cptu414bpb882" path="res://src/levels/ambience_player.gd" id="25_sdn75"]
 
 [node name="MainLevel" type="Node2D"]
 process_mode = 1
@@ -223,15 +224,14 @@ position = Vector2(0, -162)
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("10_twkqo")
-autoplay = true
 bus = &"Music"
 
 [node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("12_fvmyw")
+stream = ExtResource("24_td5io")
 volume_db = -11.7
-autoplay = true
 bus = &"SFX"
+script = ExtResource("25_sdn75")
 
 [node name="SuperBubbleMusicPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
