@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h5hhb2tgu8o1"
-path="res://.godot/imported/bird.png-d5598eedc3457f5032d15d804457e260.ctex"
+uid="uid://bgh80uc7136i3"
+path="res://.godot/imported/palm_tree_short.png-c1782eab7abaddaf986169dd4b64e573.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bird.png"
-dest_files=["res://.godot/imported/bird.png-d5598eedc3457f5032d15d804457e260.ctex"]
+source_file="res://assets/background_graphics/summer 2-UPDT/palm_tree_short.png"
+dest_files=["res://.godot/imported/palm_tree_short.png-c1782eab7abaddaf986169dd4b64e573.ctex"]
 
 [params]
 

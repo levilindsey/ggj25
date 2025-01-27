@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2lh748kiust7"
-path="res://.godot/imported/Ufo Abducting Human Sprite Sheets.png-374e225f8f6f30e7a167b4371226fc34.ctex"
+uid="uid://c1dwjtj2uckn5"
+path="res://.godot/imported/Ufo Sprite Sheets.png-6f1cd76476b76ea368497d2c8cc4f234.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Ufo Abducting Human Sprite Sheets.png"
-dest_files=["res://.godot/imported/Ufo Abducting Human Sprite Sheets.png-374e225f8f6f30e7a167b4371226fc34.ctex"]
+source_file="res://assets/sprites/obstacles/Ufo Sprite Sheets.png"
+dest_files=["res://.godot/imported/Ufo Sprite Sheets.png-6f1cd76476b76ea368497d2c8cc4f234.ctex"]
 
 [params]
 

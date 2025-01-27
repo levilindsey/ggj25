@@ -5,28 +5,23 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
-# - Fix pause button.
-#
-# - Bubble inflation widget for restarting level.
-#   - Hook-up bubble inflation controls and widget activation.
-#     - OLD NOTES: Add a UI widget for clicking a button when they pop the bubble by blowing.
-#       - Use this to start a new run from the game-over screen.
-#       - Use a shared utility for tracking ballon inflation for the initial
-#          take-off when starting a level.
 # - Add wispy wind effect animations.
-# - Look at TODOs.
 # - MORE ART.
-#   - Add simple shading and animation to pickups and hud sprites.
+#   - Add simple shading and animation to pickups.
 #   - Add shading to all obstacles.
 #   - Add bird animation.
 #
 # - ART:
-#   - Nature:
-#     -
-#   - Urban:
-#     -
-#   - Misc:
-#     -
+#     - Fix trees
+#     - Fix cloud
+#     - Fix dragonfly
+#     - Fix bird
+#     - Fix ufo
+#     - Fix pickups
+#     - Palmtrees
+#     - Beachball
+#     - UFO abducting human
+#     - Wispy wind effect.
 #
 # - Name ideas:
 #   - You Blew It
@@ -37,7 +32,7 @@ extends Container
 #   - Blow and Go
 #   - Blew Through
 #   - How Blow Can You Go?
-
+#   - Oh, the Places You'll Blow
 
 
 enum ObstacleType {

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cymytw7rvv362"
-path="res://.godot/imported/BirdSprite.png-504ffb767e2c74ac923fd4077aa5e5fa.ctex"
+uid="uid://cbh8juwrspbx5"
+path="res://.godot/imported/tree_short.png-3b9e3cea34e27777730536fa28c65cd4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/BirdSprite.png"
-dest_files=["res://.godot/imported/BirdSprite.png-504ffb767e2c74ac923fd4077aa5e5fa.ctex"]
+source_file="res://assets/sprites/obstacles/tree_short.png"
+dest_files=["res://.godot/imported/tree_short.png-3b9e3cea34e27777730536fa28c65cd4.ctex"]
 
 [params]
 

@@ -266,6 +266,7 @@ func on_ground_collided() -> void:
 
 
 func on_obstacle_collided(obstacle: Obstacle) -> void:
+    S.log.print("Obstacle collided: %s" % S.utils.get_display_text(obstacle))
     if is_dead():
         return
     elif is_super:
@@ -279,7 +280,6 @@ func _destroy_obstacle(obstacle: Obstacle) -> void:
     $SplatRandom.play()
     obstacle.queue_free()
     G.session.obstacles_destroyed += 1
-    # TODO: Sfx!
 
 
 func receive_damage() -> void:
@@ -295,7 +295,6 @@ func receive_damage() -> void:
     else:
         _start_recovering(post_damage_invincibility_duration)
         # TODO: Show a brief animation.
-        # TODO: Play a sound.
 
 
 func _update_inflation_sprite() -> void:

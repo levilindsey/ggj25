@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnbsickqglwln"
-path="res://.godot/imported/dragonfly.png-8b4656605b066a1d720d3b7cfcf6659e.ctex"
+uid="uid://cymytw7rvv362"
+path="res://.godot/imported/BirdSprite.png-6bb373fb71257177c38129dded56baaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/dragonfly.png"
-dest_files=["res://.godot/imported/dragonfly.png-8b4656605b066a1d720d3b7cfcf6659e.ctex"]
+source_file="res://assets/sprites/obstacles/BirdSprite.png"
+dest_files=["res://.godot/imported/BirdSprite.png-6bb373fb71257177c38129dded56baaa.ctex"]
 
 [params]
 

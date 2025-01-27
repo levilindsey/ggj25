@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbh8juwrspbx5"
-path="res://.godot/imported/tree_short.png-8e48cd0fec8e02a7e5b0ee46dcdf6a50.ctex"
+uid="uid://bc87v5h7an3e8"
+path="res://.godot/imported/palm_tree_tall.png-0b7975cd851d41eda138877622fe7c3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tree_short.png"
-dest_files=["res://.godot/imported/tree_short.png-8e48cd0fec8e02a7e5b0ee46dcdf6a50.ctex"]
+source_file="res://assets/background_graphics/summer 2-UPDT/palm_tree_tall.png"
+dest_files=["res://.godot/imported/palm_tree_tall.png-0b7975cd851d41eda138877622fe7c3f.ctex"]
 
 [params]
 
