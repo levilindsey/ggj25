@@ -91,9 +91,9 @@ func _on_entered_fragment() -> void:
         if S.manifest.log_fragment_updates:
             S.log.print("Entered new environment: %s" %
                 G.fragment_spawner.current_fragment_environment)
-        entered_new_environment.emit(
-            G.fragment_spawner.current_fragment_environment,
-            G.fragment_spawner.previous_fragment_environment)
+        #entered_new_environment.emit(
+            #G.fragment_spawner.current_fragment_environment,
+            #G.fragment_spawner.previous_fragment_environment)
         change_ambience(G.fragment_spawner.current_fragment_environment)
 
 
@@ -117,10 +117,8 @@ func change_ambience(new: Main.EnvironmentType):
 
     if ambience != current_ambience:
         await get_tree().create_timer(3.0 / S.time.get_combined_scale()).timeout
-        if is_instance_valid(%AmbiencePlayer.get_stream_playback()):
-            %AmbiencePlayer.get_stream_playback().switch_to_clip_by_name(ambience)
-        else:
-            %AmbiencePlayer.switch_to_clip(0)
+        %AmbiencePlayer.get_stream_playback().switch_to_clip_by_name(ambience)
+
 
 func start() -> void:
     super()

@@ -54,3 +54,7 @@ func _draw() -> void:
 
 func _on_detect_player_collision_body_entered(body: Node2D) -> void:
     _on_body_collided(body)
+
+
+func _on_detect_player_proximity_body_entered(body: Node2D) -> void:
+    _on_body_proximity(body)

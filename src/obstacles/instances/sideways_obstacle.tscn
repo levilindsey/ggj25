@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://2b5cuvuh7wvb"]
+[gd_scene load_steps=5 format=3 uid="uid://2b5cuvuh7wvb"]
 
 [ext_resource type="Script" uid="uid://ddpperx210v3q" path="res://src/obstacles/instances/sideways_obstacle.gd" id="1_5fxhc"]
 
@@ -8,6 +8,9 @@ height = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fxhc"]
 size = Vector2(1000, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6mfr"]
+size = Vector2(1000, 576)
 
 [node name="SidewaysObstacle" type="Node2D"]
 script = ExtResource("1_5fxhc")
@@ -30,5 +33,15 @@ monitorable = false
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_5fxhc")
 
+[node name="DetectPlayerProximity" type="Area2D" parent="."]
+collision_layer = 2
+monitorable = false
+
+[node name="ProximityShape" type="CollisionShape2D" parent="DetectPlayerProximity"]
+unique_name_in_owner = true
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_h6mfr")
+
 [connection signal="body_entered" from="DetectPlayerCollision" to="." method="_on_detect_player_collision_body_entered"]
 [connection signal="body_entered" from="DetectPlayerInRange" to="." method="_on_detect_player_in_range_body_entered"]
+[connection signal="body_entered" from="DetectPlayerProximity" to="." method="_on_detect_player_proximity_body_entered"]

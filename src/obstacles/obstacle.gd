@@ -16,11 +16,13 @@ extends Node2D
         #if Engine.is_editor_hint():
             #update_content()
 
+var proximity_range := 576.0
+
 var _sprite: Node2D
 
 
 func _ready() -> void:
-    pass
+    %ProximityShape.shape.size.x = proximity_range * 2
     #update_content()
 
 
@@ -36,12 +38,10 @@ func update_content() -> void:
     match [type, environment_type]:
         [Main.ObstacleType.FLOATING, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_cloud)
-            
+        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.NATURE]:
+            _update_content_helper(S.manifest.obstacle_dragonfly)
         [Main.ObstacleType.UP_AND_DOWN, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_bird)
-        [Main.ObstacleType.UP_AND_DOWN, Main.EnvironmentType.DESERT]:
-            _update_content_helper(S.manifest.obstacle_ufo)
-            
         [Main.ObstacleType.STANDING_SHORT, Main.EnvironmentType.NATURE]:
             _update_content_helper(S.manifest.obstacle_tree_short)
         [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.NATURE]:
@@ -59,11 +59,10 @@ func update_content() -> void:
             _update_content_helper(S.manifest.obstacle_dragonfly)
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.FOREST]:
             _update_content_helper(S.manifest.obstacle_bluebird)
-        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.BEACH]:
-            _update_content_helper(S.manifest.obstacle_seagull)    
+        [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.FOREST]:
+            _update_content_helper(S.manifest.obstacle_tree_tall)
         [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.DESERT]:
-            _update_content_helper(S.manifest.obstacle_bluebird)        
-
+            _update_content_helper(S.manifest.obstacle_ufo)
         _:
             match type:
                 Main.ObstacleType.FLOATING:
@@ -101,3 +100,9 @@ func _on_body_collided(body: Node2D) -> void:
     if not S.utils.ensure(body is Player):
         return
     body.on_obstacle_collided(self)
+
+
+func _on_body_proximity(body: Node2D) -> void:
+    if not S.utils.ensure(body is Player):
+        return
+    body.on_obstacle_proximity(self)

@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbghnqpxvf7iy"]
+[gd_scene load_steps=4 format=3 uid="uid://bbghnqpxvf7iy"]
 
 [ext_resource type="Script" uid="uid://c5copw7wooqxq" path="res://src/obstacles/instances/floating_obstacle.gd" id="1_tpojk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fn00u"]
 radius = 13.0
 height = 44.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw0id"]
+size = Vector2(1000, 576)
 
 [node name="FloatingObstacle" type="Node2D"]
 script = ExtResource("1_tpojk")
@@ -18,4 +21,14 @@ unique_name_in_owner = true
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fn00u")
 
+[node name="DetectPlayerProximity" type="Area2D" parent="."]
+collision_layer = 2
+monitorable = false
+
+[node name="ProximityShape" type="CollisionShape2D" parent="DetectPlayerProximity"]
+unique_name_in_owner = true
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_gw0id")
+
 [connection signal="body_entered" from="DetectPlayerCollision" to="." method="_on_detect_player_collision_body_entered"]
+[connection signal="body_entered" from="DetectPlayerProximity" to="." method="_on_detect_player_proximity_body_entered"]

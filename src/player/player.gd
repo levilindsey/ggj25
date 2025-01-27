@@ -279,6 +279,17 @@ func on_obstacle_collided(obstacle: Obstacle) -> void:
         receive_damage()
 
 
+func on_obstacle_proximity(obstacle: Obstacle) -> void:
+    S.log.print("Obstacle proximity: %s %s %s" % [
+        S.utils.get_display_text(obstacle),
+        Main.ObstacleType.keys()[obstacle.type],
+        Main.EnvironmentType.keys()[obstacle.environment_type],
+    ])
+    if G.environment_scheduler.current_environment != obstacle.environment_type:
+        G.level.entered_new_environment.emit(
+            obstacle.environment_type, G.environment_scheduler.current_environment)
+
+
 func _destroy_obstacle(obstacle: Obstacle) -> void:
     S.log.print("Obstacle destroyed: %s %s %s" % [
         S.utils.get_display_text(obstacle),
