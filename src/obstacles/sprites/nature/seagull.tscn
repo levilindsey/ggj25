@@ -69,3 +69,4 @@ animations = [{
 [node name="seagull" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_02atx")
 autoplay = "default"
+frame_progress = 0.540006

@@ -28,7 +28,7 @@ const VIEWPORT_SIZE_BASIS := Vector2(576, 324)
 
 var _last_background_music_position := 0.0
 var _last_ambiance_position := 0.0
-var ambience
+#var ambience
 
 var _default_camera_position: Vector2
 var _default_camera_zoom: Vector2
@@ -38,6 +38,7 @@ var has_started := false
 
 var has_triggered_start := false
 
+var ambience_player
 
 func _ready() -> void:
     G.level = self
@@ -72,6 +73,7 @@ func _ready() -> void:
 
     await get_tree().create_timer(1.0).timeout
 
+    ambience_player = %AmbiencePlayer
     %AmbiencePlayer.play()
     %BackgroundMusicPlayer.play()
 
@@ -94,30 +96,30 @@ func _on_entered_fragment() -> void:
         #entered_new_environment.emit(
             #G.fragment_spawner.current_fragment_environment,
             #G.fragment_spawner.previous_fragment_environment)
-        change_ambience(G.fragment_spawner.current_fragment_environment)
+        #change_ambience(G.fragment_spawner.current_fragment_environment)
 
 
-func change_ambience(new: Main.EnvironmentType):
-    match new:
-        Main.EnvironmentType.NATURE:
-            ambience = "NATURE"
-            print("Ambience:", ambience)
-        Main.EnvironmentType.FOREST:
-            ambience = "NATURE"
-            print("Ambience:", ambience)
-        Main.EnvironmentType.BEACH:
-            ambience = "BEACH"
-            print("Ambience:", ambience)
-        Main.EnvironmentType.DESERT:
-            ambience = "DESERT"
-            print("Ambience:", ambience)
-
-    var current_ambience = %AmbiencePlayer.current_ambience
-    print("Current ambience:", current_ambience)
-
-    if ambience != current_ambience:
-        await get_tree().create_timer(3.0 / S.time.get_combined_scale()).timeout
-        %AmbiencePlayer.get_stream_playback().switch_to_clip_by_name(ambience)
+#func change_ambience(new: Main.EnvironmentType):
+    #match new:
+        #Main.EnvironmentType.NATURE:
+            #ambience = "NATURE"
+            #print("Ambience:", ambience)
+        #Main.EnvironmentType.FOREST:
+            #ambience = "NATURE"
+            #print("Ambience:", ambience)
+        #Main.EnvironmentType.BEACH:
+            #ambience = "BEACH"
+            #print("Ambience:", ambience)
+        #Main.EnvironmentType.DESERT:
+            #ambience = "DESERT"
+            #print("Ambience:", ambience)
+#
+    #var current_ambience = %AmbiencePlayer.current_ambience
+    #print("Current ambience:", current_ambience)
+#
+    #if ambience != current_ambience:
+        #await get_tree().create_timer(3.0 / S.time.get_combined_scale()).timeout
+        #%AmbiencePlayer.get_stream_playback().switch_to_clip_by_name(ambience)
 
 
 func start() -> void:

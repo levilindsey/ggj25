@@ -176,7 +176,6 @@ offset = Vector2(576, 0)
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 script = ExtResource("9_5xsos")
-fade_stagger = 3.0
 
 [node name="ParallaxLayerStagger_a" type="ParallaxLayer" parent="ParallaxBackground2"]
 texture_repeat = 2
@@ -223,7 +222,6 @@ offset = Vector2(576, 0)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_acb5s")
-fade_stagger = 3.0
 
 [node name="ParallaxLayerStagger" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_repeat = 2

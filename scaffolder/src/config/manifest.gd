@@ -51,7 +51,6 @@ extends Resource
 
 @export_group("Obstacle sprites")
 @export var obstacle_tree_short: PackedScene
-@export var obstacle_ufo: PackedScene
 @export var obstacle_tree_tall: PackedScene
 @export var obstacle_bird: PackedScene
 @export var obstacle_cloud: PackedScene
@@ -60,6 +59,7 @@ extends Resource
 @export var obstacle_seagull: PackedScene
 @export var obstacle_palm_short: PackedScene
 @export var obstacle_palm_tall: PackedScene
+@export var obstacle_ufo: PackedScene
 @export_group("")
 
 @export var environment_sequence: Array[Main.EnvironmentType]

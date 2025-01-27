@@ -65,6 +65,8 @@ var _velocity := Vector2.ZERO
 
 var health: Array[BubbleGumPickup.Type]
 
+var ambience
+
 var current_gum_type: BubbleGumPickup.Type:
     get:
         if is_super:
@@ -288,6 +290,29 @@ func on_obstacle_proximity(obstacle: Obstacle) -> void:
     if G.environment_scheduler.current_environment != obstacle.environment_type:
         G.level.entered_new_environment.emit(
             obstacle.environment_type, G.environment_scheduler.current_environment)
+        change_ambience(G.fragment_spawner.current_fragment_environment)
+
+func change_ambience(new: Main.EnvironmentType):
+    match new:
+        Main.EnvironmentType.NATURE:
+            ambience = "NATURE"
+            print("Ambience:", ambience)
+        Main.EnvironmentType.FOREST:
+            ambience = "NATURE"
+            print("Ambience:", ambience)
+        Main.EnvironmentType.BEACH:
+            ambience = "BEACH"
+            print("Ambience:", ambience)
+        Main.EnvironmentType.DESERT:
+            ambience = "DESERT"
+            print("Ambience:", ambience)
+
+    var current_ambience = G.level.ambience_player.current_ambience
+    print("Current ambience:", current_ambience)
+
+    if ambience != current_ambience:
+        await get_tree().create_timer(3.0 / S.time.get_combined_scale()).timeout
+        G.level.ambience_player.get_stream_playback().switch_to_clip_by_name(ambience)
 
 
 func _destroy_obstacle(obstacle: Obstacle) -> void:

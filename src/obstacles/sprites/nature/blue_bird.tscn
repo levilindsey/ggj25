@@ -73,4 +73,4 @@ scale = Vector2(1.2, 1.2)
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_71jq4")
 autoplay = "default"
-frame_progress = 0.413721
+frame_progress = 0.158322
