@@ -27,6 +27,8 @@ func _ready() -> void:
 
     S.shell = self
 
+    await get_tree().process_frame
+
     S.screens.open(S.manifest.initial_screen)
 
 

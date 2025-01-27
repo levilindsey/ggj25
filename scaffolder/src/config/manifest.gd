@@ -61,11 +61,12 @@ extends Resource
 
 var initial_screen: String:
     get:
-        return (
-            "game_screen"
-            if dev_mode and skip_main_menu_in_dev_mode
-            else "main_menu_screen"
-        )
+        return "game_screen"
+        #return (
+            #"game_screen"
+            #if dev_mode and skip_main_menu_in_dev_mode
+            #else "main_menu_screen"
+        #)
 
 
 func get_screen_scene(name: String) -> PackedScene:

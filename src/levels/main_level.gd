@@ -170,16 +170,6 @@ func trigger_start() -> void:
         TimeType.APP_PHYSICS_SCALED)
 
     S.time.tween_property(
-        G.player,
-        "position",
-        G.player.position,
-        G.player.position + player_auto_rise_distance * Vector2.UP,
-        auto_rise_duration,
-        "ease_in",
-        0.0,
-        TimeType.APP_PHYSICS_SCALED)
-
-    S.time.tween_property(
         self,
         "horizontal_speed",
         horizontal_speed,
@@ -187,6 +177,40 @@ func trigger_start() -> void:
         auto_rise_duration,
         "ease_in",
         0.0,
+        TimeType.APP_PHYSICS_SCALED)
+
+    # Rise moves 10 pixels over four frames at 5 frames per second.
+    var rise_vertical_distance := 10.0
+    var rise_frames_per_second := 5.0
+    var rise_time_per_frame := 1.0 / rise_frames_per_second
+    var rise_frames_count := 4
+    var rise_duration_multiplier := 0.7
+    var rise_duration := (rise_time_per_frame * rise_frames_count) * rise_duration_multiplier
+
+    var player_position_start := G.player.position
+    var player_rise_animation_position_end := (
+        player_position_start + rise_vertical_distance * Vector2.UP)
+    var player_other_rise_position_end := (
+        player_rise_animation_position_end + rise_vertical_distance * Vector2.UP)
+
+    S.time.tween_property(
+        G.player,
+        "position",
+        player_position_start,
+        player_rise_animation_position_end,
+        rise_duration,
+        "ease_in_out",
+        0.0,
+        TimeType.APP_PHYSICS_SCALED)
+
+    S.time.tween_property(
+        G.player,
+        "position",
+        player_rise_animation_position_end,
+        player_other_rise_position_end,
+        auto_rise_duration - rise_duration,
+        "ease_out",
+        rise_duration,
         TimeType.APP_PHYSICS_SCALED)
 
     S.time.set_timeout(_start, auto_rise_duration)
