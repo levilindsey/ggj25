@@ -93,4 +93,5 @@ animations = [{
 position = Vector2(1.90735e-06, 18)
 scale = Vector2(0.0705566, 0.0705566)
 sprite_frames = SubResource("SpriteFrames_ekft7")
+autoplay = "default"
 frame_progress = 0.822444

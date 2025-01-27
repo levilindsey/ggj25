@@ -34,7 +34,6 @@
 [ext_resource type="AudioStream" uid="uid://bdcxfq7hd0iak" path="res://scaffolder/assets/sfx/pause.tres" id="16_4bhqj"]
 [ext_resource type="AudioStream" uid="uid://coe3qd5rsfkhp" path="res://scaffolder/assets/sfx/unpause.tres" id="17_3gob2"]
 [ext_resource type="PackedScene" uid="uid://b1jp8itgxrfmv" path="res://src/obstacles/sprites/nature/seagull.tscn" id="18_2lcjo"]
-[ext_resource type="AudioStream" uid="uid://d4buaef6wotn2" path="res://scaffolder/assets/sfx/menu_click.tres" id="18_8hoe7"]
 [ext_resource type="PackedScene" uid="uid://yhk04lta674g" path="res://src/obstacles/sprites/nature/ufo.tscn" id="19_72khu"]
 [ext_resource type="Script" uid="uid://da8hpd5e11wvx" path="res://src/levels/fragments/fragment_config.gd" id="25_lx0xc"]
 [ext_resource type="PackedScene" uid="uid://dpor57x24rddo" path="res://src/levels/fragments/fragment_start.tscn" id="26_x2iix"]
@@ -210,4 +209,4 @@ obstacle_cloud = ExtResource("5_hkaoq")
 obstacle_dragonfly = ExtResource("6_lx0xc")
 obstacle_bluebird = ExtResource("15_hm6qt")
 obstacle_seagull = ExtResource("18_2lcjo")
-environment_sequence = Array[int]([0, 2, 2, 3, 0, 1, 2, 3])
+environment_sequence = Array[int]([0, 1, 2, 3, 0, 1, 2, 3])
