@@ -5,6 +5,11 @@ extends Container
 
 # TODO: LEVI'S MASTER LIST:
 #
+# - Game icon.
+# - Cover image.
+# - Trailer.
+# - Submission pages.
+#
 # - MORE ART.
 #   - Add simple shading and animation to pickups.
 #   - Add shading to all obstacles.
