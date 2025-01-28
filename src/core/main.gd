@@ -3,13 +3,6 @@ class_name Main
 extends Container
 
 
-# TODO: LEVI'S MASTER LIST:
-#
-# - Cover image.
-# - Trailer.
-# - Submission pages.
-
-
 enum ObstacleType {
     FLOATING,
     SIDEWAYS,
