@@ -46,12 +46,12 @@ unique_name_in_owner = true
 
 [node name="ChewRandom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_o822w")
-volume_db = 4.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="SplatRandom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_x42xx")
-volume_db = -15.0
+volume_db = -6.0
 bus = &"SFX"
 
 [node name="Crying" type="AudioStreamPlayer" parent="."]

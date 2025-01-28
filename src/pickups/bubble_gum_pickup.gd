@@ -37,7 +37,11 @@ func _ready() -> void:
 
     _start_position = position
     _start_time = S.time.get_scaled_play_time()
-
+    
+    while type == Type.RANDOM:
+        var random_type = randi() % Type.RANDOM
+        type = random_type
+        print("Randomized type:", Type.keys()[type])
 
 func _process(_delta: float) -> void:
     if Engine.is_editor_hint():

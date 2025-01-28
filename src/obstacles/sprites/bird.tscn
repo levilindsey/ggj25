@@ -40,4 +40,5 @@ animations = [{
 
 [node name="Bird" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_02atx")
+autoplay = "default"
 frame_progress = 0.781885

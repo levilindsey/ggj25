@@ -20,4 +20,5 @@ animations = [{
 
 [node name="SuperGumSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_kavqa")
+frame_progress = 0.0939948
 script = ExtResource("2_rqenu")

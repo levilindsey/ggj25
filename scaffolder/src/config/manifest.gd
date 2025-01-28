@@ -66,6 +66,7 @@ extends Resource
 @export var obstacle_ufo: PackedScene
 @export var obstacle_ufo_short: PackedScene
 @export var obstacle_ufo_tall: PackedScene
+@export var obstacle_beachball: PackedScene
 @export_group("")
 
 @export var environment_sequence: Array[Main.EnvironmentType]
