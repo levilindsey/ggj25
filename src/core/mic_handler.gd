@@ -6,8 +6,11 @@ const CAPTURE_BUS_NAME := "Capture"
 const PROCESS_BUS_NAME := "Process"
 const PROCESS_EFFECT_INDEX := 0
 
-const FREQUENCY_MAX := 40.0
-const FREQUENCY_MIN := 0.0
+const BLOWING_MODE_FREQUENCY_MAX := 40.0
+const BLOWING_MODE_FREQUENCY_MIN := 0.0
+
+const HUMMING_MODE_FREQUENCY_MAX := 1000.0
+const HUMMING_MODE_FREQUENCY_MIN := 100.0
 
 const DEFAULT_LOW_MAGNITUDE := 0.0001
 const DEFAULT_HIGH_MAGNITUDE := 0.03
@@ -32,6 +35,8 @@ var latest_magnitude := 0.0
 
 var _consecutive_zero_magnitude_frame_count := 0
 
+var _humming_mode := false
+
 
 func _ready() -> void:
     G.mic = self
@@ -42,11 +47,25 @@ func _ready() -> void:
     _throttled_sample = S.time.throttle(_sample_throttled, MIC_SAMPLE_PERIOD, false)
     _throttled_print = S.time.throttle(_print_throttled, MIC_PRINT_PERIOD, false)
 
+    S.settings.property_changed.connect(_on_property_changed)
+    var value: bool = S.settings.get("humming_mode")
+    _on_property_changed("humming_mode", value, value)
+
 
 func _process(_delta: float) -> void:
+    var frequency_min := (
+        HUMMING_MODE_FREQUENCY_MIN
+        if _humming_mode
+        else BLOWING_MODE_FREQUENCY_MIN
+    )
+    var frequency_max := (
+        HUMMING_MODE_FREQUENCY_MAX
+        if _humming_mode
+        else BLOWING_MODE_FREQUENCY_MAX
+    )
     var stereo_magnitude := spectrum.get_magnitude_for_frequency_range(
-        FREQUENCY_MIN,
-        FREQUENCY_MAX,
+        frequency_min,
+        frequency_max,
         AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.MAGNITUDE_MAX)
     var magnitude: float = lerpf(stereo_magnitude.x, stereo_magnitude.y, 0.5)
 
@@ -61,7 +80,20 @@ func _process(_delta: float) -> void:
     _throttled_print.call()
 
     if _consecutive_zero_magnitude_frame_count >= NO_DEVICE_DETECTED_CONSECUTIVE_ZERO_MAGNITUDE_FRAME_COUNT_THRESHOLD:
-        S.screens.show("mic_error_screen")
+        S.screens.open("mic_error_screen")
+
+
+func _on_property_changed(name: String, new_value: Variant, old_value: Variant) -> void:
+    match name:
+        "humming_mode":
+            _set_humming_mode(new_value)
+        _:
+            # Do nothing.
+            return
+
+
+func _set_humming_mode(is_enabled: bool) -> void:
+    _humming_mode = is_enabled
 
 
 func _sample_throttled() -> void:

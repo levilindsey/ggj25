@@ -2,6 +2,9 @@ class_name CheckboxSettingsRow
 extends SettingsRow
 
 
+signal toggled(toggled_on: bool)
+
+
 func set_up(property: Dictionary, value_width: float) -> void:
     super(property, value_width)
 
@@ -13,3 +16,4 @@ func set_up(property: Dictionary, value_width: float) -> void:
 
 func _on_click_check_box_toggled(toggled_on: bool) -> void:
     S.settings.update_property(property_name, toggled_on)
+    toggled.emit(toggled_on)

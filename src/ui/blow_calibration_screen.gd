@@ -18,13 +18,18 @@ var is_in_blow_step := true
 
 var _throttled_update_magnitude: Callable
 
+var _lower_threshold: float
+var _upper_threshold: float
+
 
 func _ready() -> void:
     super()
     _throttled_update_magnitude = S.time.throttle(
         _update_magnitude_throttled, 0.2, false)
     %DeviceLabel.text = "(Using \"%s\")" % AudioServer.input_device
-    _set_text(_blow_step_text)
+    _update_text()
+
+    S.settings.property_changed.connect(_on_property_changed)
 
 
 func _process(_delta: float) -> void:
@@ -35,19 +40,43 @@ func _update_magnitude_throttled() -> void:
     %Magnitude.text = "%.5f" % G.mic.latest_magnitude
 
 
-func _set_text(config: Dictionary) -> void:
+func _update_text() -> void:
+    var config := (
+        _blow_step_text
+        if is_in_blow_step
+        else _silence_step_text
+    )
+
     %Title.text = config.title
     %Instructions.text = config.instructions
     %ClickButton.text = config.button
 
+    if is_in_blow_step and G.mic._humming_mode:
+        %ClickButton.text = "I'm humming"
+
 
 func _on_click_button_pressed() -> void:
+    %NoSignificantDifferenceLabel.visible = false
     if is_in_blow_step:
-        var upper_threshold := G.mic.latest_magnitude
-        S.settings.update_property("mic_magnitude_upper_threshold", upper_threshold)
+        _upper_threshold = G.mic.latest_magnitude
+        S.settings.update_property("mic_magnitude_upper_threshold", _upper_threshold)
         is_in_blow_step = false
-        _set_text(_silence_step_text)
+        _update_text()
     else:
-        var lower_threshold := G.mic.latest_magnitude * 2.0
-        S.settings.update_property("mic_magnitude_lower_threshold", lower_threshold)
-        S.screens.close("blow_calibration_screen")
+        _lower_threshold = clamp(G.mic.latest_magnitude * 2.0, 0, _upper_threshold)
+        S.settings.update_property("mic_magnitude_lower_threshold", _lower_threshold)
+        if _upper_threshold < _lower_threshold * 7:
+            %NoSignificantDifferenceLabel.visible = true
+            is_in_blow_step = true
+            _update_text()
+        else:
+            S.screens.close("blow_calibration_screen")
+
+
+func _on_property_changed(name: String, new_value: Variant, old_value: Variant) -> void:
+    match name:
+        "humming_mode":
+            _update_text()
+        _:
+            # Do nothing.
+            return

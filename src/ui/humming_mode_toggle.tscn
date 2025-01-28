@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbm20w6ixq78t"]
+
+[ext_resource type="Script" path="res://src/ui/humming_mode_toggle.gd" id="1_51bxe"]
+[ext_resource type="PackedScene" uid="uid://ca0m2myf065ep" path="res://scaffolder/src/ui/widgets/settings_row/checkbox_settings_row.tscn" id="2_51bxe"]
+
+[node name="HummingModeToggle" type="HBoxContainer"]
+script = ExtResource("1_51bxe")
+
+[node name="CheckboxSettingsRow" parent="." instance=ExtResource("2_51bxe")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3

@@ -30,23 +30,23 @@ var _start_time: float
 
 
 func _ready() -> void:
-    _update_content()
-
     if Engine.is_editor_hint():
         return
 
     _start_position = position
     _start_time = S.time.get_scaled_play_time()
-    
-    while type == Type.RANDOM:
-        var random_type = randi() % Type.RANDOM
-        type = random_type
-        print("Randomized type:", Type.keys()[type])
+
+    if type == Type.RANDOM:
+        type = [Type.FLOATY, Type.BOUNCY, Type.SUPER].pick_random()
+
+    _update_content()
+
 
 func _process(_delta: float) -> void:
     if Engine.is_editor_hint():
         return
 
+    # Float up and down.
     var current_time := S.time.get_scaled_play_time()
     var progress := fmod(current_time - _start_time, oscillation_period) / oscillation_period
     var vertical_delta := sin(progress * TAU) * vertical_range / 2.0

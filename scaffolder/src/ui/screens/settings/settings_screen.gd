@@ -26,6 +26,7 @@ func _create_row(property: Dictionary) -> SettingsRow:
         "audio_input",
         "mic_magnitude_lower_threshold",
         "mic_magnitude_upper_threshold",
+        "humming_mode",
     ]
     if exclusion_list.has(property.name):
         return
