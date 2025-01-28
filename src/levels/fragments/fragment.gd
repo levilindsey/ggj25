@@ -4,12 +4,6 @@ class_name Fragment
 extends Node2D
 
 
-enum FragmentSeamType {
-    OPEN,
-    CLOSED_TOP,
-    CLOSED_BOTTOM,
-}
-
 const HEIGHT := 324
 
 const DEBUG_LINE_WIDTH := 6.0
@@ -17,7 +11,7 @@ const DEBUG_BORDER_WIDTH := 1.0
 const DEBUG_LINE_LENGTH := 40.0
 const DEBUG_LINE_COLOR := Color("orange", 0.4)
 
-@export var environment_type := Main.EnvironmentType.NATURE
+@export var environment_type := E.EnvironmentType.NATURE
 
 @export var width := 512:
     set(value):
@@ -48,7 +42,7 @@ func update_content() -> void:
 
 
 func _draw() -> void:
-    if not Engine.is_editor_hint() and not S.manifest.render_debug_annotations:
+    if not Engine.is_editor_hint() and not M.manifest.render_debug_annotations:
         return
 
     var extents := size / 2

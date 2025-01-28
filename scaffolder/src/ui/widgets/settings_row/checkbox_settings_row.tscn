@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bu3fd6mxubjj3" path="res://scaffolder/src/ui/widgets/click_check_box.tscn" id="3_hccmo"]
 
 [node name="CheckboxSettingsRow" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+size_flags_horizontal = 3
 script = ExtResource("1_ubqyx")
 metadata/_custom_type_script = ExtResource("2_pyq1a")
 

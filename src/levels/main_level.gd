@@ -3,8 +3,8 @@ extends Level
 
 
 signal entered_new_environment(
-    new: Main.EnvironmentType,
-    old: Main.EnvironmentType)
+    new: E.EnvironmentType,
+    old: E.EnvironmentType)
 
 const TIME_SCALE_UPDATE_INTERVAL := 4.0
 
@@ -43,7 +43,7 @@ var has_triggered_start := false
 
 var ambience_player: AudioStreamPlayer
 
-var current_environment := Main.EnvironmentType.NATURE
+var current_environment := E.EnvironmentType.NATURE
 
 
 func _ready() -> void:
@@ -85,38 +85,38 @@ func _ready() -> void:
 
 
 func _update_time_scale() -> void:
-    var weight := G.session.play_time / S.manifest.time_to_max_time_scale
+    var weight := G.session.play_time / M.manifest.time_to_max_time_scale
     weight = clampf(weight, 0, 1)
-    var time_scale := lerpf(1.0, S.manifest.max_time_scale, weight) * S.manifest.debug_time_scale
+    var time_scale := lerpf(1.0, M.manifest.max_time_scale, weight) * M.manifest.debug_time_scale
     S.time.time_scale = time_scale
-    if S.manifest.log_time_scale_updates:
+    if M.manifest.log_time_scale_updates:
         S.log.print("Updating time scale: %.3f" % S.time.time_scale)
 
 
 func _on_entered_fragment() -> void:
     if (G.fragment_spawner.current_fragment_environment !=
             G.fragment_spawner.previous_fragment_environment):
-        if S.manifest.log_fragment_updates:
+        if M.manifest.log_fragment_updates:
             S.log.print("Entered new environment: %s" %
-                Main.EnvironmentType.keys()[G.fragment_spawner.current_fragment_environment])
+                E.EnvironmentType.keys()[G.fragment_spawner.current_fragment_environment])
         #entered_new_environment.emit(
             #G.fragment_spawner.current_fragment_environment,
             #G.fragment_spawner.previous_fragment_environment)
         #change_ambience(G.fragment_spawner.current_fragment_environment)
 
 
-#func change_ambience(new: Main.EnvironmentType):
+#func change_ambience(new: E.EnvironmentType):
     #match new:
-        #Main.EnvironmentType.NATURE:
+        #E.EnvironmentType.NATURE:
             #ambience = "NATURE"
             #print("Ambience:", ambience)
-        #Main.EnvironmentType.FOREST:
+        #E.EnvironmentType.FOREST:
             #ambience = "NATURE"
             #print("Ambience:", ambience)
-        #Main.EnvironmentType.BEACH:
+        #E.EnvironmentType.BEACH:
             #ambience = "BEACH"
             #print("Ambience:", ambience)
-        #Main.EnvironmentType.DESERT:
+        #E.EnvironmentType.DESERT:
             #ambience = "DESERT"
             #print("Ambience:", ambience)
 #

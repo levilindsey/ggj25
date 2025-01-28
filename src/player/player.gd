@@ -17,7 +17,7 @@ var max_blow_vertical_acceleration: float:
     get:
         return (
             bouncy_max_blow_vertical_acceleration
-            if current_movement_type != BubbleGumPickup.Type.FLOATY
+            if current_movement_type != E.BubbleGumType.FLOATY
             else floaty_max_blow_vertical_acceleration
         )
 
@@ -25,7 +25,7 @@ var gravity_acceleration: float:
     get:
         return (
             bouncy_gravity_acceleration
-            if current_movement_type != BubbleGumPickup.Type.FLOATY
+            if current_movement_type != E.BubbleGumType.FLOATY
             else floaty_gravity_acceleration
         )
 
@@ -40,10 +40,10 @@ var gravity_acceleration: float:
 
 @export var ground_bounce_min_speed := 150.0
 
-@export var initial_health: Array[BubbleGumPickup.Type] = [
-    BubbleGumPickup.Type.FLOATY,
-    BubbleGumPickup.Type.FLOATY,
-    BubbleGumPickup.Type.FLOATY,
+@export var initial_health: Array[E.BubbleGumType] = [
+    E.BubbleGumType.FLOATY,
+    E.BubbleGumType.FLOATY,
+    E.BubbleGumType.FLOATY,
 ]
 
 @export var post_damage_invincibility_duration := 1.0
@@ -63,25 +63,25 @@ var _bubble_inflation := 0.0
 
 var _velocity := Vector2.ZERO
 
-var health: Array[BubbleGumPickup.Type]
+var health: Array[E.BubbleGumType]
 
 var ambience
 
-var current_gum_type: BubbleGumPickup.Type:
+var current_gum_type: E.BubbleGumType:
     get:
         if is_super:
-            return BubbleGumPickup.Type.BOUNCY
+            return E.BubbleGumType.BOUNCY
         elif not health.is_empty():
             return health.back()
         else:
-            return BubbleGumPickup.Type.FLOATY
+            return E.BubbleGumType.FLOATY
 
-var current_movement_type: BubbleGumPickup.Type:
+var current_movement_type: E.BubbleGumType:
     get:
         return (
-            BubbleGumPickup.Type.BOUNCY
-            if current_gum_type != BubbleGumPickup.Type.FLOATY
-            else BubbleGumPickup.Type.FLOATY
+            E.BubbleGumType.BOUNCY
+            if current_gum_type != E.BubbleGumType.FLOATY
+            else E.BubbleGumType.FLOATY
         )
 
 var is_invincible := false
@@ -212,35 +212,35 @@ func on_pickup_collided(pickup: Pickup) -> void:
 func pick_up_bubble_gum(bubble_gum: BubbleGumPickup) -> void:
     $ChewRandom.play()
     S.log.print("Picked up bubble gum: %s" %
-        BubbleGumPickup.Type.keys()[bubble_gum.type])
+        E.BubbleGumType.keys()[bubble_gum.type])
     _pick_up_bubble_gum_helper(bubble_gum, bubble_gum.type)
 
 
 func _pick_up_bubble_gum_helper(
-        bubble_gum: BubbleGumPickup, type: BubbleGumPickup.Type) -> void:
-    if type != BubbleGumPickup.Type.RANDOM:
+        bubble_gum: BubbleGumPickup, type: E.BubbleGumType) -> void:
+    if type != E.BubbleGumType.RANDOM:
         G.session.pickups += 1
 
     match type:
-        BubbleGumPickup.Type.FLOATY, \
-        BubbleGumPickup.Type.BOUNCY:
+        E.BubbleGumType.FLOATY, \
+        E.BubbleGumType.BOUNCY:
             _add_gum(type)
-        BubbleGumPickup.Type.SUPER:
+        E.BubbleGumType.SUPER:
             _start_super()
-        BubbleGumPickup.Type.RANDOM:
+        E.BubbleGumType.RANDOM:
             var options := [
-                BubbleGumPickup.Type.FLOATY,
-                BubbleGumPickup.Type.BOUNCY,
-                BubbleGumPickup.Type.SUPER,
+                E.BubbleGumType.FLOATY,
+                E.BubbleGumType.BOUNCY,
+                E.BubbleGumType.SUPER,
             ]
-            var selection: BubbleGumPickup.Type = options.pick_random()
+            var selection: E.BubbleGumType = options.pick_random()
             _pick_up_bubble_gum_helper(bubble_gum, selection)
         _:
             S.utils.ensure(false)
     bubble_gum.queue_free()
 
 
-func _add_gum(type: BubbleGumPickup.Type) -> void:
+func _add_gum(type: E.BubbleGumType) -> void:
     health.push_back(type)
     _update_gum_type()
     S.hud.update_health()
@@ -251,7 +251,7 @@ func _update_gum_type() -> void:
         return
 
     S.log.print("Updating gum type: %s" %
-        BubbleGumPickup.Type.keys()[current_gum_type])
+        E.BubbleGumType.keys()[current_gum_type])
 
     %BubbleSprite.type = current_gum_type
 
@@ -259,7 +259,7 @@ func _update_gum_type() -> void:
 func on_ground_collided() -> void:
     if is_dead():
         return
-    if not is_invincible and not S.manifest.god_mode:
+    if not is_invincible and not M.manifest.god_mode:
         receive_damage()
     if is_dead():
         return
@@ -270,22 +270,22 @@ func on_ground_collided() -> void:
 func on_obstacle_collided(obstacle: Obstacle) -> void:
     S.log.print("Obstacle collided: %s %s %s" % [
         S.utils.get_display_text(obstacle),
-        Main.ObstacleType.keys()[obstacle.get_type()],
-        Main.EnvironmentType.keys()[obstacle.environment_type],
+        E.ObstacleType.keys()[obstacle.get_type()],
+        E.EnvironmentType.keys()[obstacle.environment_type],
     ])
     if is_dead():
         return
     elif is_super:
         _destroy_obstacle(obstacle)
-    elif not is_invincible and not S.manifest.god_mode:
+    elif not is_invincible and not M.manifest.god_mode:
         receive_damage()
 
 
 func on_obstacle_proximity(obstacle: Obstacle) -> void:
     S.log.print("Obstacle proximity: %s %s %s" % [
         S.utils.get_display_text(obstacle),
-        Main.ObstacleType.keys()[obstacle.get_type()],
-        Main.EnvironmentType.keys()[obstacle.environment_type],
+        E.ObstacleType.keys()[obstacle.get_type()],
+        E.EnvironmentType.keys()[obstacle.environment_type],
     ])
     if G.level.current_environment != obstacle.environment_type:
         G.level.current_environment = obstacle.environment_type
@@ -299,15 +299,15 @@ func on_obstacle_proximity(obstacle: Obstacle) -> void:
             obstacle.environment_type, G.level.current_environment)
         change_ambience(G.fragment_spawner.current_fragment_environment)
 
-func change_ambience(new: Main.EnvironmentType):
+func change_ambience(new: E.EnvironmentType):
     match new:
-        Main.EnvironmentType.NATURE:
+        E.EnvironmentType.NATURE:
             ambience = "NATURE"
-        Main.EnvironmentType.FOREST:
+        E.EnvironmentType.FOREST:
             ambience = "NATURE"
-        Main.EnvironmentType.BEACH:
+        E.EnvironmentType.BEACH:
             ambience = "BEACH"
-        Main.EnvironmentType.DESERT:
+        E.EnvironmentType.DESERT:
             ambience = "DESERT"
 
     var current_ambience = G.level.ambience_player.current_ambience
@@ -326,8 +326,8 @@ func change_ambience(new: Main.EnvironmentType):
 func _destroy_obstacle(obstacle: Obstacle) -> void:
     S.log.print("Obstacle destroyed: %s %s %s" % [
         S.utils.get_display_text(obstacle),
-        Main.ObstacleType.keys()[obstacle.get_type()],
-        Main.EnvironmentType.keys()[obstacle.environment_type],
+        E.ObstacleType.keys()[obstacle.get_type()],
+        E.EnvironmentType.keys()[obstacle.environment_type],
     ])
     $SplatRandom.play()
     obstacle.queue_free()

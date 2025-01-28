@@ -3,15 +3,8 @@ class_name BubbleGumPickup
 extends Pickup
 
 
-enum Type {
-    FLOATY,
-    BOUNCY,
-    SUPER,
-    RANDOM,
-}
 
-
-@export var type := Type.FLOATY:
+@export var type := E.BubbleGumType.FLOATY:
     set(value):
         type = value
         _update_content()
@@ -36,8 +29,12 @@ func _ready() -> void:
     _start_position = position
     _start_time = S.time.get_scaled_play_time()
 
-    if type == Type.RANDOM:
-        type = [Type.FLOATY, Type.BOUNCY, Type.SUPER].pick_random()
+    if type == E.BubbleGumType.RANDOM:
+        type = [
+            E.BubbleGumType.FLOATY,
+            E.BubbleGumType.BOUNCY,
+            E.BubbleGumType.SUPER,
+        ].pick_random()
 
     _update_content()
 
@@ -56,13 +53,13 @@ func _process(_delta: float) -> void:
 func _update_content() -> void:
     modulate = Color.WHITE
     match type:
-        Type.FLOATY:
+        E.BubbleGumType.FLOATY:
             _update_sprite(sprite_scene_floaty_gum)
-        Type.BOUNCY:
+        E.BubbleGumType.BOUNCY:
             _update_sprite(sprite_scene_bouncy_gum)
-        Type.SUPER:
+        E.BubbleGumType.SUPER:
             _update_sprite(sprite_scene_super_gum)
-        Type.RANDOM:
+        E.BubbleGumType.RANDOM:
             _update_sprite(sprite_scene_super_gum)
         _:
             S.utils.ensure(false)

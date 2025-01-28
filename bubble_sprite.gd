@@ -2,7 +2,7 @@ class_name BubbleSprite
 extends AnimatedSprite2D
 
 
-@export var type := BubbleGumPickup.Type.FLOATY:
+@export var type := E.BubbleGumType.FLOATY:
     set(value):
         var old_type := type
         type = value
@@ -17,10 +17,10 @@ var _weight: float
 
 func _update_type() -> void:
     match type:
-        BubbleGumPickup.Type.FLOATY:
+        E.BubbleGumType.FLOATY:
             _inflate_animation = "inflate_floaty"
             _pop_animation = "pop_floaty"
-        BubbleGumPickup.Type.BOUNCY:
+        E.BubbleGumType.BOUNCY:
             _inflate_animation = "inflate_bouncy"
             _pop_animation = "pop_bouncy"
         _:

@@ -16,9 +16,9 @@ var _previous_fragment: Fragment
 var _current_fragment: Fragment
 var _next_fragment: Fragment
 
-var previous_fragment_environment: Main.EnvironmentType
-var current_fragment_environment: Main.EnvironmentType
-var next_fragment_environment: Main.EnvironmentType
+var previous_fragment_environment: E.EnvironmentType
+var current_fragment_environment: E.EnvironmentType
+var next_fragment_environment: E.EnvironmentType
 
 var time_to_next_fragment: float = INF
 
@@ -31,7 +31,7 @@ func _ready() -> void:
 
 func _bucketize_fragments() -> void:
     # Array[float]
-    var difficulties: Array = S.manifest.fragments.map(
+    var difficulties: Array = M.manifest.fragments.map(
         func(config: FragmentConfig):
             return config.difficulty
     ).reduce(
@@ -62,7 +62,7 @@ func _bucketize_fragments() -> void:
             return [])
 
     # Fill the buckets.
-    for config in S.manifest.fragments:
+    for config in M.manifest.fragments:
         var index: int = difficulty_to_index[config.difficulty]
         fragment_difficulty_buckets[index].push_back(config)
 
@@ -109,14 +109,14 @@ func _process(_delta: float) -> void:
 
 
 func _spawn_start_fragment() -> void:
-    var config := S.manifest.start_fragment
+    var config := M.manifest.start_fragment
     _current_fragment = config.scene.instantiate()
     #_current_fragment.position.x = _current_fragment.width / 2.0
     add_child(_current_fragment)
     _current_fragment.environment_type = G.environment_scheduler.current_environment
     _current_fragment.update_content()
     _fragment_count += 1
-    current_fragment_environment = S.manifest.environment_sequence[0]
+    current_fragment_environment = M.manifest.environment_sequence[0]
 
 
 func _spawn_next_fragment() -> void:
@@ -125,7 +125,7 @@ func _spawn_next_fragment() -> void:
 
     var config := _select_next_fragment()
 
-    if S.manifest.log_fragment_updates:
+    if M.manifest.log_fragment_updates:
         S.log.print("Spawning next fragment: %s" %
             S.utils.get_display_text(config.scene))
 
@@ -140,7 +140,7 @@ func _spawn_next_fragment() -> void:
 
 
 func _transition_to_next_fragment() -> void:
-    if S.manifest.log_fragment_updates:
+    if M.manifest.log_fragment_updates:
         S.log.print("Player entered next fragment: %s" %
             S.utils.get_display_text(_next_fragment))
 
@@ -159,7 +159,7 @@ func _despawn_previous_fragment() -> void:
     if not is_instance_valid(_previous_fragment):
         return
 
-    if S.manifest.log_fragment_updates:
+    if M.manifest.log_fragment_updates:
         S.log.print("Despawning previous fragment: %s" %
             S.utils.get_display_text(_previous_fragment))
 
@@ -168,7 +168,7 @@ func _despawn_previous_fragment() -> void:
 
 
 func _select_next_fragment() -> FragmentConfig:
-    var difficulty_weight := G.session.play_time / S.manifest.time_to_max_fragment_difficulty
+    var difficulty_weight := G.session.play_time / M.manifest.time_to_max_fragment_difficulty
     difficulty_weight = clampf(difficulty_weight, 0.0, 1.0)
 
     var bucket_count := fragment_difficulty_buckets.size()

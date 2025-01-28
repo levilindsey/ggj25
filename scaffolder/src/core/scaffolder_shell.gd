@@ -29,7 +29,7 @@ func _ready() -> void:
 
     await get_tree().process_frame
 
-    S.screens.open(S.manifest.initial_screen)
+    S.screens.open(M.manifest.initial_screen)
 
 
 func _notification(notification: int) -> void:
@@ -45,14 +45,14 @@ func _notification(notification: int) -> void:
         NOTIFICATION_WM_CLOSE_REQUEST:
             close_app()
         NOTIFICATION_WM_WINDOW_FOCUS_OUT:
-            if is_instance_valid(S.level) and S.manifest.pauses_on_focus_out:
+            if is_instance_valid(S.level) and M.manifest.pauses_on_focus_out:
                 S.level.pause()
         _:
             pass
 
 
 func _unhandled_input(event: InputEvent) -> void:
-    if S.manifest.dev_mode:
+    if M.manifest.dev_mode:
         if event is InputEventKey:
             match event.physical_keycode:
                 KEY_P:
@@ -78,9 +78,9 @@ func close_app() -> void:
 
 
 func _create_canvas_layers() -> void:
-    var layer_count := S.manifest.canvas_layers.size()
+    var layer_count := M.manifest.canvas_layers.size()
     for index in range(layer_count):
-        var config := S.manifest.canvas_layers[index]
+        var config := M.manifest.canvas_layers[index]
         var z_index := layer_count - index
         var canvas_layer := CanvasLayer.new()
         canvas_layer.name = config.name

@@ -3,23 +3,6 @@ class_name Main
 extends Container
 
 
-enum ObstacleType {
-    FLOATING,
-    SIDEWAYS,
-    UP_AND_DOWN,
-    STANDING_SHORT,
-    STANDING_TALL,
-}
-
-enum EnvironmentType {
-    NATURE,
-    FOREST,
-    BEACH,
-    DESERT,
-    URBAN,
-}
-
-
 const SUPER_HUD_SCENE := preload("res://src/ui/super_hud.tscn")
 
 

@@ -102,7 +102,7 @@ func _sample_throttled() -> void:
 
 
 func _print_throttled() -> void:
-    if S.manifest.log_mic_debugging:
+    if M.manifest.log_mic_debugging:
         S.log.print("Current mic magnitude (throttled): %.5f (%.2f)" %
             [latest_magnitude, get_blow_weight()])
 

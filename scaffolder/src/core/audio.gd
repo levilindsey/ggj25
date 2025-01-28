@@ -20,9 +20,9 @@ func _ready() -> void:
         AudioServer.get_bus_index(MUSIC_BUS_NAME) >= 0,
         "Scaffolder expects an audio bus of name %s." % MUSIC_BUS_NAME)
 
-    for name in S.manifest.sfxs:
+    for name in M.manifest.sfxs:
         var player := AudioStreamPlayer.new()
-        player.stream = S.manifest.sfxs[name]
+        player.stream = M.manifest.sfxs[name]
         player.bus = SFX_BUS_NAME
         add_child(player)
         sfx_players[name] = player

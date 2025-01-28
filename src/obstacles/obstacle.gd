@@ -4,13 +4,13 @@ class_name Obstacle
 extends Node2D
 
 
-@export var type := Main.ObstacleType.FLOATING:
+@export var type := E.ObstacleType.FLOATING:
     set(value):
         type = value
         #if Engine.is_editor_hint():
             #update_content()
 
-@export var environment_type := Main.EnvironmentType.NATURE:
+@export var environment_type := E.EnvironmentType.NATURE:
     set(value):
         environment_type = value
         #if Engine.is_editor_hint():
@@ -29,54 +29,54 @@ func _ready() -> void:
 func update_content() -> void:
     if (not is_instance_valid(S)
             or not ("manifest" in S)
-            or not is_instance_valid(S.manifest)):
+            or not is_instance_valid(M.manifest)):
         return
 
     if is_instance_valid(_sprite):
         _sprite.queue_free()
 
     match [get_type(), environment_type]:
-        [Main.ObstacleType.FLOATING, Main.EnvironmentType.NATURE]:
-            _update_content_helper(S.manifest.obstacle_cloud)
-        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.NATURE]:
-            _update_content_helper(S.manifest.obstacle_dragonfly)
-        [Main.ObstacleType.UP_AND_DOWN, Main.EnvironmentType.NATURE]:
-            _update_content_helper(S.manifest.obstacle_bird)
-        [Main.ObstacleType.STANDING_SHORT, Main.EnvironmentType.NATURE]:
-            _update_content_helper(S.manifest.obstacle_tree_short)
-        [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.NATURE]:
-            _update_content_helper(S.manifest.obstacle_tree_tall)
-        [Main.ObstacleType.STANDING_SHORT, Main.EnvironmentType.BEACH]:
-            _update_content_helper(S.manifest.obstacle_palm_short)
-        [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.BEACH]:
-            _update_content_helper(S.manifest.obstacle_palm_tall)
-        [Main.ObstacleType.UP_AND_DOWN, Main.EnvironmentType.BEACH]:
-            _update_content_helper(S.manifest.obstacle_beachball)
-        [Main.ObstacleType.STANDING_SHORT, Main.EnvironmentType.DESERT]:
-            _update_content_helper(S.manifest.obstacle_ufo_short)
-        [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.DESERT]:
-            _update_content_helper(S.manifest.obstacle_palm_tall)
+        [E.ObstacleType.FLOATING, E.EnvironmentType.NATURE]:
+            _update_content_helper(M.manifest.obstacle_cloud)
+        [E.ObstacleType.SIDEWAYS, E.EnvironmentType.NATURE]:
+            _update_content_helper(M.manifest.obstacle_dragonfly)
+        [E.ObstacleType.UP_AND_DOWN, E.EnvironmentType.NATURE]:
+            _update_content_helper(M.manifest.obstacle_bird)
+        [E.ObstacleType.STANDING_SHORT, E.EnvironmentType.NATURE]:
+            _update_content_helper(M.manifest.obstacle_tree_short)
+        [E.ObstacleType.STANDING_TALL, E.EnvironmentType.NATURE]:
+            _update_content_helper(M.manifest.obstacle_tree_tall)
+        [E.ObstacleType.STANDING_SHORT, E.EnvironmentType.BEACH]:
+            _update_content_helper(M.manifest.obstacle_palm_short)
+        [E.ObstacleType.STANDING_TALL, E.EnvironmentType.BEACH]:
+            _update_content_helper(M.manifest.obstacle_palm_tall)
+        [E.ObstacleType.UP_AND_DOWN, E.EnvironmentType.BEACH]:
+            _update_content_helper(M.manifest.obstacle_beachball)
+        [E.ObstacleType.STANDING_SHORT, E.EnvironmentType.DESERT]:
+            _update_content_helper(M.manifest.obstacle_ufo_short)
+        [E.ObstacleType.STANDING_TALL, E.EnvironmentType.DESERT]:
+            _update_content_helper(M.manifest.obstacle_palm_tall)
 
-        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.NATURE]:
-            _update_content_helper(S.manifest.obstacle_dragonfly)
-        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.FOREST]:
-            _update_content_helper(S.manifest.obstacle_bluebird)
-        [Main.ObstacleType.STANDING_TALL, Main.EnvironmentType.FOREST]:
-            _update_content_helper(S.manifest.obstacle_tree_tall)
-        [Main.ObstacleType.SIDEWAYS, Main.EnvironmentType.DESERT]:
-            _update_content_helper(S.manifest.obstacle_ufo)
+        [E.ObstacleType.SIDEWAYS, E.EnvironmentType.NATURE]:
+            _update_content_helper(M.manifest.obstacle_dragonfly)
+        [E.ObstacleType.SIDEWAYS, E.EnvironmentType.FOREST]:
+            _update_content_helper(M.manifest.obstacle_bluebird)
+        [E.ObstacleType.STANDING_TALL, E.EnvironmentType.FOREST]:
+            _update_content_helper(M.manifest.obstacle_tree_tall)
+        [E.ObstacleType.SIDEWAYS, E.EnvironmentType.DESERT]:
+            _update_content_helper(M.manifest.obstacle_ufo)
         _:
             match get_type():
-                Main.ObstacleType.FLOATING:
-                    _update_content_helper(S.manifest.obstacle_cloud)
-                Main.ObstacleType.SIDEWAYS:
-                    _update_content_helper(S.manifest.obstacle_dragonfly)
-                Main.ObstacleType.UP_AND_DOWN:
-                    _update_content_helper(S.manifest.obstacle_bird)
-                Main.ObstacleType.STANDING_SHORT:
-                    _update_content_helper(S.manifest.obstacle_tree_short)
-                Main.ObstacleType.STANDING_TALL:
-                    _update_content_helper(S.manifest.obstacle_tree_tall)
+                E.ObstacleType.FLOATING:
+                    _update_content_helper(M.manifest.obstacle_cloud)
+                E.ObstacleType.SIDEWAYS:
+                    _update_content_helper(M.manifest.obstacle_dragonfly)
+                E.ObstacleType.UP_AND_DOWN:
+                    _update_content_helper(M.manifest.obstacle_bird)
+                E.ObstacleType.STANDING_SHORT:
+                    _update_content_helper(M.manifest.obstacle_tree_short)
+                E.ObstacleType.STANDING_TALL:
+                    _update_content_helper(M.manifest.obstacle_tree_tall)
                 _:
                     S.utils.ensure(
                         false,
@@ -110,6 +110,6 @@ func _on_body_proximity(body: Node2D) -> void:
     body.on_obstacle_proximity(self)
 
 
-func get_type() -> Main.ObstacleType:
+func get_type() -> E.ObstacleType:
     S.utils.ensure(false, "This should be overridden!")
-    return Main.ObstacleType.FLOATING
+    return E.ObstacleType.FLOATING

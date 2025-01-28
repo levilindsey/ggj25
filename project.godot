@@ -21,12 +21,17 @@ driver/enable_input=true
 
 [autoload]
 
+M="*res://src/core/m.gd"
 S="*res://scaffolder/src/core/s.gd"
 G="*res://src/core/g.gd"
 
 [display]
 
 window/size/mode=2
+
+[editor]
+
+export/convert_text_resources_to_binary=false
 
 [layer_names]
 

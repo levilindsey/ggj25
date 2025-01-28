@@ -31,8 +31,8 @@ extends Resource
 @export var log_mic_debugging := false
 @export_group("")
 
-@export var dev_mode_level := preload("res://src/levels/main_level.tscn")
-@export var main_level := preload("res://src/levels/main_level.tscn")
+@export var dev_mode_level: PackedScene
+@export var main_level: PackedScene
 
 @export var main_theme: Theme
 
@@ -69,7 +69,7 @@ extends Resource
 @export var obstacle_beachball: PackedScene
 @export_group("")
 
-@export var environment_sequence: Array[Main.EnvironmentType]
+@export var environment_sequence: Array[E.EnvironmentType]
 
 var initial_screen: String:
     get:

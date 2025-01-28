@@ -18,9 +18,9 @@ func _ready() -> void:
 
     # TODO: Configure different levels?
     var level_scene = (
-        S.manifest.dev_mode_level
-        if S.manifest.dev_mode
-        else S.manifest.main_level
+        M.manifest.dev_mode_level
+        if M.manifest.dev_mode
+        else M.manifest.main_level
     )
     start(level_scene)
 

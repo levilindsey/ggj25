@@ -19,7 +19,7 @@ func open(screen_name: String) -> void:
         S.log.warning("Screens not opened in isolated-scene mode: %s" % screen_name)
         return
 
-    if !S.manifest.has_screen_scene(screen_name):
+    if !M.manifest.has_screen_scene(screen_name):
         push_error("Invalid screen_name: %s" % screen_name)
         return
 
@@ -38,7 +38,7 @@ func open(screen_name: String) -> void:
 
     S.log.print("Opening screen: %s" % screen_name)
 
-    var scene: PackedScene = S.manifest.get_screen_scene(screen_name)
+    var scene: PackedScene = M.manifest.get_screen_scene(screen_name)
     var screen: Screen = scene.instantiate()
     var stack_entry := ActiveScreen.new(screen_name, screen)
 
@@ -131,7 +131,7 @@ func is_top_screen(screen_name: String) -> bool:
 
 
 func _get_active_screen_by_name(name: String) -> ActiveScreen:
-    if !S.manifest.has_screen_scene(name):
+    if !M.manifest.has_screen_scene(name):
         push_error("Invalid screen_name: %s" % name)
         return null
 

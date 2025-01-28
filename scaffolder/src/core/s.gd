@@ -14,11 +14,8 @@ extends Node
 
 signal loaded
 
-const MANIFEST_PATH := "res://manifest.tres"
-
 const SCAFFOLDER_SHELL_SCENE := preload("res://scaffolder/src/core/scaffolder_shell.tscn")
 
-var manifest: Manifest
 var log: ScaffolderLog
 var utils: Utils
 var time: ScaffolderTime
@@ -34,8 +31,6 @@ var player: Node
 
 
 func _ready() -> void:
-    manifest = load(MANIFEST_PATH)
-
     var node_modules := [
         ["log", ScaffolderLog],
         ["utils", Utils],

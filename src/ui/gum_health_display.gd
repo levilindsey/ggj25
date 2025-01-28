@@ -40,11 +40,11 @@ func update() -> void:
     for child in %HealthContainer.get_children():
         child.queue_free()
 
-    var health: Array[BubbleGumPickup.Type]
+    var health: Array[E.BubbleGumType]
     if is_instance_valid(G.player):
         health = G.player.health
     elif Engine.is_editor_hint():
-        health = [BubbleGumPickup.Type.FLOATY, BubbleGumPickup.Type.FLOATY, BubbleGumPickup.Type.BOUNCY]
+        health = [E.BubbleGumType.FLOATY, E.BubbleGumType.FLOATY, E.BubbleGumType.BOUNCY]
     else:
         health = []
 
@@ -64,11 +64,11 @@ func update() -> void:
     custom_minimum_size = Vector2(total_width, sprite_size.y) * inner_scale
 
 
-func _get_texture(type: BubbleGumPickup.Type) -> Texture2D:
+func _get_texture(type: E.BubbleGumType) -> Texture2D:
     match type:
-        BubbleGumPickup.Type.FLOATY:
+        E.BubbleGumType.FLOATY:
             return floaty_gum_texture
-        BubbleGumPickup.Type.BOUNCY:
+        E.BubbleGumType.BOUNCY:
             return bouncy_gum_texture
         _:
             S.utils.ensure(false)

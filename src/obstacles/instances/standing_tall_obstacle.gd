@@ -22,5 +22,5 @@ func _on_detect_player_proximity_body_entered(body: Node2D) -> void:
     _on_body_proximity(body)
 
 
-func get_type() -> Main.ObstacleType:
-    return Main.ObstacleType.STANDING_TALL
+func get_type() -> E.ObstacleType:
+    return E.ObstacleType.STANDING_TALL
