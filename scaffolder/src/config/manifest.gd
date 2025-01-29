@@ -7,10 +7,10 @@ extends Resource
 @export_range(0.5, 5.0, 0.1) var debug_time_scale := 1.0
 
 ## We choose more difficult fragments as time goes on.
-@export var time_to_max_fragment_difficulty: float = 5 * 60
+@export var time_to_max_fragment_difficulty: float = 2 * 60
 
 ## The frame rate speeds up as time goes on.
-@export var time_to_max_time_scale: float = 20 * 60
+@export var time_to_max_time_scale: float = 7 * 60
 
 ## We change the environment (background and sprite textures) as time goes on.
 @export var environment_change_interval: float = 5

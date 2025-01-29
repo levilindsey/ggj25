@@ -22,3 +22,8 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_kavqa")
 frame_progress = 0.0939948
 script = ExtResource("2_rqenu")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.07
+autostart = true

@@ -27,8 +27,8 @@ func _ready() -> void:
 
 
 func update_content() -> void:
-    if (not is_instance_valid(S)
-            or not ("manifest" in S)
+    if (not is_instance_valid(M)
+            or not ("manifest" in M)
             or not is_instance_valid(M.manifest)):
         return
 
