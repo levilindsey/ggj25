@@ -12,7 +12,8 @@ func _init() -> void:
 func open(screen_name: String) -> void:
     # TODO: Remove.
     if is_top_screen("mic_error_screen"):
-        S.log.warning("No other screens are allowed to open over the mic-error screen: %s" % screen_name)
+        if screen_name != "mic_error_screen":
+            S.log.warning("No other screens are allowed to open over the mic-error screen: %s" % screen_name)
         return
 
     if S.utils.is_running_in_isolated_scene_mode():

@@ -279,7 +279,8 @@ func game_over(success: bool) -> void:
     S.log.print("GAME OVER: %s" % ("success" if success else "failure"))
     is_game_active = false
     G.session.end_time = S.time.get_play_time()
-    S.time.set_timeout(_show_game_over_screen, GAME_OVER_SCREEN_DELAY)
+    await get_tree().create_timer(GAME_OVER_SCREEN_DELAY).timeout
+    _show_game_over_screen()
 
 
 func update_music() -> void:

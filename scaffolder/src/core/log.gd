@@ -2,9 +2,11 @@ class_name ScaffolderLog
 extends Node
 
 
+const MAX_LOG_COUNT := 200
+
 var logs_early_bootstrap_events := false
 
-var _print_queue := CircularBuffer.new(200)
+var _print_queue := CircularBuffer.new(MAX_LOG_COUNT)
 
 
 func _ready() -> void:
@@ -13,13 +15,17 @@ func _ready() -> void:
 
 
 func print(message = "", print_to_console := true) -> void:
-    if !(message is String):
+    if not message is String:
         message = str(message)
+
+    message = prepend_time(message)
 
     _print_queue.push(message)
 
+    if is_instance_valid(G) and is_instance_valid(G.super_hud):
+        G.super_hud.add_log(message, MAX_LOG_COUNT)
+
     if print_to_console:
-        message = prepend_time(message)
         print(message)
 
 

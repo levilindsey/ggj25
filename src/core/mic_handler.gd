@@ -28,12 +28,15 @@ var _throttled_print: Callable
 # -   This value is reset every MIC_SAMPLE_PERIOD seconds.
 # -   It represents the max magnitude of the _current_ partial time window.
 var _in_progress_max_magnitude := 0.0
+var _in_progress_max_blowing_magnitude := 0.0
+var _in_progress_max_humming_magnitude := 0.0
 
 # -   This value is updated every MIC_SAMPLE_PERIOD seconds.
 # -   It represents the max magnitude of the _previous_ time window.
 var latest_magnitude := 0.0
 
-var _consecutive_zero_magnitude_frame_count := 0
+var _consecutive_blowing_zero_magnitude_frame_count := 0
+var _consecutive_humming_zero_magnitude_frame_count := 0
 
 var _humming_mode := false
 
@@ -53,33 +56,45 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-    var frequency_min := (
-        HUMMING_MODE_FREQUENCY_MIN
-        if _humming_mode
-        else BLOWING_MODE_FREQUENCY_MIN
-    )
-    var frequency_max := (
-        HUMMING_MODE_FREQUENCY_MAX
-        if _humming_mode
-        else BLOWING_MODE_FREQUENCY_MAX
-    )
-    var stereo_magnitude := spectrum.get_magnitude_for_frequency_range(
-        frequency_min,
-        frequency_max,
+    var blowing_stereo_magnitude := spectrum.get_magnitude_for_frequency_range(
+        BLOWING_MODE_FREQUENCY_MIN,
+        BLOWING_MODE_FREQUENCY_MAX,
         AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.MAGNITUDE_MAX)
-    var magnitude: float = lerpf(stereo_magnitude.x, stereo_magnitude.y, 0.5)
+    var blowing_magnitude: float = lerpf(
+        blowing_stereo_magnitude.x, blowing_stereo_magnitude.y, 0.5)
+
+    var humming_stereo_magnitude := spectrum.get_magnitude_for_frequency_range(
+        HUMMING_MODE_FREQUENCY_MIN,
+        HUMMING_MODE_FREQUENCY_MAX,
+        AudioEffectSpectrumAnalyzerInstance.MagnitudeMode.MAGNITUDE_MAX)
+    var humming_magnitude: float = lerpf(
+        humming_stereo_magnitude.x, humming_stereo_magnitude.y, 0.5)
 
     # Count consecutive zero-magnitude frames.
-    if magnitude == 0.0:
-        _consecutive_zero_magnitude_frame_count += 1
+    if humming_magnitude == 0.0:
+        _consecutive_humming_zero_magnitude_frame_count += 1
     else:
-        _consecutive_zero_magnitude_frame_count = 0
+        _consecutive_humming_zero_magnitude_frame_count = 0
+    if blowing_magnitude == 0.0:
+        _consecutive_blowing_zero_magnitude_frame_count += 1
+    else:
+        _consecutive_blowing_zero_magnitude_frame_count = 0
 
-    _in_progress_max_magnitude = max(_in_progress_max_magnitude, magnitude)
+    _in_progress_max_blowing_magnitude = max(
+        _in_progress_max_blowing_magnitude, blowing_magnitude)
+    _in_progress_max_humming_magnitude = max(
+        _in_progress_max_humming_magnitude, humming_magnitude)
+
+    _in_progress_max_magnitude = (
+        _in_progress_max_humming_magnitude
+        if _humming_mode
+        else _in_progress_max_blowing_magnitude
+    )
+
     _throttled_sample.call()
     _throttled_print.call()
 
-    if _consecutive_zero_magnitude_frame_count >= NO_DEVICE_DETECTED_CONSECUTIVE_ZERO_MAGNITUDE_FRAME_COUNT_THRESHOLD:
+    if _consecutive_humming_zero_magnitude_frame_count >= NO_DEVICE_DETECTED_CONSECUTIVE_ZERO_MAGNITUDE_FRAME_COUNT_THRESHOLD:
         S.screens.open("mic_error_screen")
 
 
@@ -99,12 +114,29 @@ func _set_humming_mode(is_enabled: bool) -> void:
 func _sample_throttled() -> void:
     latest_magnitude = _in_progress_max_magnitude
     _in_progress_max_magnitude = 0
+    _in_progress_max_blowing_magnitude = 0
+    _in_progress_max_humming_magnitude = 0
+
+    var debugging_browser_hack := false
+    if debugging_browser_hack:
+        latest_magnitude = 0.8
+        _in_progress_max_magnitude = 0.8
+        _in_progress_max_blowing_magnitude = 0.8
+        _in_progress_max_humming_magnitude = 0.8
+        _consecutive_humming_zero_magnitude_frame_count = 0
+        _consecutive_blowing_zero_magnitude_frame_count = 0
 
 
 func _print_throttled() -> void:
     if M.manifest.log_mic_debugging:
-        S.log.print("Current mic magnitude (throttled): %.5f (%.2f)" %
-            [latest_magnitude, get_blow_weight()])
+        S.log.print(
+            "Current mic magnitude (throttled): %.5f (%.2f); (blowing: %s, humming: %s)" %
+            [
+                latest_magnitude,
+                get_blow_weight(),
+                _in_progress_max_blowing_magnitude,
+                _in_progress_max_humming_magnitude,
+            ])
 
 
 # [0,1]
