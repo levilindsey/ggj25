@@ -6,9 +6,11 @@ extends MarginContainer
 func _ready() -> void:
     G.super_hud = self
 
+    self.visible = M.manifest.get("show_hud")
+
     S.settings.property_changed.connect(_on_property_changed)
-    var value: bool = S.settings.get("show_logs")
-    _on_property_changed("show_logs", value, value)
+    var show_logs: bool = S.settings.get("show_logs")
+    _on_property_changed("show_logs", show_logs, show_logs)
 
 
 func _on_property_changed(name: String, new_value: Variant, old_value: Variant) -> void:

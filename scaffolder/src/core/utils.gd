@@ -478,7 +478,6 @@ func take_screenshot() -> void:
         return
 
     var image := get_viewport().get_texture().get_image()
-    image.flip_y()
     var path := "user://screenshots/screenshot-%s.png" % get_datetime_string()
     var status := image.save_png(path)
     if status != OK:

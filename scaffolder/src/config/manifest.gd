@@ -25,6 +25,8 @@ extends Resource
 
 @export var render_debug_annotations := false
 
+@export var show_hud := true
+
 @export_group("Logging")
 @export var log_fragment_updates := false
 @export var log_time_scale_updates := false

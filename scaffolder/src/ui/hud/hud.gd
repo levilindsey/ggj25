@@ -6,6 +6,8 @@ extends PanelContainer
 func _ready() -> void:
     S.hud = self
 
+    self.visible = M.manifest.get("show_hud")
+
 
 func _process(_delta: float) -> void:
     %Distance.text = "%d" % G.session.score

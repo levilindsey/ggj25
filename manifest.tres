@@ -180,6 +180,7 @@ dev_mode = true
 skip_main_menu_in_dev_mode = false
 pauses_on_focus_out = true
 render_debug_annotations = false
+show_hud = false
 log_fragment_updates = false
 log_time_scale_updates = false
 log_mic_debugging = true
